@@ -1,0 +1,49 @@
+table 'Token Rate'
+	lineageTag: fd846f4f-e6e4-4652-93d1-d4bec3bcd0f5
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 7b20885f-abe1-4ce2-9589-32239b674bb9
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY22Q3 Token Rate'
+		dataType: double
+		formatString: 0.00
+		lineageTag: f113f9ad-275c-44de-9ef9-7110f03f264d
+		summarizeBy: none
+		sourceColumn: FY22Q3 Token Rate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Token Rate-4c98020f-8cdd-484e-914d-977719292aab' = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/SPO_WWCO_Pricing_Repository", [ApiVersion = 15]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each [Folder Path] = Sharepoint1),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"Date modified", Order.Descending}, {"Date created", Order.Descending}}),
+				    #"Kept First Rows" = Table.FirstN(#"Sorted Rows",1),
+				    #"FY22Q3 v2 Token Flex Rate Sheet xlsx_https://share autodesk com/sites/SPO_WWCO_Pricing_Repository/Token Rates/" = #"Kept First Rows"{[Name="FY22Q3.v2 Token Flex Rate Sheet.xlsx",#"Folder Path"=Sharepoint1]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"FY22Q3 v2 Token Flex Rate Sheet xlsx_https://share autodesk com/sites/SPO_WWCO_Pricing_Repository/Token Rates/"),
+				    #"Token Flex Rate Sheet_Sheet" = #"Imported Excel Workbook"{[Item="Token Flex Rate Sheet",Kind="Sheet"]}[Data],
+				    #"Removed Top Rows" = Table.Skip(#"Token Flex Rate Sheet_Sheet",2),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Legal Name", type text}, {"Product Name", type text}, {"Product Line Code", type text}, {"FY22Q3 Token Rate", type any}, {"FY22Q3 Rate Changes", Int64.Type}, {"FY21Q3 Token Rate", type any}, {"FY20Q4 Token Rate", type any}, {"Period", type text}, {"Title Type", type text}, {"DRB Matrix", type text}, {"Rate Sheet Offering Type ", type text}, {"Standard Discount", type number}, {"Delivery Method", type text}, {"Note", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Product Name", "FY22Q3 Token Rate"}),
+				    #"Sorted Rows1" = Table.Sort(#"Removed Other Columns",{{"Product Name", Order.Ascending}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Sorted Rows1", each ([Product Name] <> null)),
+				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows1", {"Product Name"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Duplicates","N/A",0,Replacer.ReplaceValue,{"FY22Q3 Token Rate"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","CALC",0,Replacer.ReplaceValue,{"FY22Q3 Token Rate"}),
+				    #"Filtered Rows2" = Table.SelectRows(#"Replaced Value1", each ([FY22Q3 Token Rate] <> "250/5000 Assets " and [FY22Q3 Token Rate] <> "MIXED")),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Filtered Rows2",{{"FY22Q3 Token Rate", type number}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+

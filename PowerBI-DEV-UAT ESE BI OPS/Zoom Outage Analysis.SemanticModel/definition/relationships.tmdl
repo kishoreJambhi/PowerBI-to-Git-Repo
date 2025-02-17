@@ -1,0 +1,49 @@
+relationship 71196e65-e077-4336-a362-47734760920c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ZOOM_STATUS_LOG.'Received Date'
+	toColumn: LocalDateTable_0a8b585e-7b1f-40c8-ab61-7a5a62e9682d.Date
+
+relationship 1ca27b4d-9534-46c6-a047-9e7570d70b16
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Online.'Available Time'
+	toColumn: LocalDateTable_5125e03f-7266-47aa-9cf9-51bd6752558a.Date
+
+relationship bec02f49-0de8-43f3-88ce-988c0e9363b2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Offline.'Unavailable Time'
+	toColumn: LocalDateTable_c04a61a0-c4d1-4713-811e-f7a8d1deee4b.Date
+
+relationship a2e343f6-6995-4e1b-bbcc-81928564b838
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Refresh.'Last Refresh'
+	toColumn: LocalDateTable_83495943-c5ca-45d8-bcba-4f284941d42d.Date
+
+relationship b5a9550f-8aba-4fc9-a006-9a28a38a4082
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Online.'Zoom Room Name '
+	toColumn: ZOOM_STATUS_LOG.'Zoom Room Name '
+
+relationship 2ccb025c-3b48-4c3f-9ea0-68ce2a7d13e6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ZOOM_STATUS_LOG (2)'.'Received Date'
+	toColumn: LocalDateTable_d66527d8-f915-40a9-9010-31e61d7a11f1.Date
+
+relationship 34100072-3d18-45e3-9359-c07282e1a55b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'ZOOM_STATUS_LOG (2)'.'Index.1'
+	toColumn: ZOOM_STATUS_LOG.Index
+
+relationship 31a14c53-e138-44c2-9a88-4ba0ce9cb7dc
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'ZOOM_STATUS_LOG (2)'.'Index.1'
+	toColumn: Offline.Index
+
+relationship a145cb61-4f00-4edb-a51d-1f4bc8de9ca9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'ZOOM_STATUS_LOG (2)'.Sequence
+	toColumn: LocalDateTable_d86372f4-cf0b-4029-b30a-a827ebf4407a.Date
+

@@ -1,0 +1,32 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Survey_Results","Motivation","Add_Resources","Know_AWN","2023","Know_AWN_2023","Motivation_2023","DirectQuery to AS - AWN Membership"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+
+ref table Survey_Results
+ref table DateTableTemplate_fbf7e650-6c1c-4575-9c44-76c56a3d76e9
+ref table LocalDateTable_e0e3ef95-4ef4-45b0-9784-e8eb3fec5b78
+ref table LocalDateTable_905fe3b7-3f16-4b57-8a31-f4af8b2e5ee1
+ref table Motivation
+ref table Add_Resources
+ref table Know_AWN
+ref table 2023
+ref table Know_AWN_2023
+ref table Motivation_2023
+ref table 'AWN_Membership_Consolidated 2'
+ref table 'LocalDateTable_703abf8b-3c94-4615-813a-d1c72090cc44 2'
+ref table 'LocalDateTable_f5f8af6e-dee4-432e-8e40-61705e96d110 2'
+ref table 'LocalDateTable_da4f603e-78df-441d-a1bb-7ef40a1e593a 2'
+ref table 'LocalDateTable_87fc74f0-dc99-402a-86df-108ba4f0f1a1 2'
+
+ref cultureInfo en-US
+

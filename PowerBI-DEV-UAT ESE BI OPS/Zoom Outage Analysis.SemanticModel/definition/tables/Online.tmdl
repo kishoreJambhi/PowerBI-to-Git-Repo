@@ -1,0 +1,90 @@
+table Online
+	lineageTag: c1a7bf3c-284c-4c1d-9b5a-130b2fc0baed
+
+	column 'Zoom Room Name '
+		dataType: string
+		lineageTag: 8a4c06e1-0287-4ead-a856-bf4240e1b85e
+		summarizeBy: none
+		sourceColumn: "Zoom Room Name "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Available Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 751b4d40-aef7-420b-98e3-73a6942c61b7
+		summarizeBy: none
+		sourceColumn: Available Time
+
+		variation Variation
+			isDefault
+			relationship: 1ca27b4d-9534-46c6-a047-9e7570d70b16
+			defaultHierarchy: LocalDateTable_5125e03f-7266-47aa-9cf9-51bd6752558a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Component
+		dataType: string
+		lineageTag: f07576bc-d5a2-4e5a-a774-bf3d524794b5
+		summarizeBy: none
+		sourceColumn: Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Available Message'
+		dataType: string
+		lineageTag: c3feafd6-fd61-4706-bcab-7df700a9e241
+		summarizeBy: none
+		sourceColumn: Available Message
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 1603f3f2-4e49-4ac9-8841-70d72a5abe8d
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zoom Room Component'
+		dataType: string
+		lineageTag: 17a70fb4-9674-41ed-9784-74cb1085c8e5
+		summarizeBy: none
+		sourceColumn: Zoom Room Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custom
+		dataType: string
+		lineageTag: d34dba25-886f-4ee8-ae34-dee7b41ef77d
+		summarizeBy: none
+		sourceColumn: Custom
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 645c596c-b310-4b56-897d-6e982f70fb84
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Online = m
+		mode: import
+		source =
+				let
+				    Source = ZOOM_STATUS_LOG,
+				    #"Sorted Rows" = Table.Sort(Source,{{"Zoom Room Name ", Order.Ascending}, {"Component", Order.Ascending}, {"Received Date", Order.Ascending}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Sorted Rows", each [Message] = "Online" or [Message] = "Battery Normal" or [Message] = "Reconnected" or [Message] = "Trusted" or [Message] = "Connected" or [Message] = ""),
+				    #"Filtered Rows" = Table.SelectRows(#"Filtered Rows1", each ([Component] <> "Bandwidth" and [Component] <> "CPU")),
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "Zoom Room Component", each [#"Zoom Room Name "]&"-"&[Component]),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Custom", each [Index]-1),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Custom1",{{"Message", "Available Message"}, {"Received Date", "Available Time"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

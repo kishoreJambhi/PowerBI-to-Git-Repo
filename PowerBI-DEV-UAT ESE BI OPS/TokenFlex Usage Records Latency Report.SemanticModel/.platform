@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "TokenFlex Usage Records Latency Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e6e77b5f-c917-910c-41df-a041d8a5c245"
+  }
+}

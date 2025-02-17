@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "NEO Feedback Survey"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3e345dc7-461f-b6d9-4ce0-eb40fc828506"
+  }
+}

@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["ZOOM_STATUS_LOG","Online","Offline","Refresh","ZOOM_STATUS_LOG (2)"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+
+ref table DateTableTemplate_274a8be7-0a2c-46e1-b13d-a93891bdc9b5
+ref table ZOOM_STATUS_LOG
+ref table LocalDateTable_0a8b585e-7b1f-40c8-ab61-7a5a62e9682d
+ref table Online
+ref table LocalDateTable_5125e03f-7266-47aa-9cf9-51bd6752558a
+ref table Offline
+ref table LocalDateTable_c04a61a0-c4d1-4713-811e-f7a8d1deee4b
+ref table Refresh
+ref table LocalDateTable_83495943-c5ca-45d8-bcba-4f284941d42d
+ref table 'ZOOM_STATUS_LOG (2)'
+ref table LocalDateTable_d66527d8-f915-40a9-9010-31e61d7a11f1
+ref table LocalDateTable_d86372f4-cf0b-4029-b30a-a827ebf4407a
+
+ref cultureInfo en-US
+

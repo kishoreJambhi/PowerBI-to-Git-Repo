@@ -1,0 +1,20 @@
+relationship 248d66b9-52df-455a-a4d6-35861ab605c2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AWN_Membership_Consolidated.'Most Recent Hire Date'
+	toColumn: LocalDateTable_703abf8b-3c94-4615-813a-d1c72090cc44.Date
+
+relationship 3a98915b-a88a-430f-b795-861969f4808d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AWN_Membership_Consolidated.Extract
+	toColumn: LocalDateTable_f5f8af6e-dee4-432e-8e40-61705e96d110.Date
+
+relationship 98e3c661-56fd-4dc0-863d-c17d0d35c92a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AWN_Membership_Consolidated.'Current Date'
+	toColumn: LocalDateTable_da4f603e-78df-441d-a1bb-7ef40a1e593a.Date
+
+relationship c0933c1a-8612-45db-ac76-fbc06459ddd2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AWN_Membership_Consolidated.'Most Recent Extract Date'
+	toColumn: LocalDateTable_87fc74f0-dc99-402a-86df-108ba4f0f1a1.Date
+

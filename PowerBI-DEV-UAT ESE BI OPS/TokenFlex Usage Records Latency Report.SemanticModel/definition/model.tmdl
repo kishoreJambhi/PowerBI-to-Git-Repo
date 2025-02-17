@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Token Flex usage records","Refresh Date","PRODUCT_LINE"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+
+ref table 'Token Flex usage records'
+ref table DateTableTemplate_403e4b5e-7e84-440f-8aba-e07340ebca55
+ref table LocalDateTable_a58d875f-bb72-457c-9016-4e5139c6b7ff
+ref table 'Refresh Date'
+ref table LocalDateTable_ac5ae767-aae5-4eeb-869b-1af7552bcf79
+ref table LocalDateTable_12bf0983-3f96-43fe-bddb-993b1ab24166
+ref table LocalDateTable_ea7d32cb-c5c2-4a15-9aea-3982cc3ca622
+ref table LocalDateTable_9a24f88f-c208-4219-8a5b-9f446c5fa082
+ref table LocalDateTable_3e164769-7762-4d7a-a939-2a33a6de74fa
+ref table LocalDateTable_3c871c3b-8c10-4457-ae6f-53a2d23b3e08
+ref table LocalDateTable_6d884648-3d09-4032-ab63-5e5de9c78df5
+ref table PRODUCT_LINE
+
+ref cultureInfo en-US
+

@@ -1,0 +1,149 @@
+table DateDim
+	lineageTag: b950a362-b367-4e14-9a3a-8cdc5e6a50f0
+
+	measure 'MTTR Mean'
+		formatString: 0
+		lineageTag: 943c5642-aa2c-4493-93c2-2837ef653d55
+
+	column Date
+		lineageTag: 57176fcb-1bdc-4b5e-a284-a7e8af9ac5e0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 8f189385-ccc5-47dd-8e06-b417f7fe946d
+			defaultHierarchy: LocalDateTable_15576534-c8cb-41f3-860e-88803739ee42.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"DateDim","TableItemName":"Date (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year = Year('DateDim'[Date])
+		formatString: 0
+		lineageTag: fb2f3ab7-7072-4056-9dfc-cea2b7cb66af
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('DateDim'[Date],"YYYY MMM")
+		lineageTag: a322eb9e-6043-4814-865a-5221f0c4a30c
+		summarizeBy: none
+		sortByColumn: 'Year-Month Code'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfYear = MONTH(DateDim[Date])
+		formatString: 0
+		lineageTag: 9e786ad9-096c-4053-a8e7-3b8e50fc09eb
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekOfYear = CONCATENATE("Week_",WEEKNUM(DateDim[Date]))
+		lineageTag: 0cef1545-5f8c-4869-aa52-202336312712
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Quarter' =
+			SWITCH( True(),
+			DateDim[MonthOfYear] = 1, "Q4",
+			DateDim[MonthOfYear] = 2, "Q1",
+			DateDim[MonthOfYear] = 3, "Q1",
+			DateDim[MonthOfYear] = 4, "Q1",
+			DateDim[MonthOfYear] = 5, "Q2",
+			DateDim[MonthOfYear] = 6, "Q2",
+			DateDim[MonthOfYear] = 7, "Q2",
+			DateDim[MonthOfYear] = 8, "Q3",
+			DateDim[MonthOfYear] = 9, "Q3",
+			DateDim[MonthOfYear] = 10, "Q3",
+			DateDim[MonthOfYear] = 11, "Q4",
+			DateDim[MonthOfYear] = 12, "Q4",
+			Blank() )
+		lineageTag: 78892d99-efca-42bb-b822-cd41eeb9e121
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Year' = "FY" & RIGHT(IF ('DateDim'[MonthOfYear]=1,'DateDim'[Year],'DateDim'[Year]+1),2)
+		lineageTag: 9a593ab1-7f35-497a-b3de-781b779ea103
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Quarter and Year' = CONCATENATE(DateDim[FY Year],DateDim[FY Quarter])
+		lineageTag: a893d285-1897-498e-a39c-7672ce338142
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekSort = CONCATENATE(DateDim[Year]," " & DateDim[WeekOfYear])
+		lineageTag: 62c9541b-6550-4b10-b3cd-6f0d65ecf678
+		summarizeBy: none
+		sortByColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date (bins)' =
+			IF(
+			  ISBLANK('DateDim'[Date]),
+			  BLANK(),
+			  DATE(
+			    YEAR('DateDim'[Date]),
+			    1 + (MONTH('DateDim'[Date]) - 1),
+			    1
+			  )
+			)
+		formatString: General Date
+		lineageTag: 10f4578e-fdff-44e6-9a02-79ea6e60e226
+		summarizeBy: none
+		sortByColumn: Month
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "DateDim"
+				          }
+				        },
+				        "Property": "Date"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 1.0,
+				      "unit": 6
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"d","Entity":"DateDim"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Date"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Date"}},"Size":1.0,"TimeUnit":2}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_No = FORMAT(DateDim[Date],"MMMM")
+		lineageTag: 54419028-a42e-4a4a-bb22-2d5cd337922b
+		summarizeBy: none
+		sortByColumn: MonthOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year-Month Code' = FORMAT('DateDim'[Date],"YYYYMM")
+		lineageTag: 8515ea87-6582-429e-9aa4-223f804fdaf5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateDim-66bc0166-20e3-4639-9535-878bb4b83b92 = calculated
+		mode: import
+		source = CALENDAR(date(2020,6,1),NOW())
+

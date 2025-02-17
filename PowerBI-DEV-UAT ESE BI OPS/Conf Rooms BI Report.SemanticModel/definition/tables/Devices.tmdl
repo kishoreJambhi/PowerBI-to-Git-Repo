@@ -1,0 +1,355 @@
+table Devices
+	lineageTag: 54ba8573-6780-4ce9-aeec-21b45e662660
+
+	measure HardwareModel_Count =
+			
+			CALCULATE(
+			    COUNT(Devices[hardwareModel]),
+			    FILTER(
+			        ALLEXCEPT(Devices,Devices[hardwareModel],Devices[softwareVersion]),
+			        Devices[timestamp] <= MAX(Devices[timestamp])
+			    )
+			)
+		formatString: 0
+		lineageTag: 9722e7af-81c2-431e-aed8-29131c0e7dc7
+
+	measure Device_Count =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName]),
+			    FILTER(
+			        ALLEXCEPT(Devices, Devices[softwareVersion], Devices[Region],Devices[hardwareModel]),  -- Include Region in ALLEXCEPT to respect slicer
+			        Devices[timestamp] <= MAX(Devices[timestamp])
+			    )
+			)
+		formatString: 0
+		lineageTag: b6ef2b3f-935e-4ab8-8a6a-7a58279c0afc
+
+	measure Measure
+		lineageTag: 6284ebfa-4693-487f-88ff-caf97e9e4390
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure +AMER =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName])+0,
+			    Devices[Region] = "AMER"
+			)
+		formatString: 0
+		lineageTag: afe94675-0ecf-4258-8713-ca95122861cb
+
+	measure +APAC =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName])+0,
+			    Devices[Region] = "APAC"
+			)
+		formatString: 0
+		lineageTag: 56382a72-e5cd-4eb1-a98d-5d7c21418344
+
+	measure +Blank =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName])+0,
+			    'Devices'[Region] = ""
+			)
+		formatString: 0
+		lineageTag: f0401e23-3c60-41de-a761-e97431b2ac06
+
+	measure +EMEA =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName])+0,
+			    Devices[Region] = "EMEA"
+			)
+		formatString: 0
+		lineageTag: 9ce12e4b-f55a-40ca-9bc6-12117603d379
+
+	measure +Rutledge =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName])+0,
+			    Devices[Region] = "Rutledge"
+			)
+		formatString: 0
+		lineageTag: 1d879a2f-4716-424f-89fe-f1709abf7ab5
+
+	measure 'Device Count' = ```
+			
+			IF(
+			    ISBLANK(COUNT(Devices[displayName])), 
+			    0, 
+			    COUNT(Devices[displayName])
+			)
+			```
+		formatString: 0
+		lineageTag: cd4d4aca-abc3-4df9-a88e-384e14836114
+
+	column device_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8999e0a7-9431-4849-99f6-30f642761411
+		summarizeBy: sum
+		sourceColumn: device_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: string
+		lineageTag: 809bfd86-7b7a-48fe-8d93-afd70aeb2a09
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device name'
+		dataType: string
+		lineageTag: 756d2b22-c399-4fcc-aecd-982ebedb29ac
+		summarizeBy: none
+		sourceColumn: Device name
+
+		annotation SummarizationSetBy = Automatic
+
+	column serialNumber
+		dataType: string
+		lineageTag: 1349e997-f5d0-46d4-9896-c563336a16fd
+		summarizeBy: none
+		sourceColumn: serialNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column macAddress
+		dataType: string
+		lineageTag: 33361990-a613-4169-afc6-0b5e85fa1110
+		summarizeBy: none
+		sourceColumn: macAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardwareFamily
+		dataType: string
+		lineageTag: 3051a9d0-41e2-4ffd-9664-15ba4512a5b0
+		summarizeBy: none
+		sourceColumn: hardwareFamily
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardwareModel
+		dataType: string
+		lineageTag: 88730d5f-ee84-4d4a-bbda-8655e6a14b3e
+		summarizeBy: none
+		sourceColumn: hardwareModel
+
+		annotation SummarizationSetBy = Automatic
+
+	column softwareVersion
+		dataType: string
+		lineageTag: 7e3dc4fd-564e-4e10-932e-d628039cd4b7
+		summarizeBy: none
+		sourceColumn: softwareVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	column activeApplicationName
+		dataType: string
+		lineageTag: c28a45e9-e323-4404-a196-4a4744c326ea
+		summarizeBy: none
+		sourceColumn: activeApplicationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column hasPeripherals
+		dataType: int64
+		formatString: 0
+		lineageTag: dd774c5b-e1ac-46a4-bd6d-1206bb1735df
+		summarizeBy: sum
+		sourceColumn: hasPeripherals
+
+		annotation SummarizationSetBy = Automatic
+
+	column displayName
+		dataType: string
+		lineageTag: 1487ed48-7654-4eb3-978a-d96efcdf42dc
+		summarizeBy: none
+		sourceColumn: displayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardwareProduct
+		dataType: string
+		lineageTag: b0711302-8ce8-4ef2-8658-69483c99afb1
+		summarizeBy: none
+		sourceColumn: hardwareProduct
+
+		annotation SummarizationSetBy = Automatic
+
+	column externalIp
+		dataType: string
+		lineageTag: df2f095d-33fd-4355-91c9-860507738a3c
+		summarizeBy: none
+		sourceColumn: externalIp
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: fbcf9bf3-0f59-4772-a787-5aee2520272c
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 64d2baee-9473-4e26-95e8-e5318abcd72f
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column State/City
+		dataType: string
+		lineageTag: 9740ad2c-e5e0-4a15-8c13-ef5bd5cad109
+		summarizeBy: none
+		sourceColumn: State/City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 247ab27e-5f48-4e94-afb3-e949f49844c7
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column room
+		dataType: string
+		lineageTag: e89c4fed-0970-4932-9b5e-56928e42cbb7
+		summarizeBy: none
+		sourceColumn: room
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Future Upgrade Version'
+		dataType: string
+		lineageTag: 9b53ef0e-bc77-4131-b5b0-addb53b8192f
+		summarizeBy: none
+		sourceColumn: Future Upgrade Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned Upgrade Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 34a35d3f-470b-42c0-a9e9-38d518751829
+		summarizeBy: none
+		sourceColumn: Planned Upgrade Date
+
+		variation Variation
+			isDefault
+			relationship: 2afadd22-f779-43dc-80ed-6f1005bb9bbc
+			defaultHierarchy: LocalDateTable_c01d07c1-94bc-4a7c-bc4f-60dd3fa54d08.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column timestamp
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: cf56e7c8-9f10-4707-bdc5-395aad101ef8
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 9bbb6558-8d16-4bfb-8004-a06d85fcc163
+			defaultHierarchy: LocalDateTable_2db8d4b1-8278-44c3-bd94-603302efbdba.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cumulative Count' =
+			
+			CALCULATE(
+			     COUNT(Devices[displayName]),
+			    FILTER(
+			        ALLEXCEPT(Devices,Devices[softwareVersion],Devices[Region],Devices[hardwareModel]),
+			        Devices[timestamp] <= MAX(Devices[timestamp])
+			    )
+			)
+		formatString: 0
+		lineageTag: e8ee95c0-ab54-4ac3-aaa5-c9d8a5d33182
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column _+APAC =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName]),
+			    Devices[Region] ="APAC", ALL(Devices))
+		formatString: 0
+		lineageTag: 6a05a2da-a371-49a9-94bd-aeb2521558f5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column _+AMER =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName]),
+			    Devices[Region] ="AMER", ALL(Devices))
+		formatString: 0
+		lineageTag: d1fa488e-33be-4532-947e-4a1110634bea
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column _Device_Count =
+			
+			CALCULATE(
+			    COUNT(Devices[displayName]),
+			    FILTER(
+			        ALLEXCEPT(Devices,Devices[hardwareModel],Devices[softwareVersion]),
+			        Devices[timestamp] <= MAX(Devices[timestamp])
+			    )
+			)
+		formatString: 0
+		lineageTag: 5062e468-4c90-4c53-af1d-d646c7250e6e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Devices = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Ds-Conf_room", [HierarchicalNavigation=true]),
+				    Conf_room_Database = Source{[Name="Conf_room",Kind="Database"]}[Data],
+				    devices_Table = Conf_room_Database{[Name="devices",Kind="Table"]}[Data],
+				    #"Renamed Columns2" = Table.RenameColumns(devices_Table,{{"site", "site.name"}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns2", each ([displayName] <> null)),
+				    #"Trimmed Text" = Table.TransformColumns(#"Filtered Rows",{{"site.name", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"site.name", Text.Clean, type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Cleaned Text", "site.name", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"site.name.1", "site.name.2", "site.name.3", "site.name.4", "site.name.5", "site.name.6", "site.name.7"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Split Column by Delimiter",null,"",Replacer.ReplaceValue,{"site.name.5", "site.name.6"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value",{{"site.name.2", "Cuntry"}, {"site.name.3", "State/City"}, {"site.name.1", "Region"}, {"name", "Device name"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"serialNumber", type text}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Changed Type1",{"site.name.4", "site.name.5", "site.name.6", "site.name.7"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Merged"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Merged Columns",{{"Merged", "Location"}, {"Cuntry", "Country"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns1", {"serialNumber"}, Sharepoint, {"Serial number"}, "Sharepoint", JoinKind.LeftOuter),
+				    #"Expanded Sharepoint" = Table.ExpandTableColumn(#"Merged Queries", "Sharepoint", {"Future Upgrade #(lf)Version", "Planned Upgrade Date"}, {"Future Upgrade #(lf)Version", "Planned Upgrade Date"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Sharepoint",{{"Planned Upgrade Date", type date}}),
+				    #"Trimmed Text1" = Table.TransformColumns(#"Changed Type",{{"Device name", Text.Trim, type text},{"softwareVersion",Text.Trim, type text}}),
+				    #"Cleaned Text1" = Table.TransformColumns(#"Trimmed Text1",{{"Device name", Text.Clean, type text},{"softwareVersion",Text.Trim, type text}})
+				in
+				    #"Cleaned Text1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

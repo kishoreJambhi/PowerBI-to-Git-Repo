@@ -1,0 +1,36 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup YearMonth
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup YearMonth\YearM
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup YearMonth\YearM\YearM
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup YearMonth\YearM\YearM\SYS_CREATED_ON
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["SNOW_TASK_SLA","SYS_CREATED_ON","Snow_TASK_SLA-2024-20"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.138.1004.0 (24.11)
+
+annotation __TEdtr = 1
+
+ref table Snow_TASK_SLA-2024-20
+
+ref cultureInfo en-US
+

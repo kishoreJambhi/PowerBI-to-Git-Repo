@@ -1,0 +1,39 @@
+table Know_AWN_2023
+	lineageTag: dd5eaf67-bd2d-466e-81df-8237fce08b30
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d74be3a-0825-4f53-bd0c-fd9d8e057a7c
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How did you learn about AWN?'
+		dataType: string
+		lineageTag: 4763f53e-2384-477f-ab7f-d306d7196b42
+		summarizeBy: none
+		sourceColumn: How did you learn about AWN?
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Know_AWN_2023 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\brohlm\Autodesk\AWN - General\Impact Measurement\Annual Member Survey\2023-10\Autodesk Women's Network Impact Measurement Survey.xlsx"), null, true),
+				    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"ID", Int64.Type}, {"Start time", type datetime}, {"Completion time", type datetime}, {"Email", type text}, {"Name", type text}, {"Last modified time", type any}, {"How did you learn about AWN?", type text}, {"What motivated you to sign up with AWN?", type text}, {"AWN has supported my personal goal(s) since I joined.", type text}, {"Based on your answer above, can you share an event or program that positively or negatively impacted your journey?", type text}, {"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?", type text}, {"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?", type text}, {"Please rate the following statement (Rate 1-5): AWN offers the right amount and mix of events", Int64.Type}, {"Please rate the following statement (Rate 1-5): AWN provides opportunities for networking with colleagues outside of my usual work cycle", Int64.Type}, {"What if any additional support or resources would you like to see offered by AWN? ", type text}, {"What would you like to see AWN focus on in FY25?", type text}, {"The AWN FY24 theme was ""Create your next chapter - Discover. Own. Evolve"".  What ideas do you have for a FY25 theme?", type text}, {"Do you have a preference between the following?", type text}, {"Which day of the week do you prefer for attending events vitually?", type text}, {"If you haven't participated in any activities to date please indicate why.", type text}, {"What do you feel AWN is doing well?", type text}, {"How might we improve to better meet your needs?", type text}, {"Can we reach out to you if we have additional follow up questions?", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"ID", "How did you learn about AWN?"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Other Columns",{{"ID", Int64.Type}}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Changed Type1", {{"How did you learn about AWN?", Splitter.SplitTextByDelimiter(";", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "How did you learn about AWN?"),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"How did you learn about AWN?", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type2", each ([#"How did you learn about AWN?"] <> null and [#"How did you learn about AWN?"] <> ""))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

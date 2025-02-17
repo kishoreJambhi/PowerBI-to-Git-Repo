@@ -1,0 +1,28 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Ploy Lens API","Sharepoint","Last Refresh","Devices"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.138.1203.0 (24.11)
+
+ref table DateTableTemplate_39bccfd9-32fd-4af1-b3eb-b2b901fc5dcf
+ref table 'Ploy Lens API'
+ref table Sharepoint
+ref table LocalDateTable_75fb5d44-75d7-4964-baab-23cf2039615e
+ref table LocalDateTable_fc71c1c3-6bb7-4667-9931-8133d33386b4
+ref table 'Last Refresh'
+ref table LocalDateTable_5b1d6580-6052-402e-8ed3-e00bd6d1d374
+ref table Devices
+ref table LocalDateTable_c01d07c1-94bc-4a7c-bc4f-60dd3fa54d08
+ref table LocalDateTable_2db8d4b1-8278-44c3-bd94-603302efbdba
+
+ref cultureInfo en-US
+

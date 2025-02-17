@@ -1,0 +1,40 @@
+table Robots
+	lineageTag: 489aee5b-8039-4baf-bf22-e19b3254f1c4
+
+	column USER_LOGIN_ID
+		dataType: string
+		lineageTag: d623e1a0-00d8-444f-a883-378bddde44d0
+		summarizeBy: none
+		sourceColumn: USER_LOGIN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Colonne2
+		dataType: string
+		lineageTag: 3f2ac8f1-6cc2-4209-b46c-9c625ec77dc1
+		summarizeBy: none
+		sourceColumn: Colonne2
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Robots-2e94e209-dfcb-41f7-8721-7bfea369d59e = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files(Sharepoint, [ApiVersion = 15]),
+				    #"Sorted Rows" = Table.Sort(Source,{{"Date created", Order.Descending}}),
+				    #"Token Flex Usage-marshac xlsx_https://share autodesk com/sites/ESEPowerBIRepository/Shared Documents/PRJ_PBI/Sales/Reports/Token Flex Usage/Data Source/" = #"Sorted Rows"{[Name="Token Flex Usage-marshac.xlsx",#"Folder Path"=Sharepoint &"Shared Documents/PRJ_PBI/Global Named Accounts & Digital Manufacturing Sales/Reports/Token Flex Usage/Data Source/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"Token Flex Usage-marshac xlsx_https://share autodesk com/sites/ESEPowerBIRepository/Shared Documents/PRJ_PBI/Sales/Reports/Token Flex Usage/Data Source/"),
+				    Robots_Sheet = #"Imported Excel Workbook"{[Item="Robots",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Robots_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Colonne1", type text}, {"Colonne2", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Colonne1", "USER_LOGIN_ID"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

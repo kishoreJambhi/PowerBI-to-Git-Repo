@@ -1,0 +1,42 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 3/23/2022 1:59:55 PM.
+queryGroup 'Query Errors - 3/23/2022 1:59:55 PM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup TFLEX_USAGE_YEARMONTH
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup TFLEX_USAGE_YEARMONTH\YearM
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBIDesktopVersion = 2.124.1554.0 (23.12)
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Last Refresh","File Modified Date","Token Rate","Robots","Sharepoint","Sharepoint1","Query2","TFLEX_USAGE_YEARMONTH","TokenFlex_Daily_Usage","PRODUCT TABLE","CUSTOMER TABLE","YearM","Testing one"]
+
+ref table 'Last Refresh'
+ref table 'File Modified Date'
+ref table 'Token Rate'
+ref table Robots
+ref table DateTableTemplate_9ea47eb3-9064-45c8-9f73-4b663a55f9bf
+ref table LocalDateTable_726ec32a-2b8e-4477-8aa5-591ac1dd1450
+ref table 'TOP USERS BY DAY'
+ref table TokenFlex_Daily_Usage
+ref table 'PRODUCT TABLE'
+ref table 'CUSTOMER TABLE'
+ref table LocalDateTable_479ca0f2-49b4-47a0-826e-c67cedd91a33
+ref table 'Testing one'
+
+ref cultureInfo en-US
+

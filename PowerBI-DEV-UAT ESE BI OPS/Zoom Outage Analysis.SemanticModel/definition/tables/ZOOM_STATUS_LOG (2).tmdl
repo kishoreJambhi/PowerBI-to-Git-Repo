@@ -1,0 +1,188 @@
+table 'ZOOM_STATUS_LOG (2)'
+	lineageTag: e7e6d358-20ce-400f-8ac8-455b12bef907
+
+	measure MTTR =
+			AVERAGEX(
+			    'ZOOM_STATUS_LOG (2)',
+			    -('ZOOM_STATUS_LOG (2)'[Received Date]- 'ZOOM_STATUS_LOG (2)'[Sequence])*24
+			    )
+		lineageTag: 88411027-c0ac-4055-816e-7b417ea16c03
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MTBF = ```
+			
+			AVERAGEX(
+			    'ZOOM_STATUS_LOG (2)',
+			    VAR CurrentDateIn = 'ZOOM_STATUS_LOG (2)'[Received Date]
+			    //VAR CurrentSNo = 'ZOOM OUTAGE_LOG'[Index]
+			    VAR PreviousDateOut =
+			    CALCULATE (
+			       MAX ( 'ZOOM_STATUS_LOG (2)'[Sequence]),
+			       FILTER(
+			           ALL('ZOOM_STATUS_LOG (2)'), 
+			           'ZOOM_STATUS_LOG (2)'[Zoom Room Component] = EARLIER('ZOOM_STATUS_LOG (2)'[Zoom Room Component])
+			           && 'ZOOM_STATUS_LOG (2)'[Sequence] <= CurrentDateIn
+			           //&& 'ZOOM OUTAGE_LOG'[Index] <> CurrentSNo
+			           //&& 'ZOOM_STATUS_LOG (2)'[Sequence] <= CurrentDateIn
+			       )
+			    )
+			    RETURN
+			        IF(
+			            NOT(ISBLANK(PreviousDateOut)),
+			            (CurrentDateIn - PreviousDateOut) * 24
+			        )
+			)
+			```
+		lineageTag: 3b77b43c-11c4-49eb-af87-108d9f0ffc51
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Zoom Room Name '
+		dataType: string
+		lineageTag: b1c2376d-bd44-4b98-bf65-af5e2c93171e
+		summarizeBy: none
+		sourceColumn: "Zoom Room Name "
+
+		annotation SummarizationSetBy = Automatic
+
+	column Component
+		dataType: string
+		lineageTag: c643f5e4-c3c3-4ee9-aaf7-a3e8c260d0db
+		summarizeBy: none
+		sourceColumn: Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column Message
+		dataType: string
+		lineageTag: d0c637a2-91df-4259-8c42-6457e95fc674
+		summarizeBy: none
+		sourceColumn: Message
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Received Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: adccef0c-3ea2-4517-a9fe-d521fb7f7aad
+		summarizeBy: none
+		sourceColumn: Received Date
+
+		variation Variation
+			isDefault
+			relationship: 2ccb025c-3b48-4c3f-9ea0-68ce2a7d13e6
+			defaultHierarchy: LocalDateTable_d66527d8-f915-40a9-9010-31e61d7a11f1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Received- Date'
+		dataType: string
+		lineageTag: b17386ec-8505-47b4-b2ab-08591c5c666a
+		summarizeBy: none
+		sourceColumn: Received- Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: string
+		lineageTag: a85bddcc-a0eb-4714-8d5f-f45acb2b7adb
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sequence = ```
+			
+			VAR CurrentRoom = 'ZOOM_STATUS_LOG (2)'[Zoom Room Name ]
+			VAR CurrentComponent = 'ZOOM_STATUS_LOG (2)'[Component]
+			VAR CurrentRowDate = 'ZOOM_STATUS_LOG (2)'[Received Date]
+			VAR NextReconnect = 
+			    CALCULATE(
+			        MIN('ZOOM_STATUS_LOG (2)'[Received Date]),
+			        FILTER(
+			            'ZOOM_STATUS_LOG (2)',
+			            'ZOOM_STATUS_LOG (2)'[Zoom Room Name ] = CurrentRoom
+			                && 'ZOOM_STATUS_LOG (2)'[Component] = CurrentComponent
+			                && 'ZOOM_STATUS_LOG (2)'[Message] in {"reconnected","Connected","Online","battery normal","trusted"}
+			                && 'ZOOM_STATUS_LOG (2)'[Received Date] > CurrentRowDate
+			        )
+			    )
+			RETURN IF('ZOOM_STATUS_LOG (2)'[Message] in {"disconnected","Offline","low battery","Untrusted"},  NextReconnect, BLANK())
+			```
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 04109c60-609d-4c6b-9f0e-c8f4f06dea4c
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: a145cb61-4f00-4edb-a51d-1f4bc8de9ca9
+			defaultHierarchy: LocalDateTable_d86372f4-cf0b-4029-b30a-a827ebf4407a.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Index.1'
+		dataType: int64
+		formatString: 0
+		lineageTag: 041f850f-bc6a-4214-a265-2f5e2e22006c
+		summarizeBy: none
+		sourceColumn: Index.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zoom Room Component'
+		dataType: string
+		lineageTag: 5ef9a744-005a-4e0b-b694-b065aa3dfb2e
+		summarizeBy: none
+		sourceColumn: Zoom Room Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY = if(MONTH('ZOOM_STATUS_LOG (2)'[Received Date])=1,"FY" & right(YEAR('ZOOM_STATUS_LOG (2)'[Received Date]),2),"FY" & right(YEAR('ZOOM_STATUS_LOG (2)'[Received Date]),2)+1)
+		lineageTag: 20a440c2-75f2-407c-9c49-fdfaef019895
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = CONCATENATE(IF(MONTH('ZOOM_STATUS_LOG (2)'[Received Date]) in{2,3,4}, "Q1" , IF(MONTH('ZOOM_STATUS_LOG (2)'[Received Date]) in{5,6,7}, "Q2" ,IF(MONTH('ZOOM_STATUS_LOG (2)'[Received Date]) in {8,9,10}, "Q3" ,IF(MONTH('ZOOM_STATUS_LOG (2)'[Received Date]) in{11,12,1}, "Q4")))),"-"& 'ZOOM_STATUS_LOG (2)'[FY])
+		lineageTag: 482ebd3b-acf2-4dec-a902-3cfa1f870f29
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CIty
+		dataType: string
+		lineageTag: 276afe20-86d0-4007-b616-8d46d931ce4a
+		summarizeBy: none
+		sourceColumn: CIty
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ZOOM_STATUS_LOG (2)' = m
+		mode: import
+		source =
+				let
+				    Source = ZOOM_STATUS_LOG,
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Index"}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Removed Columns", "Received Date", "Received Date - Copy"),
+				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Duplicated Column", {{"Received Date - Copy", type text}}, "en-IN"), "Received Date - Copy", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, false), {"Received Date - Copy.1", "Received Date - Copy.2"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Split Column by Delimiter",{{"Received Date - Copy.1", "Received- Date"}, {"Received Date - Copy.2", "Received Time"}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Renamed Columns",{"Received Time"}),
+				    #"Grouped Rows" = Table.Group(#"Removed Columns1", {"Received- Date"}, {{"Count", each _, type table [#"Zoom Room Name "=text, Received Date=nullable datetime, Component=text, Message=text, Index=number, CIty=nullable text, #"Received- Date"=nullable text, Received Time=nullable text]}}),
+				    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "Custom", each Table.AddIndexColumn([Count],"Index",1)),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom",{"Custom"}),
+				    #"Expanded Custom" = Table.ExpandTableColumn(#"Removed Other Columns", "Custom", {"Zoom Room Name ", "Received Date", "Component", "Message", "CIty", "Received- Date", "Index"}, {"Zoom Room Name ", "Received Date", "Component", "Message", "CIty", "Received- Date", "Index"}),
+				    #"Sorted Rows" = Table.Sort(#"Expanded Custom",{{"Zoom Room Name ", Order.Ascending}, {"Component", Order.Ascending}, {"Received Date", Order.Ascending}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Sorted Rows",{{"Received Date", type datetime}}),
+				    #"Added Custom1" = Table.AddColumn(#"Changed Type", "Zoom Room Component", each [#"Zoom Room Name "]&"-"&[Component]),
+				    #"Added Index" = Table.AddIndexColumn(#"Added Custom1", "Index.1", 1, 1, Int64.Type)
+				in
+				    #"Added Index"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

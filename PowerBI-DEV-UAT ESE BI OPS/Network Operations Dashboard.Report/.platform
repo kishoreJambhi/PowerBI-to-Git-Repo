@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Network Operations Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a2efe0b8-b509-b1d7-430b-0799ab05a555"
+  }
+}

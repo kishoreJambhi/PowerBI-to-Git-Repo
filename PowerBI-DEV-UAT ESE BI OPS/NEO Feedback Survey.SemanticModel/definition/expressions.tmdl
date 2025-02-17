@@ -1,0 +1,21 @@
+expression Query1 =
+		let
+		    Source = SharePoint.Files("https://share.autodesk.com/sites/GlobalOnboardingCommunity/", [ApiVersion = 15]),
+		    #"Sorted Rows" = Table.Sort(Source,{{"Date created", Order.Ascending}}),
+		    #"NEO Feedback Survey xlsx_https://share autodesk com/sites/GlobalOnboardingCommunity/Shared Documents/Metrics/NEO Feedback Survey Power BI/" = #"Sorted Rows"{[Name="NEO Feedback Survey.xlsx",#"Folder Path"="https://share.autodesk.com/sites/GlobalOnboardingCommunity/Shared Documents/Metrics/NEO Feedback Survey Power BI/"]}[Content],
+		    #"Imported Excel Workbook" = Excel.Workbook(#"NEO Feedback Survey xlsx_https://share autodesk com/sites/GlobalOnboardingCommunity/Shared Documents/Metrics/NEO Feedback Survey Power BI/"),
+		    Sheet1_Sheet = #"Imported Excel Workbook"{[Item="Sheet1",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Start time", type datetime}, {"Completion time", type datetime}, {"Email", type text}, {"Name", type text}, {"I attended the  ________ NEO session.", type text}, {"My NEO session started on ________.", type date}, {"In my new role at Autodesk I am a(n) ________________.", type text}, {"How would you rate your NEO facilitator?", Int64.Type}, {"How would you rate your 3-day NEO session overall?", Int64.Type}, {"How we are organized", type text}, {"Website Demonstration", type text}, {"Guest Speaker", type text}, {"Brand Evolution", type text}, {"Company Trivia", type text}, {"Impact at Autodesk", type text}, {"Guest Speaker2", type text}, {"Culture Code", type text}, {"Culture Activity", type text}, {"Diversity & Belonging at Autodesk", type text}, {"Guest Speaker3", type text}, {"What (if anything) would you add to NEO?", type text}, {"What (if anything) would you remove from NEO?", type text}, {"Any other feedback/suggestions/compliments? (for the program or facilitator(s))", type text}, {"(New Hire IT Question) How would you rate the accessibility and usability of the company's technology  (e.g., laptop, network, applications, servers, databases)? ", type any}, {"Please provide details:", type text}, {"(New Hire IT Question) Did you receive an Autodesk laptop on time and ready to use on your start date? ", type text}, {"Please provide details of your laptop delivery experience.", type text}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","EMER","Others",Replacer.ReplaceText,{"I attended the  ________ NEO session."}),
+		    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Yes","Others",Replacer.ReplaceText,{"I attended the  ________ NEO session."}),
+		    #"Trimmed Text" = Table.TransformColumns(#"Replaced Value1",{{"Website Demonstration", Text.Trim, type text}, {"Guest Speaker", Text.Trim, type text}, {"Brand Evolution", Text.Trim, type text}, {"Company Trivia", Text.Trim, type text}, {"Impact at Autodesk", Text.Trim, type text}, {"Guest Speaker2", Text.Trim, type text}, {"Culture Code", Text.Trim, type text}, {"Culture Activity", Text.Trim, type text}, {"Diversity & Belonging at Autodesk", Text.Trim, type text}, {"Guest Speaker3", Text.Trim, type text}}),
+		    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"Website Demonstration", Text.Clean, type text}, {"Guest Speaker", Text.Clean, type text}, {"Brand Evolution", Text.Clean, type text}, {"Company Trivia", Text.Clean, type text}, {"Impact at Autodesk", Text.Clean, type text}, {"Guest Speaker2", Text.Clean, type text}, {"Culture Code", Text.Clean, type text}, {"Culture Activity", Text.Clean, type text}, {"Diversity & Belonging at Autodesk", Text.Clean, type text}, {"Guest Speaker3", Text.Clean, type text}})
+		in
+		    #"Cleaned Text"
+	lineageTag: 1a438417-58c6-404d-883e-6f768913112a
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

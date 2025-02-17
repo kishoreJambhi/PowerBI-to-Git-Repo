@@ -1,0 +1,42 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+
+annotation PBI_QueryOrder = ["JiraTickets","TeamVsMembers","Issues","Participant's","Fix Versions","Components","Last Refreshed Date"]
+
+ref table JiraTickets
+ref table TeamVsMembers
+ref table DateDim
+ref table Issues
+ref table 'Participant''s'
+ref table 'Fix Versions'
+ref table Components
+ref table 'Last Refreshed Date'
+ref table DateTableTemplate_14f025e3-c9e6-4fff-9634-a3bdaefc6e64
+ref table LocalDateTable_adcc5f53-b4d3-4e92-b02b-4c42e319c823
+ref table LocalDateTable_1d942bf8-ff13-4b03-a5c6-d4fec2925f71
+ref table LocalDateTable_92f44e3d-b60f-4834-8ed6-65af60436e5a
+ref table LocalDateTable_9f239c73-bf56-4bf8-8007-13ab13da3f22
+ref table LocalDateTable_eb0b451b-0c63-40af-a62c-23b9c90fbdce
+ref table LocalDateTable_670f7c5d-9b4e-49fa-a25e-c7f0b80a9ece
+ref table LocalDateTable_d07dc8eb-a5a3-4221-b16f-7bfc41513fd6
+ref table LocalDateTable_3713c6c0-6c50-4c22-9b65-1e1cc73b6011
+ref table LocalDateTable_d5de3bd4-5b54-4e3d-8ebb-349bb61f30d5
+ref table LocalDateTable_15576534-c8cb-41f3-860e-88803739ee42
+ref table LocalDateTable_ddcccfcc-7b28-4778-a8be-1cf5ce711837
+ref table LocalDateTable_2646edc1-87be-40f1-bffc-69cc2b08ecf9
+ref table LocalDateTable_34d6d9a7-ce23-44c0-8c86-9b52f434182f
+ref table LocalDateTable_4660b80f-13b2-4216-89a0-38bd762f171c
+ref table LocalDateTable_8d6d3b16-53ef-435c-8bde-ceb5fa785ddb
+ref table LocalDateTable_09a21c9c-3e91-4078-a9b3-cd59c6867837
+
+ref cultureInfo en-US
+

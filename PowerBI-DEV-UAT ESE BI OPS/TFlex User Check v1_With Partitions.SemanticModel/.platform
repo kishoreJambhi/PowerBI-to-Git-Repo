@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "TFlex User Check v1_With Partitions"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f1675ef3-3ded-adfb-4013-00abd072f9f9"
+  }
+}

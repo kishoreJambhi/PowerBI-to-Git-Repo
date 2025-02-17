@@ -1,0 +1,47 @@
+table Snow_TASK_SLA-2024-20
+	lineageTag: bab07d21-fbe1-438d-8fdd-8b586e1a2d8c
+
+	column SYS_CREATED_ON
+		dataType: string
+		lineageTag: a00d059a-6fb8-4a52-99ae-d571eecf31b9
+		summarizeBy: none
+		sourceColumn: SYS_CREATED_ON
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR_MONTH
+		dataType: string
+		lineageTag: 494031f9-8f91-41a7-82b8-cad69a75089a
+		summarizeBy: none
+		sourceColumn: YEAR_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Snow_TASK_SLA-2024-10 = m
+		mode: import
+		source =
+				let
+				    Source = SYS_CREATED_ON("2024-10")
+				in
+				    Source
+
+	partition Snow_TASK_SLA-2024-09 = m
+		mode: import
+		source =
+				let
+				    Source = SYS_CREATED_ON("2024-09")
+				in
+				    Source
+
+	partition Snow_TASK_SLA-2024-08 = m
+		mode: import
+		source =
+				let
+				    Source = SYS_CREATED_ON("2024-08")
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

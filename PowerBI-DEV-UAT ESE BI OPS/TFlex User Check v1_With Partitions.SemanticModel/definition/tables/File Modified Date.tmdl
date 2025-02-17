@@ -1,0 +1,29 @@
+table 'File Modified Date'
+	lineageTag: 09d42378-ac9d-47d1-82b0-d14d18a79452
+
+	column 'Date modified'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6798e2de-6f58-46f2-bebc-3e683c2c0f7e
+		summarizeBy: none
+		sourceColumn: Date modified
+
+		variation Variation
+			isDefault
+			relationship: 21b018f2-b2ed-4a20-9a58-8473def36176
+			defaultHierarchy: LocalDateTable_726ec32a-2b8e-4477-8aa5-591ac1dd1450.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'File Modified Date-2dfeeb45-37d6-4766-ba8a-315b0f742d5e' = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files(Sharepoint, [ApiVersion = 15]),
+				    #"Filtered Rows1" = Table.SelectRows(Source, each [Folder Path] =Sharepoint &"Shared Documents/PRJ_PBI/Global Named Accounts & Digital Manufacturing Sales/Reports/Token Flex Usage/Data Source/"),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows1",{"Date modified"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
