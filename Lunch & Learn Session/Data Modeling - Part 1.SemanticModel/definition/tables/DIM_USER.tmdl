@@ -1,0 +1,221 @@
+table DIM_USER
+	lineageTag: 0d2b8147-34e9-4f6b-a48d-f0a1a4235ce8
+
+	column FULLNAME
+		dataType: string
+		lineageTag: a4359bd8-09f0-4582-b4d4-dd8765b77415
+		summarizeBy: none
+		sourceColumn: FULLNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMPLOYEE_NUMBER
+		dataType: string
+		lineageTag: 2d3cc401-82be-416d-9159-761ef7a25c3e
+		summarizeBy: none
+		sourceColumn: EMPLOYEE_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column JOB_TITLE
+		dataType: string
+		lineageTag: f7cc70ed-9aba-4cb0-8395-731a4fd44ba9
+		summarizeBy: none
+		sourceColumn: JOB_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOM_STRING7
+		dataType: string
+		lineageTag: 9182ce01-3f10-490e-adcf-7936ffb0340e
+		summarizeBy: none
+		sourceColumn: CUSTOM_STRING7
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_KEY
+		dataType: int64
+		lineageTag: 906f3c21-c867-4728-91aa-405d0c662df7
+		summarizeBy: none
+		sourceColumn: USER_KEY
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DEPARTMENT_KEY
+		dataType: double
+		lineageTag: 20b5507e-fff5-4cad-9f4c-86f35cc3c679
+		summarizeBy: none
+		sourceColumn: DEPARTMENT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUPERVISOR_KEY
+		dataType: double
+		lineageTag: 39384b9a-fd02-440b-81fb-4a8cf6b6beb5
+		summarizeBy: sum
+		sourceColumn: SUPERVISOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ENROLLMENT_KEY_ID
+		dataType: string
+		lineageTag: fd8f7f89-b609-4807-969e-e9a959569fd5
+		summarizeBy: none
+		sourceColumn: ENROLLMENT_KEY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USERNAME
+		dataType: string
+		lineageTag: caa926b3-cd1f-46a8-bfc1-5fde635171c2
+		summarizeBy: none
+		sourceColumn: USERNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUPERVISOR_NAME
+		dataType: string
+		lineageTag: 5a757ec3-f1bd-4a8d-837a-ec69c2e56ae1
+		summarizeBy: none
+		sourceColumn: SUPERVISOR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOM_STRING3
+		dataType: string
+		lineageTag: ff90d877-decd-416e-ab06-a4adc5dda229
+		summarizeBy: none
+		sourceColumn: CUSTOM_STRING3
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMAIL_ADDRESS
+		dataType: string
+		lineageTag: 7d2756e3-3cff-4bb1-9a0b-d10adac651d3
+		summarizeBy: none
+		sourceColumn: EMAIL_ADDRESS
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		lineageTag: f8904451-8b04-40f2-b162-2f361166c4e8
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROVINCE
+		dataType: string
+		lineageTag: 6f975fe4-34b6-4169-8f42-90f84c581137
+		summarizeBy: none
+		sourceColumn: PROVINCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOM_STRING6
+		dataType: string
+		lineageTag: 510e7a28-6a1b-4653-960b-342912d8a931
+		summarizeBy: none
+		sourceColumn: CUSTOM_STRING6
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOM_STRING4
+		dataType: string
+		lineageTag: baf9bd17-f8de-4743-a947-39686837bf29
+		summarizeBy: none
+		sourceColumn: CUSTOM_STRING4
+
+		annotation SummarizationSetBy = Automatic
+
+	column CITY
+		dataType: string
+		lineageTag: 6d184e95-65a7-40e4-b9a0-1d3423442ee9
+		summarizeBy: none
+		sourceColumn: CITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATION_NAME
+		dataType: string
+		lineageTag: d7d186cb-52cf-4983-b89f-06e2cccbb3fb
+		summarizeBy: none
+		sourceColumn: LOCATION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_NAME
+		dataType: string
+		lineageTag: fffbc170-8a92-4fd3-8fff-6202f67acce3
+		summarizeBy: none
+		sourceColumn: FIRST_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_NAME
+		dataType: string
+		lineageTag: b5d45734-53ec-4e49-a2df-a256baebdf15
+		summarizeBy: none
+		sourceColumn: LAST_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTIVE_STATUS
+		dataType: double
+		lineageTag: 3cc785aa-b739-4b5f-a4e3-723631ae5dca
+		summarizeBy: sum
+		sourceColumn: ACTIVE_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CUSTOM_STRING2
+		dataType: string
+		lineageTag: da8aa934-7396-4df4-b723-3d778c73c7b1
+		summarizeBy: none
+		sourceColumn: CUSTOM_STRING2
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOM_STRING5
+		dataType: string
+		lineageTag: d94b03b5-f94e-478f-b900-440538e04ffc
+		summarizeBy: none
+		sourceColumn: CUSTOM_STRING5
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_HIRED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cd3bdf9d-3caf-48bd-a56b-22d9344dc02c
+		summarizeBy: none
+		sourceColumn: DATE_HIRED
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_USER = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("mxb11004.us-east-1.snowflakecomputing.com","ANALYZE_DIRECT_WAREHOUSE"),
+				    ANALYZE_DIRECT_Database = Source{[Name="ANALYZE_DIRECT",Kind="Database"]}[Data],
+				    DIRECT_Schema = ANALYZE_DIRECT_Database{[Name="DIRECT",Kind="Schema"]}[Data],
+				    DIM_USER_View = DIRECT_Schema{[Name="DIM_USER",Kind="View"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DIM_USER_View,{"USER_KEY", "DEPARTMENT_KEY", "SUPERVISOR_KEY", "FIRST_NAME", "LAST_NAME", "FULLNAME", "USERNAME", "EMAIL_ADDRESS", "ACTIVE_STATUS", "COUNTRY", "PROVINCE", "CITY", "EMPLOYEE_NUMBER", "JOB_TITLE", "LOCATION_NAME", "SUPERVISOR_NAME", "DATE_HIRED", "ENROLLMENT_KEY_ID", "CUSTOM_STRING2", "CUSTOM_STRING3", "CUSTOM_STRING4", "CUSTOM_STRING5", "CUSTOM_STRING6", "CUSTOM_STRING7"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([ACTIVE_STATUS] = 0))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

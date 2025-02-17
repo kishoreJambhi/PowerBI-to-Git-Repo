@@ -1,0 +1,10 @@
+expression image =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcraKiQktTi0qjolJzsgsKUoEMvzzUl2KMstSFXQVHEtL8lNSi7NjYlyAZEl+QUxMQWpFak6xbkFGfkm+rpGxuaWBgaleVkFqulJsLAA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [image = _t]),
+		    #"Removed Columns" = Table.RemoveColumns(Source,{"image"})
+		in
+		    #"Removed Columns"
+	lineageTag: 56d065d3-8b04-4563-8ee8-597961462ab4
+
+	annotation PBI_ResultType = Table
+

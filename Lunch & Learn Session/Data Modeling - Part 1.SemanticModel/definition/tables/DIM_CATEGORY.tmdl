@@ -1,0 +1,44 @@
+table DIM_CATEGORY
+	lineageTag: fc2d90bc-2b9c-43ec-997f-9bdff228cfaf
+
+	column CATEGORY_KEY
+		dataType: double
+		lineageTag: 3d97da48-1b22-4758-8a87-2fe9524337ef
+		summarizeBy: sum
+		sourceColumn: CATEGORY_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CATEGORY_ID
+		dataType: string
+		lineageTag: 64851a6c-d510-41a1-a89f-b6e03fd200cd
+		summarizeBy: none
+		sourceColumn: CATEGORY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY_NAME
+		dataType: string
+		lineageTag: e14b71a9-b7d4-438b-89ed-b93d3abcaf41
+		summarizeBy: none
+		sourceColumn: CATEGORY_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CATEGORY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("mxb11004.us-east-1.snowflakecomputing.com","ANALYZE_DIRECT_WAREHOUSE"),
+				    ANALYZE_DIRECT_Database = Source{[Name="ANALYZE_DIRECT",Kind="Database"]}[Data],
+				    DIRECT_Schema = ANALYZE_DIRECT_Database{[Name="DIRECT",Kind="Schema"]}[Data],
+				    DIM_CATEGORY_View = DIRECT_Schema{[Name="DIM_CATEGORY",Kind="View"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DIM_CATEGORY_View,{"CATEGORY_KEY", "CATEGORY_ID", "CATEGORY_NAME"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([CATEGORY_NAME] <> "N/A" and [CATEGORY_NAME] <> "Unknown"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
