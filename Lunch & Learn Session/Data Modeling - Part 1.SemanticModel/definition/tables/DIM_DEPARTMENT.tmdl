@@ -1,0 +1,61 @@
+table DIM_DEPARTMENT
+	lineageTag: 7332dae3-ed8e-4586-a2d7-ac684a7dc26e
+
+	column DEPARTMENT_KEY
+		dataType: double
+		lineageTag: 83a0690a-a307-4564-ae8d-74fac59ce6d4
+		summarizeBy: none
+		sourceColumn: DEPARTMENT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DEPARTMENT_NAME
+		dataType: string
+		lineageTag: 37856935-b52e-40e4-89fb-dfbe1a0a1598
+		summarizeBy: none
+		sourceColumn: DEPARTMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PARENT_DEPARTMENT_NAME
+		dataType: string
+		lineageTag: e50167ef-25ab-4134-8ec4-5f12b1ee6da3
+		summarizeBy: none
+		sourceColumn: PARENT_DEPARTMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager_name = TRIM(SUBSTITUTE( left(right(DIM_DEPARTMENT[DEPARTMENT_NAME], len(DIM_DEPARTMENT[DEPARTMENT_NAME])-( find("(",DIM_DEPARTMENT[DEPARTMENT_NAME],1,0))),find("(",right(DIM_DEPARTMENT[DEPARTMENT_NAME], len(DIM_DEPARTMENT[DEPARTMENT_NAME])-( find("(",DIM_DEPARTMENT[DEPARTMENT_NAME],1,0))),1,0))," (",""))
+		lineageTag: c68e7e3d-81f6-4170-8ab3-12943e9cc999
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager_name2 = if(FIND("[",DIM_DEPARTMENT[DEPARTMENT_NAME],1,0)>1,SUBSTITUTE(RIGHT(DIM_DEPARTMENT[DEPARTMENT_NAME], len(DIM_DEPARTMENT[DEPARTMENT_NAME])-len (LEFT(DIM_DEPARTMENT[DEPARTMENT_NAME],FIND("[",DIM_DEPARTMENT[DEPARTMENT_NAME],1,0)))),"]","",1))
+		lineageTag: 0a47a797-8e49-41fb-86d0-d83e6eac4d2b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Manager Name' = CONCATENATE(DIM_DEPARTMENT[Manager_name],DIM_DEPARTMENT[Manager_name2])
+		lineageTag: d5686bf1-d434-46dc-b872-613dd3f6e66a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_DEPARTMENT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("mxb11004.us-east-1.snowflakecomputing.com","ANALYZE_DIRECT_WAREHOUSE"),
+				    ANALYZE_DIRECT_Database = Source{[Name="ANALYZE_DIRECT",Kind="Database"]}[Data],
+				    DIRECT_Schema = ANALYZE_DIRECT_Database{[Name="DIRECT",Kind="Schema"]}[Data],
+				    DIM_DEPARTMENT_View = DIRECT_Schema{[Name="DIM_DEPARTMENT",Kind="View"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DIM_DEPARTMENT_View,{"DEPARTMENT_KEY", "DEPARTMENT_NAME", "PARENT_DEPARTMENT_NAME"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+

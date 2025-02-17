@@ -1,0 +1,20 @@
+relationship 784f704f-9d78-4959-8528-f3ff2451b936
+	crossFilteringBehavior: bothDirections
+	fromColumn: DIM_USER.DEPARTMENT_KEY
+	toColumn: DIM_DEPARTMENT.DEPARTMENT_KEY
+
+relationship 32428b7d-b887-4d78-97c0-ef7f53bda6c1
+	crossFilteringBehavior: bothDirections
+	fromColumn: FACT_COURSE_ENROLLMENT.USER_KEY
+	toColumn: DIM_USER.USER_KEY
+
+relationship e242e487-fc2f-4d7c-946e-50a7d519e9ac
+	crossFilteringBehavior: bothDirections
+	fromColumn: FACT_COURSE_ENROLLMENT.COURSE_KEY
+	toColumn: DIM_COURSE.COURSE_KEY
+
+relationship ef271d0c-7426-41c6-b119-2f4e7e173860
+	toCardinality: many
+	fromColumn: DIM_COURSE.CATEGORY_ID
+	toColumn: DIM_CATEGORY.CATEGORY_ID
+

@@ -1,0 +1,105 @@
+table DIM_COURSE
+	lineageTag: 1c5c8d36-952a-4daa-8439-91f4e8a78ae8
+
+	measure 'Order Status' = Count(DIM_COURSE[COURSE_ID])
+		formatString: 0
+		lineageTag: b188d419-4f57-43c5-9751-7e4dadf7823c
+
+	column CATEGORY_ID
+		dataType: string
+		lineageTag: f9970aa9-11da-44dd-a335-194cbb3dfbb4
+		summarizeBy: none
+		sourceColumn: CATEGORY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_TYPE_NAME
+		dataType: string
+		lineageTag: ada5870f-93b6-4198-afea-4597afbefd86
+		summarizeBy: none
+		sourceColumn: COURSE_TYPE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_NAME
+		dataType: string
+		lineageTag: 9ec91f46-7a58-4246-8be4-101aceac9b2d
+		summarizeBy: none
+		sourceColumn: COURSE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column EXTERNAL_ID
+		dataType: string
+		lineageTag: 65b9224c-06c4-4eca-97ce-213a37225791
+		summarizeBy: none
+		sourceColumn: EXTERNAL_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LEARNER_COST
+		dataType: double
+		lineageTag: c6c7c418-7389-4b42-aa6c-0972f8423ec7
+		summarizeBy: sum
+		sourceColumn: LEARNER_COST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COURSE_KEY
+		dataType: double
+		lineageTag: 38d38708-9e64-4643-a6cc-22a70b96530f
+		summarizeBy: none
+		sourceColumn: COURSE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CATEGORY_KEY
+		dataType: double
+		lineageTag: 1a0f4280-2851-4d44-b0f4-e8c5094c57c8
+		summarizeBy: sum
+		sourceColumn: CATEGORY_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Category ID' = "AE60D144-A04A-4D68-B241-DF131F0518C8"
+		lineageTag: 465a2453-c528-4df5-99e0-e5b4f6997dc1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column COURSE_ID
+		dataType: string
+		lineageTag: 6c51aa83-76c3-4200-8141-45f3f266b8ce
+		summarizeBy: none
+		sourceColumn: COURSE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EN_COURSE_TYPE_NAME
+		dataType: string
+		lineageTag: 3cb99c0b-06ac-4e71-9355-53db0b985c27
+		summarizeBy: none
+		sourceColumn: EN_COURSE_TYPE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_COURSE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("mxb11004.us-east-1.snowflakecomputing.com","ANALYZE_DIRECT_WAREHOUSE"),
+				    ANALYZE_DIRECT_Database = Source{[Name="ANALYZE_DIRECT",Kind="Database"]}[Data],
+				    DIRECT_Schema = ANALYZE_DIRECT_Database{[Name="DIRECT",Kind="Schema"]}[Data],
+				    DIM_COURSE_View = DIRECT_Schema{[Name="DIM_COURSE",Kind="View"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DIM_COURSE_View,{"COURSE_KEY", "CATEGORY_KEY", "COURSE_ID", "CATEGORY_ID", "COURSE_TYPE_NAME", "COURSE_NAME", "EXTERNAL_ID", "LEARNER_COST", "EN_COURSE_TYPE_NAME"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+

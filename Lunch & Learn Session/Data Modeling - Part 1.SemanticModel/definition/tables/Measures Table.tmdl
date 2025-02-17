@@ -1,0 +1,38 @@
+table 'Measures Table'
+	lineageTag: dbb35375-0d43-4744-a13d-1fb98602e2bc
+
+	measure 'No of courses' = CALCULATE(DISTINCTCOUNT(DIM_COURSE[COURSE_KEY]), REMOVEFILTERS(DIM_COURSE), REMOVEFILTERS(DIM_CATEGORY))
+		formatString: 0
+		lineageTag: 8f24f2b0-501b-450f-890e-82b1834072b1
+
+	measure 'Instructor Led courses' = CALCULATE(DISTINCTCOUNT(FACT_COURSE_ENROLLMENT[COURSE_KEY]),FILTER(DIM_COURSE, DIM_COURSE[COURSE_TYPE_NAME]= "InstructorledCourse"))
+		formatString: 0
+		lineageTag: 283b2458-3cee-4c6c-a941-4e721ffc1837
+
+	measure 'Online courses' = CALCULATE(DISTINCTCOUNT(FACT_COURSE_ENROLLMENT[COURSE_KEY]),FILTER(DIM_COURSE, DIM_COURSE[COURSE_TYPE_NAME]= "OnlineCourse"))
+		formatString: 0
+		lineageTag: 1ae69113-0c2a-4e85-921b-c8a50084c0d6
+
+	measure 'Users Participated' = CALCULATE(DISTINCTCOUNT(FACT_COURSE_ENROLLMENT[USER_KEY]), DIM_USER[ACTIVE_STATUS] = 0 )
+		formatString: 0
+		lineageTag: d4c8b9dd-0dcf-4061-9a0a-4b68e0f4935a
+
+	column Column1
+		dataType: string
+		lineageTag: 74c6a262-de9b-47b4-935e-becd22334cd2
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measures Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
