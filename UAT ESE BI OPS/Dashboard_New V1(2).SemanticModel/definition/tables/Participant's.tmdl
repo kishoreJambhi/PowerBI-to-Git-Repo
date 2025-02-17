@@ -1,0 +1,38 @@
+table 'Participant''s'
+	lineageTag: dd899179-bc22-4dbc-aa14-ee1ab9508a2d
+
+	column Key
+		dataType: string
+		lineageTag: 2225721c-9ca5-4b37-846e-70b656df91b9
+		summarizeBy: none
+		sourceColumn: Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Participants
+		dataType: string
+		lineageTag: a4be9690-1401-41bf-9861-26319ae9bb16
+		summarizeBy: none
+		sourceColumn: Participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Participants: Name'
+		dataType: string
+		lineageTag: e4746df2-f8ad-4566-8804-7c090aa62571
+		summarizeBy: none
+		sourceColumn: Participants: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Participant''s' = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://jira.autodesk.com/rest/aio-bi/1.0/powerbi/export/ZTQyYTYwNTktNTcyZC00NGE2LTg2MjUtNDFmNWU3ZDE2", null, [Implementation="2.0"]),
+				    Participants_table = Source{[Name="Participants",Signature="table"]}[Data]
+				in
+				    Participants_table
+
+	annotation PBI_ResultType = Table
+

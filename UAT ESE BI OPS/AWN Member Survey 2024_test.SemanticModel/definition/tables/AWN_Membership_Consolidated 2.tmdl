@@ -1,0 +1,295 @@
+table 'AWN_Membership_Consolidated 2'
+	lineageTag: 533269c3-e361-4706-afbb-fe2cadd924de
+	sourceLineageTag: 6f959353-5529-46fc-9e42-a2330515a1dd
+
+	column 'Worker ID'
+		dataType: string
+		lineageTag: 5e886738-2b52-4ad5-bb17-fe081d54c098
+		sourceLineageTag: 22dcd9dd-f2dc-419d-9b65-fdda8c9e2bc6
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Worker ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Preferred Name'
+		dataType: string
+		lineageTag: 145aafcc-15bb-4a74-88d4-4cf993598e20
+		sourceLineageTag: 244bef8b-41dd-415e-bf71-adcd0b0c86af
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Preferred Name
+
+		annotation SummarizationSetBy = User
+
+	column 'Currently Active'
+		dataType: string
+		lineageTag: 06869564-9887-438f-afae-b3e1c192626e
+		sourceLineageTag: 8414724e-ed91-40c0-9e1d-9b9d390ca606
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Currently Active
+
+		annotation SummarizationSetBy = User
+
+	column 'Most Recent Hire Date'
+		dataType: dateTime
+		formatString: yyyy\-mm\-dd
+		lineageTag: 88b42ee5-beb0-4bb6-8f58-5700c3f98eb2
+		sourceLineageTag: add4de7a-61de-4276-9455-d806cd7d8548
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Most Recent Hire Date
+
+		variation Variation
+			isDefault
+			relationship: 25d2895c-30cf-4fa0-894a-4906a751ddb5
+			defaultHierarchy: 'LocalDateTable_703abf8b-3c94-4615-813a-d1c72090cc44 2'.'Date Hierarchy'
+
+		annotation SummarizationSetBy = User
+
+	column 'Worker Type'
+		dataType: string
+		lineageTag: 5d92122d-b995-40a2-8526-ba119f06ebda
+		sourceLineageTag: b82bf8fd-241f-49a4-a388-bd63d5bf6fbd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Worker Type
+
+		annotation SummarizationSetBy = User
+
+	column 'Worker Sub Type'
+		dataType: string
+		lineageTag: 795efd2f-83d4-48bb-ab13-bcbf3a2cc7d5
+		sourceLineageTag: e64d42a3-f368-479a-98cb-c8327e792985
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Worker Sub Type
+
+		annotation SummarizationSetBy = User
+
+	column 'Business Title'
+		dataType: string
+		lineageTag: 866cc996-dbf3-48a2-9d07-5016b9a2cd64
+		sourceLineageTag: 47de3f07-e507-4a6f-878d-6bded8483a53
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Business Title
+
+		annotation SummarizationSetBy = User
+
+	column 'Managers Display Name'
+		dataType: string
+		lineageTag: 03c54997-b5a5-4aad-b4ad-23e3da43e906
+		sourceLineageTag: 510c6582-5e50-4242-a831-172473f7b5b8
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Managers Display Name
+
+		annotation SummarizationSetBy = User
+
+	column 'Supervisory Org Division'
+		dataType: string
+		lineageTag: 0f7eada6-9eb0-41ce-8e77-04becc94b81f
+		sourceLineageTag: 36188a61-365a-4eb4-bfc2-f8f24040ffda
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Supervisory Org Division
+
+		annotation SummarizationSetBy = User
+
+	column 'Supervisory Organization Name'
+		dataType: string
+		lineageTag: 1b9f23ca-8a1c-448d-8cc6-0735659cf4d3
+		sourceLineageTag: 4df0acbc-20db-4d42-a41d-66750d1b4544
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Supervisory Organization Name
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Location Building'
+		dataType: string
+		lineageTag: 8059d94e-7d6f-41bb-b60c-67bf38c6ee5a
+		sourceLineageTag: e69f753e-10d8-4d45-aa72-ab1ca8a12f03
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Location Building
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Location Name'
+		dataType: string
+		lineageTag: db415b9f-edde-46cf-99b8-4d2c53f8eb8a
+		sourceLineageTag: 54d79656-5ade-430b-8e02-3cfb1bfbc9d3
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Location Name
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Location City'
+		dataType: string
+		lineageTag: 5d92f2cd-54bd-4060-bd9f-bec8b5f8f3d1
+		sourceLineageTag: 74c8ce10-e3ad-4382-9a16-f2e00a31b948
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Location City
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Location State/Prov'
+		dataType: string
+		lineageTag: d5048fa7-148f-4bb9-8cb4-29e2e693bcbd
+		sourceLineageTag: 5dc5c14d-29e9-474d-bdf4-feed8368bb7c
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Location State/Prov
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Location Country'
+		dataType: string
+		lineageTag: 1af33a12-ba2a-4e40-a5a9-c726fef3036a
+		sourceLineageTag: 3ede819f-3df9-4917-805c-d97650e912cd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Location Country
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Location Geo'
+		dataType: string
+		lineageTag: 030c34d8-8303-4e04-a388-163799a83edc
+		sourceLineageTag: c24323e6-6754-40bf-8d56-dd2b99466080
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Location Geo
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Phones'
+		dataType: string
+		lineageTag: 70f73682-8c49-4443-9c80-141bcc65cfd2
+		sourceLineageTag: 27fee6f9-9c13-48c5-aeea-f35846cdc7b7
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Phones
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Email'
+		dataType: string
+		lineageTag: 7ce80559-514b-432d-85ae-082bf84be552
+		sourceLineageTag: cb9d35b1-a241-4099-824b-59859cea5069
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Email
+
+		annotation SummarizationSetBy = User
+
+	column 'Time Type'
+		dataType: string
+		lineageTag: aa35d705-5343-4af4-8e70-f17b0de9d696
+		sourceLineageTag: b810bbe6-a0dd-4fdd-ba53-64a4ad4efee0
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Time Type
+
+		annotation SummarizationSetBy = User
+
+	column Extract
+		dataType: dateTime
+		formatString: yyyy\-mm
+		lineageTag: 45b25a08-7bed-40b1-9e74-b4277754b157
+		sourceLineageTag: c6225260-5e95-4fef-9b87-eb1d116c9f00
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Extract
+
+		variation Variation
+			isDefault
+			relationship: 1b8e3468-cd36-43ff-9110-15f9aa839b40
+			defaultHierarchy: 'LocalDateTable_f5f8af6e-dee4-432e-8e40-61705e96d110 2'.'Date Hierarchy'
+
+		annotation SummarizationSetBy = User
+
+	column 'Membership Status'
+		dataType: string
+		lineageTag: 877484f2-26ba-4e32-9a72-41a7d3b9c73c
+		sourceLineageTag: 0c6aca70-cc6c-41f2-8fbe-45b4f8586c1e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Membership Status
+
+		annotation SummarizationSetBy = User
+
+	column 'Current Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: df115a4a-1dbc-4585-91b1-aa6ef57fb977
+		sourceLineageTag: 241ca725-adb4-4bd6-851c-e959a7deaedf
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Current Date
+
+		variation Variation
+			isDefault
+			relationship: 172eecdf-b77f-42cd-ac44-f82b536b810a
+			defaultHierarchy: 'LocalDateTable_da4f603e-78df-441d-a1bb-7ef40a1e593a 2'.'Date Hierarchy'
+
+		annotation SummarizationSetBy = User
+
+	column 'Work Years'
+		dataType: string
+		lineageTag: e89fd17c-afff-488e-a64c-47a873fd4019
+		sourceLineageTag: 5f33577f-dca8-4a09-873e-f4f3a69afbfe
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Work Years
+
+		annotation SummarizationSetBy = User
+
+	column 'Most Recent Extract Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9fea0b79-93d4-49a1-a129-5cdc63b58eb9
+		sourceLineageTag: 0ad4a9ca-6a15-4b4c-8518-3720390332c1
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Most Recent Extract Date
+
+		variation Variation
+			isDefault
+			relationship: 48d241af-9157-4435-a0d4-56dca2938b4e
+			defaultHierarchy: 'LocalDateTable_87fc74f0-dc99-402a-86df-108ba4f0f1a1 2'.'Date Hierarchy'
+
+		annotation SummarizationSetBy = User
+
+	column 'Current Extract'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2b8717cd-dce3-445b-89ec-efbe5eaaf1cc
+		sourceLineageTag: feaf0eb9-0bcd-4e1a-a235-3a80f8e28307
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Current Extract
+
+		annotation SummarizationSetBy = User
+
+	column Chapter
+		dataType: string
+		lineageTag: b09f55c3-1ba3-44b1-89f6-ecfff8542c59
+		sourceLineageTag: 4f3a483c-1276-49ff-8cbf-10b8051b8088
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Chapter
+
+		annotation SummarizationSetBy = User
+
+	partition 'AWN_Membership_Consolidated 2' = entity
+		mode: directQuery
+		source
+			entityName: AWN_Membership_Consolidated
+			expressionSource: 'DirectQuery to AS - AWN Membership'
+

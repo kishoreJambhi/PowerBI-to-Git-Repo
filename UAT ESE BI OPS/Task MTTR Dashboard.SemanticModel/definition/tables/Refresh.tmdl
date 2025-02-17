@@ -1,0 +1,36 @@
+table Refresh
+	isHidden
+	lineageTag: a438a052-5230-487e-be39-508c39a75b3c
+
+	column 'Last Refresh'
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 80b9fec0-ad98-4779-89a1-64a9be1a4c6a
+		summarizeBy: none
+		sourceColumn: Last Refresh
+
+		variation Variation
+			isDefault
+			relationship: 531ec895-03d6-4953-bb34-212af599af57
+			defaultHierarchy: LocalDateTable_276a7a12-d68e-4122-95b8-47b9297a4e78.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Refresh-950a38af-40be-457d-94c2-b5af7252e821 = m
+		mode: import
+		source =
+				let
+				    Source = DateTime.LocalNow(),
+				    #"Converted to Table" = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Last Refresh"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Last Refresh", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,41 @@
+table TeamVsMembers
+	lineageTag: 47da4b28-0093-4e61-bfdc-8f4295191a07
+
+	column TeamMembers
+		dataType: string
+		lineageTag: 6e1ace0b-fedd-4a4a-b2ed-e3200b87b607
+		summarizeBy: none
+		sourceColumn: TeamMembers
+
+		annotation SummarizationSetBy = Automatic
+
+	column Team
+		dataType: string
+		lineageTag: 2263835b-5d98-4f84-88ef-de48763dea69
+		summarizeBy: none
+		sourceColumn: Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column3
+		dataType: string
+		lineageTag: 1da7b18d-fd11-40cd-9eeb-49cf93ee0476
+		summarizeBy: none
+		sourceColumn: Column3
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TeamVsMembers-2dc4eac2-d39f-4843-bc03-777d9083f894 = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/EDCPAASPortal/", [ApiVersion = 15]),
+				    #"TeamMembers xlsx_https://share autodesk com/sites/EDCPAASPortal/Shared Documents/Reports/" = Source{[Name="TeamMembers.xlsx",#"Folder Path"="https://share.autodesk.com/sites/EDCPAASPortal/Shared Documents/Reports/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"TeamMembers xlsx_https://share autodesk com/sites/EDCPAASPortal/Shared Documents/Reports/"),
+				    Sheet1_Sheet = #"Imported Excel Workbook"{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Sheet1_Sheet,{{"Column1", "TeamMembers"}, {"Column2", "Team"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

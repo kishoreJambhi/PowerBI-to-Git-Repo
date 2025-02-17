@@ -1,0 +1,74 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "neo_feedback_survey.i_attended_the___________neo_session_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NEO Feedback Survey",
+			          "ConceptualProperty": "I attended the  ________ NEO session."
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "NEO session": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "neo_feedback_survey.in_my_new_role_at_autodesk_i_am_an__________________": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NEO Feedback Survey",
+			          "ConceptualProperty": "In my new role at Autodesk I am a(n) ________________."
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "In my new role at Autodesk I am a(n)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "neo_feedback_survey.how_would_you_rate_your_neo_facilitator": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NEO Feedback Survey",
+			          "ConceptualProperty": "How would you rate your NEO facilitator?"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Level": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

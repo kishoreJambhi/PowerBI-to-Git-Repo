@@ -1,0 +1,310 @@
+table 'NEO Feedback Survey'
+	lineageTag: 5d1b82af-49a2-49db-81d9-35b1533d70b6
+
+	measure AR_Rating = DIVIDE(SUM('NEO Feedback Survey'[(New Hire IT Question) How would you rate the accessibility and usability of the company's technology  (e.g., laptop, network, applications, servers, databases)? ]),COUNT('NEO Feedback Survey'[(New Hire IT Question) How would you rate the accessibility and usability of the company's technology  (e.g., laptop, network, applications, servers, databases)? ]))
+		lineageTag: ee4e70a2-55fe-459a-9f72-2c529f836dd2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AR_ = DIVIDE(SUM('NEO Feedback Survey'[How would you rate your NEO facilitator?]),COUNT('NEO Feedback Survey'[How would you rate your NEO facilitator?]))
+		lineageTag: 9abdaf24-4b6b-4ffe-bf2e-2b84e1f556cd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AR 3-day_' = DIVIDE(SUM('NEO Feedback Survey'[How would you rate your 3-day NEO session overall?]),COUNT('NEO Feedback Survey'[How would you rate your 3-day NEO session overall?]))
+		lineageTag: b01dc60e-de55-48bf-82c5-1e3d779ab384
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 50c346d0-3216-4cd7-84ce-047e6a71823c
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ba60b48e-5bbe-458e-9ef4-af2ee907356d
+		summarizeBy: none
+		sourceColumn: Start time
+
+		variation Variation
+			isDefault
+			relationship: 2750c8e2-c680-414c-8786-aacca2b28f87
+			defaultHierarchy: LocalDateTable_76b64d88-a501-4c62-a623-64883fbe8d62.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completion time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8131519a-0ff8-411a-8d60-4059109a038d
+		summarizeBy: none
+		sourceColumn: Completion time
+
+		variation Variation
+			isDefault
+			relationship: 3aeb2528-49cf-4d8e-844c-76de82eefc6a
+			defaultHierarchy: LocalDateTable_2fd23cbb-4312-43f8-b60d-545bba006652.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: a363c7d3-56ab-4a02-bac5-836902fa9ca8
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 9d012599-6dce-40db-8350-2c93542a801c
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I attended the  ________ NEO session.'
+		dataType: string
+		lineageTag: c5abd0b2-345e-40d9-b260-c425ca7b832c
+		summarizeBy: none
+		sourceColumn: I attended the  ________ NEO session.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'My NEO session started on ________.'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6040e238-56c4-4c95-a1d2-eb73a542259f
+		summarizeBy: none
+		sourceColumn: My NEO session started on ________.
+
+		variation Variation
+			isDefault
+			relationship: 81dbc065-8f0d-4772-9d1a-1b259004184f
+			defaultHierarchy: LocalDateTable_10afcfac-0aca-4bbd-a71b-3db8a22048e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'In my new role at Autodesk I am a(n) ________________.'
+		dataType: string
+		lineageTag: cbd65686-ffd2-4a7c-979b-e499600be255
+		summarizeBy: none
+		sourceColumn: In my new role at Autodesk I am a(n) ________________.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How would you rate your NEO facilitator?'
+		dataType: int64
+		formatString: 0
+		lineageTag: f4b8870d-dd62-4996-becb-c952e8bef0c5
+		summarizeBy: sum
+		sourceColumn: How would you rate your NEO facilitator?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How would you rate your 3-day NEO session overall?'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5352f222-906b-40e2-be40-16d3b100f317
+		summarizeBy: sum
+		sourceColumn: How would you rate your 3-day NEO session overall?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How we are organized'
+		dataType: string
+		lineageTag: 108cddcb-4b63-47c1-8346-6e9810b2d1f6
+		summarizeBy: none
+		sourceColumn: How we are organized
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Website Demonstration'
+		dataType: string
+		lineageTag: c9e43e7e-7e56-4f53-b8ce-991c67d1e958
+		summarizeBy: none
+		sourceColumn: Website Demonstration
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Guest Speaker'
+		dataType: string
+		lineageTag: 1b713714-2acf-4cca-b6c7-27f683e94c89
+		summarizeBy: none
+		sourceColumn: Guest Speaker
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Brand Evolution'
+		dataType: string
+		lineageTag: f956481c-36de-4717-8f0e-0cfa28756df2
+		summarizeBy: none
+		sourceColumn: Brand Evolution
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company Trivia'
+		dataType: string
+		lineageTag: b9928e5a-dd87-4c13-a046-62b1a7f0ad54
+		summarizeBy: none
+		sourceColumn: Company Trivia
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Impact at Autodesk'
+		dataType: string
+		lineageTag: 1779c634-2dc4-4337-9a01-1e22f9ff6e61
+		summarizeBy: none
+		sourceColumn: Impact at Autodesk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Guest Speaker2'
+		dataType: string
+		lineageTag: 29cd9c33-8591-41ff-b84a-e1b4fbac3bf2
+		summarizeBy: none
+		sourceColumn: Guest Speaker2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Culture Code'
+		dataType: string
+		lineageTag: 4158323e-f27a-41c1-9a0a-6437c1535916
+		summarizeBy: none
+		sourceColumn: Culture Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Culture Activity'
+		dataType: string
+		lineageTag: 94cdf541-c6af-41ef-b792-a3fdcb5d8de8
+		summarizeBy: none
+		sourceColumn: Culture Activity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Diversity & Belonging at Autodesk'
+		dataType: string
+		lineageTag: 182f009a-8e61-4bd7-8603-d1d3fb01d2ea
+		summarizeBy: none
+		sourceColumn: Diversity & Belonging at Autodesk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Guest Speaker3'
+		dataType: string
+		lineageTag: 441fd992-0b97-4c01-a498-3532534c1508
+		summarizeBy: none
+		sourceColumn: Guest Speaker3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What (if anything) would you add to NEO?'
+		dataType: string
+		lineageTag: 266b86b3-b5a3-4b4b-8d87-aa4c6738114f
+		summarizeBy: none
+		sourceColumn: What (if anything) would you add to NEO?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What (if anything) would you remove from NEO?'
+		dataType: string
+		lineageTag: 05fd26ff-1334-4b16-935d-770c84a7dd53
+		summarizeBy: none
+		sourceColumn: What (if anything) would you remove from NEO?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Any other feedback/suggestions/compliments? (for the program or facilitator(s))'
+		dataType: string
+		lineageTag: b14140f6-15fc-4ab5-9acb-b2eec61d9474
+		summarizeBy: none
+		sourceColumn: Any other feedback/suggestions/compliments? (for the program or facilitator(s))
+
+		annotation SummarizationSetBy = Automatic
+
+	column '(New Hire IT Question) How would you rate the accessibility and usability of the company''s technology  (e.g., laptop, network, applications, servers, databases)? '
+		dataType: int64
+		formatString: 0
+		lineageTag: b603a1a9-a6d1-4f4f-9bf3-8b108af89520
+		summarizeBy: sum
+		sourceColumn: "(New Hire IT Question) How would you rate the accessibility and usability of the company's technology  (e.g., laptop, network, applications, servers, databases)? "
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Please provide details:'
+		dataType: string
+		lineageTag: 224ef86e-8a78-49d9-a9ac-eb0599e40ccf
+		summarizeBy: none
+		sourceColumn: Please provide details:
+
+		annotation SummarizationSetBy = Automatic
+
+	column '(New Hire IT Question) Did you receive an Autodesk laptop on time and ready to use on your start date? '
+		dataType: string
+		lineageTag: de6c8192-9f9f-4ecc-8568-4be38750a8be
+		summarizeBy: none
+		sourceColumn: "(New Hire IT Question) Did you receive an Autodesk laptop on time and ready to use on your start date? "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Please provide details of your laptop delivery experience.'
+		dataType: string
+		lineageTag: 6bcca8e2-4ce9-4e91-9642-c658e2004844
+		summarizeBy: none
+		sourceColumn: Please provide details of your laptop delivery experience.
+
+		annotation SummarizationSetBy = Automatic
+
+	column AR = DIVIDE(SUM('NEO Feedback Survey'[How would you rate your NEO facilitator?]),COUNT('NEO Feedback Survey'[How would you rate your NEO facilitator?]))
+		formatString: 0.00
+		lineageTag: 1528ba90-487a-4fe4-9dc2-5bff6f44464d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AR 3-day' = DIVIDE(SUM('NEO Feedback Survey'[How would you rate your 3-day NEO session overall?]),COUNT('NEO Feedback Survey'[How would you rate your 3-day NEO session overall?]))
+		formatString: 0.00
+		lineageTag: e8cc09da-ac25-464d-9201-da0cbc55e222
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = FORMAT('NEO Feedback Survey'[Completion time],"YYYY")
+		lineageTag: a484e722-7c29-435c-afff-fe506733cea2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'NEO Feedback Survey' = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/GlobalOnboardingCommunity/", [ApiVersion = 15]),
+				    #"Sorted Rows" = Table.Sort(Source,{{"Date created", Order.Ascending}}),
+				    #"NEO Feedback Survey xlsx_https://share autodesk com/sites/GlobalOnboardingCommunity/Shared Documents/Metrics/NEO Feedback Survey Power BI/" = #"Sorted Rows"{[Name="NEO Feedback Survey.xlsx",#"Folder Path"="https://share.autodesk.com/sites/GlobalOnboardingCommunity/Shared Documents/Metrics/NEO Feedback Survey Power BI/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"NEO Feedback Survey xlsx_https://share autodesk com/sites/GlobalOnboardingCommunity/Shared Documents/Metrics/NEO Feedback Survey Power BI/"),
+				    Sheet1_Sheet = #"Imported Excel Workbook"{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Start time", type datetime}, {"Completion time", type datetime}, {"Email", type text}, {"Name", type text}, {"I attended the  ________ NEO session.", type text}, {"My NEO session started on ________.", type date}, {"In my new role at Autodesk I am a(n) ________________.", type text}, {"How would you rate your NEO facilitator?", Int64.Type}, {"How would you rate your 3-day NEO session overall?", Int64.Type}, {"How we are organized", type text}, {"Website Demonstration", type text}, {"Guest Speaker", type text}, {"Brand Evolution", type text}, {"Company Trivia", type text}, {"Impact at Autodesk", type text}, {"Guest Speaker2", type text}, {"Culture Code", type text}, {"Culture Activity", type text}, {"Diversity & Belonging at Autodesk", type text}, {"Guest Speaker3", type text}, {"What (if anything) would you add to NEO?", type text}, {"What (if anything) would you remove from NEO?", type text}, {"Any other feedback/suggestions/compliments? (for the program or facilitator(s))", type text}, {"(New Hire IT Question) How would you rate the accessibility and usability of the company's technology  (e.g., laptop, network, applications, servers, databases)? ", type any}, {"Please provide details:", type text}, {"(New Hire IT Question) Did you receive an Autodesk laptop on time and ready to use on your start date? ", type text}, {"Please provide details of your laptop delivery experience.", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","EMER","Others",Replacer.ReplaceText,{"I attended the  ________ NEO session."}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Yes","Others",Replacer.ReplaceText,{"I attended the  ________ NEO session."}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Replaced Value1",{{"Website Demonstration", Text.Trim, type text}, {"Guest Speaker", Text.Trim, type text}, {"Brand Evolution", Text.Trim, type text}, {"Company Trivia", Text.Trim, type text}, {"Impact at Autodesk", Text.Trim, type text}, {"Guest Speaker2", Text.Trim, type text}, {"Culture Code", Text.Trim, type text}, {"Culture Activity", Text.Trim, type text}, {"Diversity & Belonging at Autodesk", Text.Trim, type text}, {"Guest Speaker3", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"Website Demonstration", Text.Clean, type text}, {"Guest Speaker", Text.Clean, type text}, {"Brand Evolution", Text.Clean, type text}, {"Company Trivia", Text.Clean, type text}, {"Impact at Autodesk", Text.Clean, type text}, {"Guest Speaker2", Text.Clean, type text}, {"Culture Code", Text.Clean, type text}, {"Culture Activity", Text.Clean, type text}, {"Diversity & Belonging at Autodesk", Text.Clean, type text}, {"Guest Speaker3", Text.Clean, type text}})
+				in
+				    #"Cleaned Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,35 @@
+table 'Refresh Date'
+	lineageTag: fd13df01-5439-4239-96cc-8060374dbf92
+
+	column 'Refresh Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: be241415-f193-4239-8ee5-a560cbb9de3c
+		summarizeBy: none
+		sourceColumn: Refresh Date
+
+		variation Variation
+			isDefault
+			relationship: 5a0632ba-08c2-4920-8fb3-7811f453f990
+			defaultHierarchy: LocalDateTable_3e164769-7762-4d7a-a939-2a33a6de74fa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dashboard Last Refreshed' = FORMAT('Refresh Date'[Refresh Date], "dd-mmm-yy hh:nn:ss AM/PM")  & " UTC"
+		lineageTag: 429185b0-830a-4510-b811-eeffe30bcfed
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Refresh Date' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table[LastRefresh=datetime], {{DateTimeZone.UtcNow}}),
+				    LastRefresh = Source{0}[LastRefresh],
+				    #"Invoked FunctionLastRefresh" = LastRefresh()
+				in
+				    #"Invoked FunctionLastRefresh"
+
+	annotation PBI_ResultType = DateTimeZone
+

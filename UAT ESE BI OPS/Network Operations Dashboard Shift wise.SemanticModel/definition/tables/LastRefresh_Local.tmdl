@@ -1,0 +1,37 @@
+table LastRefresh_Local
+	lineageTag: a9a1b600-1c77-4267-80ac-e84fb09e0b8f
+
+	column 'Last Refresh.1'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 39016394-d950-41e4-af57-e54ae3dc2066
+		summarizeBy: none
+		sourceColumn: Last Refresh.1
+
+		variation Variation
+			isDefault
+			relationship: 280bfc1b-efce-4df5-880c-06fb170b3b60
+			defaultHierarchy: LocalDateTable_66685ec2-3315-4694-a1de-4909683a9c25.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition LastRefresh_Local-153e196c-860f-498d-bfde-a04d7d222c5c = m
+		mode: import
+		source =
+				let
+				    Source = Web.Page(Web.Contents("https://timezonedb.com/time-zones/Asia/Kolkata")),
+				    Data = Source{0}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Data,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Column1] = "Current Time")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Column1"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Column2", "Last Refresh"}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Renamed Columns", "Last Refresh", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, true), {"Last Refresh.1", "Last Refresh.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Last Refresh.1", type datetime}, {"Last Refresh.2", type text}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"Last Refresh.2"})
+				in
+				    #"Removed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

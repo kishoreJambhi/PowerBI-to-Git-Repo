@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Network Operations Dashboard Shift wise"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ee0525ce-7162-850e-4bbd-8248adffc71b"
+  }
+}

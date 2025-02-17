@@ -1,0 +1,25 @@
+relationship 2750c8e2-c680-414c-8786-aacca2b28f87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'NEO Feedback Survey'.'Start time'
+	toColumn: LocalDateTable_76b64d88-a501-4c62-a623-64883fbe8d62.Date
+
+relationship 3aeb2528-49cf-4d8e-844c-76de82eefc6a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'NEO Feedback Survey'.'Completion time'
+	toColumn: LocalDateTable_2fd23cbb-4312-43f8-b60d-545bba006652.Date
+
+relationship 81dbc065-8f0d-4772-9d1a-1b259004184f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'NEO Feedback Survey'.'My NEO session started on ________.'
+	toColumn: LocalDateTable_10afcfac-0aca-4bbd-a71b-3db8a22048e4.Date
+
+relationship 970f2244-a1c1-462f-a723-35cced124eab
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'NEO Feedback Survey (2)'.ID
+	toColumn: 'NEO Feedback Survey'.ID
+
+relationship 1278282d-3f57-4492-927b-2418277a185f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'NEO Feedback Survey (2)'.'Completion time'
+	toColumn: LocalDateTable_a3871185-df9d-471f-a096-38c08535dc6c.Date
+

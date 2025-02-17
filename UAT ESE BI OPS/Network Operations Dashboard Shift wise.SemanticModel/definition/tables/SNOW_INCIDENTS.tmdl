@@ -1,0 +1,748 @@
+table SNOW_INCIDENTS
+	lineageTag: f06b24d4-2811-437f-a6ea-39435b149e3c
+
+	column SHORT_DESCRIPTION
+		dataType: string
+		lineageTag: dea7ddcc-a599-4243-9194-81c5158ea81e
+		summarizeBy: none
+		sourceColumn: SHORT_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_DEPARTMENT
+		dataType: string
+		lineageTag: 7b6460a9-c816-40bc-9bc2-1296ad180533
+		summarizeBy: none
+		sourceColumn: U_DEPARTMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNMENT_GROUP
+		dataType: string
+		lineageTag: ddd0372d-4c2a-44ce-adb1-7f521edf7257
+		summarizeBy: none
+		sourceColumn: ASSIGNMENT_GROUP
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_SOFTWARE_CI
+		dataType: string
+		lineageTag: 3bbcc029-1ef1-434b-b29b-49bc50e75a14
+		summarizeBy: none
+		sourceColumn: U_SOFTWARE_CI
+
+		annotation SummarizationSetBy = Automatic
+
+	column WATCH_LIST
+		dataType: string
+		lineageTag: c1788e23-ab24-42b4-a7e1-440a4bcbbd95
+		summarizeBy: none
+		sourceColumn: WATCH_LIST
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRIPTION
+		dataType: string
+		lineageTag: 74e2c355-b68c-4768-9782-139702ab72e9
+		summarizeBy: none
+		sourceColumn: DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLOSE_NOTES
+		dataType: string
+		lineageTag: 584a522f-2cb5-4101-8fb7-c01b620a590e
+		summarizeBy: none
+		sourceColumn: CLOSE_NOTES
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUMBER
+		dataType: string
+		lineageTag: 46fff2a0-f529-415f-8fa6-c86cd10ef251
+		summarizeBy: none
+		sourceColumn: NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTACT_TYPE
+		dataType: string
+		lineageTag: 98870a2b-635a-4ee0-aaa0-d7ce45cfddfc
+		summarizeBy: none
+		sourceColumn: CONTACT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column URGENCY
+		dataType: string
+		lineageTag: 607361cc-4c18-420f-835b-1d03a3678e79
+		summarizeBy: none
+		sourceColumn: URGENCY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYS_CREATED_ON
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6a05e2bb-4145-45fe-8e59-259ff32d99ef
+		summarizeBy: none
+		sourceColumn: SYS_CREATED_ON
+
+		variation Variation
+			isDefault
+			relationship: 8bce0dfa-f13a-49b8-b9a8-8454f8de817b
+			defaultHierarchy: LocalDateTable_6df63ec7-c1b2-4d58-aef4-4188159eccf6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_SLACK_CHANNEL_NAME
+		dataType: string
+		lineageTag: 07b16a3a-2901-43f6-b0e4-2994e6273b6c
+		summarizeBy: none
+		sourceColumn: U_SLACK_CHANNEL_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYS_CREATED_BY
+		dataType: string
+		lineageTag: 341b563b-8f3a-4324-b57a-c90aa188d38a
+		summarizeBy: none
+		sourceColumn: SYS_CREATED_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RESOLVED DATE'
+		dataType: string
+		lineageTag: f85199f3-0634-4734-8107-8e3ea0e2d334
+		summarizeBy: none
+		sourceColumn: RESOLVED DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNED_TO
+		dataType: string
+		lineageTag: 6fe3529c-66bb-4f57-9941-92aa2c86da61
+		summarizeBy: none
+		sourceColumn: ASSIGNED_TO
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_EXTERNAL_CUSTOMER
+		dataType: string
+		lineageTag: 08f3e1d1-927b-4904-9822-62350c68c90a
+		summarizeBy: none
+		sourceColumn: U_EXTERNAL_CUSTOMER
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLOSE_CODE
+		dataType: string
+		lineageTag: 08a4aad4-9d2f-4cb2-9b60-2bec6ebdd0c7
+		summarizeBy: none
+		sourceColumn: CLOSE_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column REASSIGNMENT_COUNT
+		dataType: string
+		lineageTag: 1a535508-67eb-43e6-a074-fd0c2025c28d
+		summarizeBy: none
+		sourceColumn: REASSIGNMENT_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_ADSK_CUSTOMER_SUPPORT_TEAM
+		dataType: string
+		lineageTag: 31ccb00d-0901-4405-8c20-63f87f879ef4
+		summarizeBy: none
+		sourceColumn: U_ADSK_CUSTOMER_SUPPORT_TEAM
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_BUILDING
+		dataType: string
+		lineageTag: 798cf3ae-fef3-4e18-8eff-5965b7273211
+		summarizeBy: none
+		sourceColumn: U_BUILDING
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_DIVISION
+		dataType: string
+		lineageTag: edce1799-15b5-4d8f-b5bd-0abf6cfcfc3f
+		summarizeBy: none
+		sourceColumn: U_DIVISION
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_EXTERNAL_COMPANY
+		dataType: string
+		lineageTag: 1d394774-2fa9-43fb-b2c5-253655bdf495
+		summarizeBy: none
+		sourceColumn: U_EXTERNAL_COMPANY
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_EXTERNAL_COUNTRY
+		dataType: string
+		lineageTag: 5090ce0e-9923-4a38-925b-192db246d161
+		summarizeBy: none
+		sourceColumn: U_EXTERNAL_COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_EXTERNAL_GEO
+		dataType: string
+		lineageTag: 41daed75-7e13-4360-a184-8b6721997c4a
+		summarizeBy: none
+		sourceColumn: U_EXTERNAL_GEO
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_EXTERNAL_REF_TYPE
+		dataType: string
+		lineageTag: b9c493e3-ceed-47c8-ba54-d1251eeb31f7
+		summarizeBy: none
+		sourceColumn: U_EXTERNAL_REF_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_GEO
+		dataType: string
+		lineageTag: bdefe841-ea5d-4bd7-96fa-95a0792f64ef
+		summarizeBy: none
+		sourceColumn: U_GEO
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_KB_ARTICLE_USED
+		dataType: string
+		lineageTag: aaefcb2e-7875-4d03-8d22-7a5ce2c06b69
+		summarizeBy: none
+		sourceColumn: U_KB_ARTICLE_USED
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_KB_NUMBER
+		dataType: string
+		lineageTag: c854a28e-acc2-4ba5-8800-50169a61548f
+		summarizeBy: none
+		sourceColumn: U_KB_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_MAJOR_IMPACT_DURATION
+		dataType: string
+		lineageTag: abd3a791-13df-457d-81f5-9633d3bf4836
+		summarizeBy: none
+		sourceColumn: U_MAJOR_IMPACT_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_PLATFORM
+		dataType: string
+		lineageTag: 3495a90c-7333-4592-bdbd-685dc5e43c31
+		summarizeBy: none
+		sourceColumn: U_PLATFORM
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_RESOLVED_ON_FIRST_CONTACT
+		dataType: string
+		lineageTag: 1494ecf1-d5b9-433f-a5f0-b496949f53dd
+		summarizeBy: none
+		sourceColumn: U_RESOLVED_ON_FIRST_CONTACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_SUB_STATE
+		dataType: string
+		lineageTag: daea3e2a-07fc-4ce8-8b53-bea5f75e15d0
+		summarizeBy: none
+		sourceColumn: U_SUB_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_EXTERNAL_REF_ID
+		dataType: string
+		lineageTag: abe3e4a3-1450-4058-beb2-6a99fb24ca3d
+		summarizeBy: none
+		sourceColumn: U_EXTERNAL_REF_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMMENTS
+		dataType: string
+		lineageTag: 649e550d-3ad2-4cea-b4ae-4cbfa5584e9e
+		summarizeBy: none
+		sourceColumn: COMMENTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLOSED_AT
+		dataType: string
+		lineageTag: fa610cfc-aeee-44ab-b77b-1cbf4ddae22f
+		summarizeBy: none
+		sourceColumn: CLOSED_AT
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_STATE_PROVINCE
+		dataType: string
+		lineageTag: 7dfc6271-7555-41d9-a3c2-95f91921e8fa
+		summarizeBy: none
+		sourceColumn: U_STATE_PROVINCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMDB_CI
+		dataType: string
+		lineageTag: 6933cbb8-7c21-46b5-ad63-e5696e019d1a
+		summarizeBy: none
+		sourceColumn: CMDB_CI
+
+		annotation SummarizationSetBy = Automatic
+
+	column APPROVAL
+		dataType: string
+		lineageTag: bffe7bd7-3ca0-4994-9759-7ceaadbe2805
+		summarizeBy: none
+		sourceColumn: APPROVAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_STATE
+		dataType: string
+		lineageTag: d90c64d9-ef14-4fd8-aad0-70acca9c9066
+		summarizeBy: none
+		sourceColumn: U_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIORITY
+		dataType: string
+		lineageTag: 7a1ac79c-0fa9-4ce7-abb3-8d9e18c22714
+		summarizeBy: none
+		sourceColumn: PRIORITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column BUSINESS_DURATION
+		dataType: string
+		lineageTag: 6b387f16-785f-4d9e-8345-6e6c6c44e324
+		summarizeBy: none
+		sourceColumn: BUSINESS_DURATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CALLER_ID
+		dataType: string
+		lineageTag: c347b270-ccaa-4caf-8e00-6a3ea7e4caaa
+		summarizeBy: none
+		sourceColumn: CALLER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY
+		dataType: string
+		lineageTag: b2cb3352-c434-4eed-9d46-3fd460a0c90f
+		summarizeBy: none
+		sourceColumn: CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBCATEGORY
+		dataType: string
+		lineageTag: 40a5ae8f-4c44-4cf2-924b-b9cc6aee8f2c
+		summarizeBy: none
+		sourceColumn: SUBCATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYS_UPDATED_ON
+		dataType: string
+		lineageTag: 9189a28d-f2f5-4de9-808d-8b6ac0518d77
+		summarizeBy: none
+		sourceColumn: SYS_UPDATED_ON
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_POTENTIAL_MI_AVOIDED
+		dataType: string
+		lineageTag: edcfbe55-c764-4c92-a187-9023a1aece97
+		summarizeBy: none
+		sourceColumn: U_POTENTIAL_MI_AVOIDED
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_STAGE_MOVED_TO_WAITING
+		dataType: string
+		lineageTag: b5b1542e-1928-4d02-824a-17ac803ccee8
+		summarizeBy: none
+		sourceColumn: U_STAGE_MOVED_TO_WAITING
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_CUSTOMER
+		dataType: string
+		lineageTag: fb7dcfd2-1837-4036-a186-01eec637014d
+		summarizeBy: none
+		sourceColumn: U_CUSTOMER
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMPLOYEE_NUMBER
+		dataType: string
+		lineageTag: 926c6199-6e84-4e3d-850b-0c51df071335
+		summarizeBy: none
+		sourceColumn: EMPLOYEE_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column INCIDENT_TYPE
+		dataType: string
+		lineageTag: 7e5b0127-6368-41b0-bc2a-ca530f36a8b7
+		summarizeBy: none
+		sourceColumn: INCIDENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column INCIDENT_STATE
+		dataType: string
+		lineageTag: e96b1185-2664-423c-879b-01badd8ffe8c
+		summarizeBy: none
+		sourceColumn: INCIDENT_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_DEPENDENCY
+		dataType: string
+		lineageTag: a971f7f5-0db0-49ab-b263-067942d8e5e8
+		summarizeBy: none
+		sourceColumn: U_DEPENDENCY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNED_TO_MANAGER
+		dataType: string
+		lineageTag: 53bde18d-5029-4754-89d1-e0445804dea6
+		summarizeBy: none
+		sourceColumn: ASSIGNED_TO_MANAGER
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNED_TO_EMAIL
+		dataType: string
+		lineageTag: d47078ac-bed0-4d53-9f2b-d42d08c693cb
+		summarizeBy: none
+		sourceColumn: ASSIGNED_TO_EMAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNED_TO_EMPLOYEE_NUMBER
+		dataType: string
+		lineageTag: c4c829bf-e757-4fbf-bf60-25db0fb98a1e
+		summarizeBy: none
+		sourceColumn: ASSIGNED_TO_EMPLOYEE_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTIVE
+		dataType: string
+		lineageTag: 555ef6e0-b26f-4d15-a180-dd74e356b234
+		summarizeBy: none
+		sourceColumn: ACTIVE
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_OFFICE
+		dataType: string
+		lineageTag: f199c59c-806a-4d4e-839b-3508a89693f3
+		summarizeBy: none
+		sourceColumn: U_OFFICE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_SYNCED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 53ee14a5-72ae-4572-a85d-b85387018139
+		summarizeBy: none
+		sourceColumn: DATE_SYNCED
+
+		variation Variation
+			isDefault
+			relationship: aae24833-e71f-4cd7-961d-6a4cf8c7c033
+			defaultHierarchy: LocalDateTable_1b17296f-a076-4b6e-b2e0-e312a6789351.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_NAME
+		dataType: string
+		lineageTag: e4f2faa9-3901-4e5f-ac44-e678816d81d0
+		summarizeBy: none
+		sourceColumn: FILE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_Ageing Days' = DATEDIFF(SNOW_INCIDENTS[SYS_CREATED_ON], TODAY(), DAY)
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a955e38-2aae-49ca-aba5-c0888ec83abd
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column _AgeingBucket =
+			SWITCH(
+			    TRUE(),
+			    [_Ageing Days] <= 1, "*Less than 24 hours",
+			    [_Ageing Days] <= 2, "1 – 2 Days",
+			    [_Ageing Days] <= 5, "2 – 5 Days",
+			    [_Ageing Days] <= 7, "5 – 7 Days",
+			    [_Ageing Days] <= 14, "1 – 2 Weeks",
+			    [_Ageing Days] <= 28, "2 – 4 Weeks",
+			    "Over 1 Month"
+			)
+		lineageTag: 26549889-db30-4ec2-956d-de2c12c10160
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_Lastworked Days' = DATEDIFF(SNOW_INCIDENTS[SYS_UPDATED_ON], TODAY(), DAY)
+		formatString: 0
+		lineageTag: 5b91148b-2f73-43d0-a472-4cf43c60e977
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_b.Last worked' =
+			SWITCH(
+			    TRUE(),
+			    [_Lastworked Days] <= 1, "> 24 Hours",
+			    [_Lastworked Days] <= 2, "1 – 2 Days",
+			    [_Lastworked Days] <= 5, "2 – 5 Days",
+			    [_Lastworked Days] <= 7, "5 – 7 Days",
+			    "Over 7 Days"
+			)
+		lineageTag: 032e77de-8bb0-4426-b04a-981e3ba45811
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type of facility'
+		dataType: string
+		lineageTag: c118b356-bb83-4562-bee3-6677196f159d
+		summarizeBy: none
+		sourceColumn: Type of facility
+
+		annotation SummarizationSetBy = Automatic
+
+	column _+AgeingBucket =
+			SWITCH(
+			    TRUE(),
+			    [_Ageing Days] <= 1, "Less than 24 hours",
+			    [_Ageing Days] <= 2, "1 – 2 Days",
+			    [_Ageing Days] <= 5, "2 – 5 Days",
+			    [_Ageing Days] <= 7, "5 – 7 Days",
+			    [_Ageing Days] <= 14, "1 – 2 Weeks",
+			    [_Ageing Days] <= 28, "2 – 4 Weeks",
+			    "Over 1 Month"
+			)
+		lineageTag: 544dbac0-c599-4987-a5f0-6e174eaac80b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shift Name'
+		dataType: string
+		lineageTag: fe14ed7f-805f-4cc6-ac48-a2989929e3b0
+		summarizeBy: none
+		sourceColumn: Shift Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONVERT_TO_REQUEST
+		dataType: string
+		lineageTag: ed177502-fb27-46c2-9968-faeb710803b1
+		summarizeBy: none
+		sourceColumn: CONVERT_TO_REQUEST
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAINTAIN_REQUEST_OWNERSHIP
+		dataType: string
+		lineageTag: 13dfd83f-bc26-4c4f-8987-b3b04033701c
+		summarizeBy: none
+		sourceColumn: MAINTAIN_REQUEST_OWNERSHIP
+
+		annotation SummarizationSetBy = Automatic
+
+	column REOPENED_TIME
+		dataType: string
+		lineageTag: 19532d09-84c9-4412-a61f-bdf0db130d7b
+		summarizeBy: none
+		sourceColumn: REOPENED_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CREATED DATE'
+		dataType: string
+		lineageTag: bdf23b1b-21f0-4528-b406-67d083621c48
+		summarizeBy: none
+		sourceColumn: CREATED DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_ACTIVE_ALERTS
+		dataType: string
+		lineageTag: 9621a5f0-ae96-4ac8-9f91-d3d2229d1aeb
+		summarizeBy: none
+		sourceColumn: U_ACTIVE_ALERTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Aging_Bucket =
+			SWITCH(
+			    TRUE(),
+			    [_Lastworked Days] < 2, " Less than 2 Days",
+			    "Greater Than 2 Days"
+			)
+		lineageTag: 2b757d87-3218-4024-884d-b90bc56dd9ce
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column New_Created_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bd39a01f-d05c-4efb-a6e3-d4d281366b35
+		summarizeBy: none
+		sourceColumn: New_Created_Date
+
+		variation Variation
+			isDefault
+			relationship: 2b40cd3d-cd82-49ac-987a-a7c299f5a559
+			defaultHierarchy: LocalDateTable_8dd596b8-6a28-4e9e-ab99-bee11f106761.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shift Time' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    TIME(HOUR([New_Created_Date]), MINUTE([New_Created_Date]), SECOND([New_Created_Date])) >= TIME(6, 30, 0) &&
+			    TIME(HOUR([New_Created_Date]), MINUTE([New_Created_Date]), SECOND([New_Created_Date])) < TIME(15, 30, 0), "Morning Shift",
+			    
+			    TIME(HOUR([New_Created_Date]), MINUTE([New_Created_Date]), SECOND([New_Created_Date])) >= TIME(15, 30, 0) &&
+			    TIME(HOUR([New_Created_Date]), MINUTE([New_Created_Date]), SECOND([New_Created_Date])) < TIME(23, 30, 0), "Afternoon Shift",
+			    
+			    TIME(HOUR([New_Created_Date]), MINUTE([New_Created_Date]), SECOND([New_Created_Date])) >= TIME(23, 30, 0) ||
+			    TIME(HOUR([New_Created_Date]+1), MINUTE([New_Created_Date]+1), SECOND([New_Created_Date]+1)) < TIME(6, 30, 0), "Night Shift",
+			    
+			    BLANK()
+			)
+			```
+		lineageTag: e3347d40-f1ad-4761-948e-9c9b4da2e8b0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftClassification = ```
+			
+			IF (
+			    SNOW_INCIDENTS[Shift Name] = "Morning shift",
+			    SNOW_INCIDENTS[Created_Date],
+			    
+			    IF (
+			        SNOW_INCIDENTS[Shift Name] = "Afternoon Shift",
+			        SNOW_INCIDENTS[Created_Date],
+			        
+			        IF (
+			            SNOW_INCIDENTS[Shift Name] = "Night Shift" &&
+			            (
+			                TIME(
+			                    HOUR(SNOW_INCIDENTS[New_Created_Date]),
+			                    MINUTE(SNOW_INCIDENTS[New_Created_Date]),
+			                    SECOND(SNOW_INCIDENTS[New_Created_Date])
+			                ) >= TIME(23, 30, 0) ||
+			                TIME(
+			                    HOUR(SNOW_INCIDENTS[New_Created_Date]),
+			                    MINUTE(SNOW_INCIDENTS[New_Created_Date]),
+			                    SECOND(SNOW_INCIDENTS[New_Created_Date])
+			                ) < TIME(6, 30, 0)
+			            ),
+			            IF (
+			                TIME(
+			                    HOUR(SNOW_INCIDENTS[New_Created_Date]),
+			                    MINUTE(SNOW_INCIDENTS[New_Created_Date]),
+			                    SECOND(SNOW_INCIDENTS[New_Created_Date])
+			                ) < TIME(6, 30, 0),
+			                SNOW_INCIDENTS[Created_Date] - 1,
+			                SNOW_INCIDENTS[Created_Date]
+			            ),
+			            BLANK()
+			        )
+			    )
+			)
+			```
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 06eec689-37c1-48f9-832a-c1f417c5e42f
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 8cd6e77d-f0e7-4e91-bcf1-b6dfd915b7dc
+			defaultHierarchy: LocalDateTable_0aea4ac4-54cd-4c72-b300-34dbd3257321.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Created_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 43957ca1-1e28-4388-bbdf-6a04c9ded205
+		summarizeBy: none
+		sourceColumn: Created_Date
+
+		variation Variation
+			isDefault
+			relationship: 6be78249-a3df-4e85-abb4-d43e5659b164
+			defaultHierarchy: LocalDateTable_a451d6da-cccf-4a79-9cc4-209abde78831.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SNOW_INCIDENTS = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="DEXDH_INGEST"]}[Data], "select * from ""DEXDH_INGEST"".""ESE_DEX_DATAINSIGHTS_SERVICENOW_PRIVATE"".""SNOW_INCIDENTS"" where ASSIGNMENT_GROUP='ESE Network Operations' and sys_created_on > '2024-01-01 00:00:00'", null, [EnableFolding=true]),
+				    #"Merged Queries" = Table.NestedJoin(Source, {"CMDB_CI"}, Sharepoint, {"Name"}, "Sharepoint", JoinKind.LeftOuter),
+				    #"Expanded Sharepoint" = Table.ExpandTableColumn(#"Merged Queries", "Sharepoint", {"Type of facility"}, {"Type of facility"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Expanded Sharepoint",null,"Unmapped Devices",Replacer.ReplaceValue,{"Type of facility"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Campus/Dc","Campus",Replacer.ReplaceText,{"Type of facility"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","DC-AWS","DC : Cloud",Replacer.ReplaceText,{"Type of facility"}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Replaced Value6", "SYS_CREATED_ON", "SYS_CREATED_ON - Copy"),
+				    #"Added Custom1" = Table.AddColumn(#"Duplicated Column", "New_Created_Date", each DateTime.From([#"SYS_CREATED_ON - Copy"]) + #duration(0, 13, 30, 0)),
+				    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "Created_Date", each DateTime.From([#"SYS_CREATED_ON - Copy"]) + #duration(0, 13, 30, 0)),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom2",{{"SYS_CREATED_ON", type datetime}, {"New_Created_Date", type datetime},{"Created_Date", type datetime}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Shift Name", each if Time.From([New_Created_Date]) >= #time(6, 30, 00) and Time.From([New_Created_Date]) < #time(15, 30, 00) then "Morning Shift" 
+				else if Time.From([New_Created_Date]) >= #time(15, 30, 00) and Time.From([New_Created_Date]) < #time(23, 30, 00) then "Afternoon Shift"
+				else if Time.From([New_Created_Date]) >= #time(23, 30, 00) then "Night Shift"
+				else if Time.From([New_Created_Date]) < #time(6, 30, 00) then "Night Shift"
+				else null),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Custom",{{"SYS_CREATED_ON - Copy", "CREATED DATE"}, {"U_RESOLVED", "RESOLVED DATE"}})
+				in
+				    #"Renamed Columns"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

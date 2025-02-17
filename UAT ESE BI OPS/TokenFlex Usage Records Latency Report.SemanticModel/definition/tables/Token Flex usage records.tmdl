@@ -1,0 +1,314 @@
+table 'Token Flex usage records'
+	lineageTag: 2dc7f8f2-b947-4903-a986-bf1942662a94
+
+	measure 'Record Count' = COUNT('Token Flex usage records'[AGREE_NBR])
+		formatString: 0
+		lineageTag: c3b2709d-70e2-4a59-bf45-cc7693344619
+
+	column CHARGED_ITEM_ID
+		dataType: string
+		lineageTag: 5f5d2486-7c98-4b85-846d-8b9068e52263
+		summarizeBy: none
+		sourceColumn: CHARGED_ITEM_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGREE_NBR
+		dataType: string
+		lineageTag: 7f1b0025-e82b-4805-9570-c6a59de04662
+		summarizeBy: none
+		sourceColumn: AGREE_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_CSN
+		dataType: string
+		lineageTag: f3d9db75-fe68-4968-b1f1-86a6ee0a419b
+		summarizeBy: none
+		sourceColumn: ACCOUNT_CSN
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_ACCOUNT_NM
+		dataType: string
+		lineageTag: d1c39a53-05fa-4165-9e5f-28970963866d
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ACCOUNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_LINE_CD
+		dataType: string
+		lineageTag: 3bddf071-d0cb-4b57-9fdb-879d47008c82
+		summarizeBy: none
+		sourceColumn: PRODUCT_LINE_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_LINE_NM
+		dataType: string
+		lineageTag: 88d91be0-d560-4d3d-94be-99a6d666a265
+		summarizeBy: none
+		sourceColumn: PRODUCT_LINE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICE_CATEGORY_NM
+		dataType: string
+		lineageTag: 1b6d7f3b-5faa-4c0f-9042-bae23a35d3a7
+		summarizeBy: none
+		sourceColumn: SERVICE_CATEGORY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCE_DT
+		dataType: string
+		lineageTag: a7516ba8-85c7-40a4-bee2-0c4c7e891a21
+		summarizeBy: none
+		sourceColumn: SOURCE_DT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_ID
+		dataType: string
+		lineageTag: 259bd638-7f89-4e41-af0f-6a8fc1094532
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BATCH_PROCESS_DT
+		dataType: dateTime
+		formatString: dd-mm-yyyy h.nn.ss AM/PM
+		lineageTag: aef80dc6-ab06-4715-b852-680ca03630b8
+		summarizeBy: none
+		sourceColumn: BATCH_PROCESS_DT
+
+		variation Variation
+			isDefault
+			relationship: 8a663d04-59db-4340-8ff1-98e4afe14229
+			defaultHierarchy: LocalDateTable_a58d875f-bb72-457c-9016-4e5139c6b7ff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column RECORD_TYPE
+		dataType: string
+		lineageTag: 98a79899-8a55-4652-a184-86ca61816722
+		summarizeBy: none
+		sourceColumn: RECORD_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOKEN_AMOUNT
+		dataType: int64
+		lineageTag: 06c59c51-44e6-447a-8c85-00de78c0b9ba
+		summarizeBy: sum
+		sourceColumn: TOKEN_AMOUNT
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LATE_USAGE_NUM_DAYS
+		dataType: int64
+		lineageTag: 696c3427-fa7d-4280-abba-d65ba8580c67
+		summarizeBy: sum
+		sourceColumn: LATE_USAGE_NUM_DAYS
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column END_CUSTOMER_AGREEMENT_YR_IND
+		dataType: double
+		lineageTag: 7c1e7437-c09f-435b-87be-1bad9a1a02a2
+		summarizeBy: sum
+		sourceColumn: END_CUSTOMER_AGREEMENT_YR_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TERM_START_DT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b2316dac-1039-4e6d-8d78-24cf953c7dad
+		summarizeBy: none
+		sourceColumn: TERM_START_DT
+
+		variation Variation
+			isDefault
+			relationship: fc971312-c805-4907-9a83-23c66636799f
+			defaultHierarchy: LocalDateTable_ac5ae767-aae5-4eeb-869b-1af7552bcf79.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TERM_END_DT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9415971d-c120-4408-90f2-17df97d0d078
+		summarizeBy: none
+		sourceColumn: TERM_END_DT
+
+		variation Variation
+			isDefault
+			relationship: 2778b7c7-3003-4de7-b3e8-8678b8a1bf9d
+			defaultHierarchy: LocalDateTable_12bf0983-3f96-43fe-bddb-993b1ab24166.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EXHIBIT_START_DT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 30ce042b-a1e9-41b0-b622-0cf57bab0491
+		summarizeBy: none
+		sourceColumn: EXHIBIT_START_DT
+
+		variation Variation
+			isDefault
+			relationship: d12b507e-1cc9-495c-91db-b97cf869c2ab
+			defaultHierarchy: LocalDateTable_ea7d32cb-c5c2-4a15-9aea-3982cc3ca622.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EXHIBIT_END_DT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c02f22ec-e95e-45a5-90f9-d8bd745b9bb6
+		summarizeBy: none
+		sourceColumn: EXHIBIT_END_DT
+
+		variation Variation
+			isDefault
+			relationship: 66a57d8c-2269-4c1f-a957-062987d1c52c
+			defaultHierarchy: LocalDateTable_9a24f88f-c208-4219-8a5b-9f446c5fa082.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = ```
+			"Year " & 'Token Flex usage records'[END_CUSTOMER_AGREEMENT_YR_IND] & " (" & FORMAT('Token Flex usage records'[TERM_START_DT], "MMM") & " " & FORMAT('Token Flex usage records'[TERM_START_DT], "YYYY") & "- " & FORMAT('Token Flex usage records'[TERM_END_DT], "MMM") & " " & FORMAT('Token Flex usage records'[TERM_END_DT], "YYYY") & ")" 
+			```
+		lineageTag: 9260abf2-8c92-4d8a-a47d-d0961bf721b8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Term' = ```
+			'Token Flex usage records'[AGREE_NBR] & " (" & LEFT('Token Flex usage records'[EXHIBIT_START_DT].[Month],3) & " " & 'Token Flex usage records'[EXHIBIT_START_DT].[Day] & ", " &
+			'Token Flex usage records'[EXHIBIT_START_DT].[Year] & " - " & LEFT('Token Flex usage records'[EXHIBIT_END_DT].[Month],3) & " " & 'Token Flex usage records'[EXHIBIT_END_DT].[Day] & ", " & 'Token Flex usage records'[EXHIBIT_END_DT].[Year] & ")" 
+			```
+		lineageTag: d1f3579c-0d78-4a0f-a58e-bad89cd213ff
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contract = IF(AND(TODAY() <= 'Token Flex usage records'[EXHIBIT_END_DT], TODAY() >= 'Token Flex usage records'[EXHIBIT_START_DT]), 'Token Flex usage records'[Contract Term] & " *", 'Token Flex usage records'[Contract Term])
+		lineageTag: b725242d-7318-4fc7-98ea-a4fd1a7c65ec
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Usage date' = ```
+			
+			    VAR UsageStartDate = LEFT('Token Flex usage records'[USAGE START DT],10)
+			    VAR UsageEndDate = IF(ISBLANK('Token Flex usage records'[USAGE END DT]), LEFT('Token Flex usage records'[PROCESS DT],10), LEFT('Token Flex usage records'[USAGE END DT],10))
+			    RETURN UsageStartDate & " - " & UsageEndDate
+			```
+		lineageTag: 34e8572d-0670-47ae-93df-2d9e6077f1a5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_START_DT
+		dataType: dateTime
+		formatString: dd-mm-yyyy h.nn.ss AM/PM
+		lineageTag: bf172fe9-6ee2-401e-a4bd-cc9ff3732580
+		summarizeBy: none
+		sourceColumn: USAGE_START_DT
+
+		variation Variation
+			isDefault
+			relationship: 10209325-3d46-4425-bc69-eb1b047cd316
+			defaultHierarchy: LocalDateTable_3c871c3b-8c10-4457-ae6f-53a2d23b3e08.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column USAGE_END_DT
+		dataType: dateTime
+		formatString: dd-mm-yyyy h.nn.ss AM/PM
+		lineageTag: 3c4b3b78-b528-4f8e-882d-3f03aea30ed4
+		summarizeBy: none
+		sourceColumn: USAGE_END_DT
+
+		variation Variation
+			isDefault
+			relationship: 7fa38028-ede4-4735-9959-7b6889d446b8
+			defaultHierarchy: LocalDateTable_6d884648-3d09-4032-ab63-5e5de9c78df5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'USAGE START DT' = FORMAT('Token Flex usage records'[USAGE_START_DT],"mm-dd-yyyy")
+		lineageTag: 0a92c377-2839-4fe2-9f95-af90febcb696
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'USAGE END DT' = FORMAT('Token Flex usage records'[USAGE_END_DT],"mm-dd-yyyy")
+		dataType: string
+		lineageTag: 8aab2046-5274-4da3-845b-3b06af66a981
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PROCESS DT' = FORMAT('Token Flex usage records'[BATCH_PROCESS_DT],"mm-dd-yyyy")
+		lineageTag: 5ec25528-fbfc-49fb-8a22-a4069449d524
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column LICENSE_SERVER_NM
+		dataType: string
+		lineageTag: 39f33000-9153-4ed2-bc1a-7044a302641c
+		summarizeBy: none
+		sourceColumn: LICENSE_SERVER_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_ID
+		dataType: string
+		lineageTag: 1736a99a-594e-4abf-bcf8-287fe99be85a
+		summarizeBy: none
+		sourceColumn: USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Token Flex usage records' = m
+		mode: import
+		source =
+				let
+				    Source = PowerBI.Dataflows([]),
+				    #"c5c34e9f-2035-446f-8b5f-9061c098fcfd" = Source{[workspaceId="c5c34e9f-2035-446f-8b5f-9061c098fcfd"]}[Data],
+				    #"41c190bf-1da3-4888-b471-c8e08edf1218" = #"c5c34e9f-2035-446f-8b5f-9061c098fcfd"{[dataflowId="41c190bf-1da3-4888-b471-c8e08edf1218"]}[Data],
+				    ECCR_TFLEX_USAGE_PROCESSED = #"41c190bf-1da3-4888-b471-c8e08edf1218"{[entity="ECCR_TFLEX_USAGE_PROCESSED"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(ECCR_TFLEX_USAGE_PROCESSED,null,null,Replacer.ReplaceValue,{"USAGE_END_DT"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Replaced Value", {"PRODUCT_LINE_CD"}, PRODUCT_LINE, {"PRODUCT_LINE_CD"}, "PRODUCT_LINE", JoinKind.LeftOuter),
+				    #"Expanded PRODUCT_LINE" = Table.ExpandTableColumn(#"Merged Queries", "PRODUCT_LINE", {"PRODUCT_LINE_NM"}, {"PRODUCT_LINE_NM"})
+				in
+				    #"Expanded PRODUCT_LINE"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,78 @@
+table 'NEO Feedback Survey (2)'
+	lineageTag: 5f845ed9-028c-47e5-9aee-926afe7727d3
+
+	measure Measure = Count('NEO Feedback Survey (2)'[Value])/CALCULATE(Count('NEO Feedback Survey (2)'[Value]),ALLSELECTED('NEO Feedback Survey (2)'[Value]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9d19f22e-8efb-4b9c-b02a-25aaa39432e8
+
+	measure Measure1 = Count('NEO Feedback Survey (2)'[Value])
+		formatString: 0
+		lineageTag: 8db29d41-90c7-438f-914b-39220308f606
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 553ad5a6-94d4-4ed3-8824-dfcbf0d2a1d6
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 3bafea4d-53b7-4cb0-92fd-caae6cfe8e28
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: 45ef1b89-0315-4b72-b3c2-05116fe78557
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: string
+		lineageTag: b1f1aa03-cb12-4e2a-aea4-4f78f7f0d6c9
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completion time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fcd51029-111c-40f5-8d4d-f592e6e44baa
+		summarizeBy: none
+		sourceColumn: Completion time
+
+		variation Variation
+			isDefault
+			relationship: 1278282d-3f57-4492-927b-2418277a185f
+			defaultHierarchy: LocalDateTable_a3871185-df9d-471f-a096-38c08535dc6c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = FORMAT('NEO Feedback Survey (2)'[Completion time],"YYYY")
+		lineageTag: 3d8d78c0-c357-438a-833c-0f75ab37c2af
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'NEO Feedback Survey (2)' = m
+		mode: import
+		source =
+				let
+				    Source = #"NEO Feedback Survey",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"ID", "Completion time", "Email", "How we are organized", "Website Demonstration", "Guest Speaker", "Brand Evolution", "Company Trivia", "Impact at Autodesk", "Guest Speaker2", "Culture Code", "Culture Activity", "Diversity & Belonging at Autodesk", "Guest Speaker3"}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Removed Other Columns", {"ID", "Email","Completion time"}, "Attribute", "Value")
+				in
+				    #"Unpivoted Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

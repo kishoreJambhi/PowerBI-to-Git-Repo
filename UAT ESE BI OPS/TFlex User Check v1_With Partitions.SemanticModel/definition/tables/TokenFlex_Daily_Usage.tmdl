@@ -1,0 +1,277 @@
+table TokenFlex_Daily_Usage
+	lineageTag: 9fed86c9-af02-4d5f-8315-ff9eff498c6c
+
+	measure Measure1 = CALCULATE(DISTINCTCOUNT('TokenFlex_Daily_Usage'[MACHINE_NM]),ALLSELECTED('TokenFlex_Daily_Usage'[MACHINE_NM]), ALLSELECTED('PRODUCT TABLE'[PRODUCT_LINE_NM]))
+		formatString: 0
+		lineageTag: ec7d140f-6d59-4ed7-a5b2-c6896bdd92d8
+
+	measure Current_Selection_OVMN = ```
+			
+			VAR Account_Name=IF(ISFILTERED('CUSTOMER TABLE'[CUSTOMER_ACCOUNT_NM]),"Account Name: "&CONCATENATEX(VALUES('CUSTOMER TABLE'[CUSTOMER_ACCOUNT_NM]),'CUSTOMER TABLE'[CUSTOMER_ACCOUNT_NM],","))
+			VAR User_Name=IF(ISFILTERED('TokenFlex_Daily_Usage'[USER_LOGIN_ID]),"User Name: "&CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USER_LOGIN_ID]),'TokenFlex_Daily_Usage'[USER_LOGIN_ID],","))
+			VAR Machine_Name=IF(ISFILTERED('TokenFlex_Daily_Usage'[MACHINE_NM]),"Machine Name: "&CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[MACHINE_NM]),'TokenFlex_Daily_Usage'[MACHINE_NM],","))
+			VAR Product_Name=IF(ISFILTERED('PRODUCT TABLE'[PRODUCT_LINE_NM]),"Product Name: "&CONCATENATEX(VALUES('PRODUCT TABLE'[PRODUCT_LINE_NM]),'PRODUCT TABLE'[PRODUCT_LINE_NM],","))
+			VAR Usage_Date_Year=IF(ISFILTERED('TokenFlex_Daily_Usage'[USAGE_DT].[Year]),"Usage Date(Year): "&CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USAGE_DT].[Year]),'TokenFlex_Daily_Usage'[USAGE_DT].[Year],","))
+			 VAR Usage_Date_Month = IF(ISFILTERED('TokenFlex_Daily_Usage'[USAGE_DT].[Month]), "Usage Date(Month): " & CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USAGE_DT].[Month]),'TokenFlex_Daily_Usage'[USAGE_DT].[Month],", "))  
+			  VAR Usage_Date_Day = IF(ISFILTERED('TokenFlex_Daily_Usage'[USAGE_DT_Day]), "Usage Date(Day): " & CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USAGE_DT_Day]),'TokenFlex_Daily_Usage'[USAGE_DT_Day],", "))
+			  VAR Token_Rate = IF(ISFILTERED('Token Rate'[FY22Q3 Token Rate]), "Token Rate: " & CONCATENATEX(VALUES('Token Rate'[FY22Q3 Token Rate]),'Token Rate'[FY22Q3 Token Rate],", ")) 
+			
+			Return
+			Account_Name &UNICHAR(10) &
+			User_Name &UNICHAR(10) &
+			Machine_Name &UNICHAR(10) &
+			Product_Name &UNICHAR(10) &
+			Usage_Date_Year & UNICHAR(10) &
+			Usage_Date_Month &UNICHAR(10) &
+			Usage_Date_Day &UNICHAR(10) &
+			Token_Rate & UNICHAR(10) 
+			
+			```
+		lineageTag: ecd3b863-bc44-4719-bb6f-0b9a976f2102
+
+	measure Current_Selection_PTPPTM = ```
+			
+			VAR Account_Name=IF(ISFILTERED('CUSTOMER TABLE'[CUSTOMER_ACCOUNT_NM]),"Account Name: "&CONCATENATEX(VALUES('CUSTOMER TABLE'[CUSTOMER_ACCOUNT_NM]),'CUSTOMER TABLE'[CUSTOMER_ACCOUNT_NM],","))
+			VAR User_Name=IF(ISFILTERED('TokenFlex_Daily_Usage'[USER_LOGIN_ID]),"User Name: "&CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USER_LOGIN_ID]),'TokenFlex_Daily_Usage'[USER_LOGIN_ID],","))
+			VAR Machine_Name=IF(ISFILTERED('TokenFlex_Daily_Usage'[MACHINE_NM]),"Machine Name: "&CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[MACHINE_NM]),'TokenFlex_Daily_Usage'[MACHINE_NM],","))
+			VAR Product_Name=IF(ISFILTERED('PRODUCT TABLE'[PRODUCT_LINE_NM]),"Product Name: "&CONCATENATEX(VALUES('PRODUCT TABLE'[PRODUCT_LINE_NM]),'PRODUCT TABLE'[PRODUCT_LINE_NM],","))
+			VAR Usage_Date_Year=IF(ISFILTERED('TokenFlex_Daily_Usage'[USAGE_DT].[Year]),"Usage Date(Year): "&CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USAGE_DT].[Year]),'TokenFlex_Daily_Usage'[USAGE_DT].[Year],","))
+			 VAR Usage_Date_Month = IF(ISFILTERED('TokenFlex_Daily_Usage'[USAGE_DT].[Month]), "Usage Date(Month): " & CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USAGE_DT].[Month]),'TokenFlex_Daily_Usage'[USAGE_DT].[Month],", "))  
+			  VAR Usage_Date_Day = IF(ISFILTERED('TokenFlex_Daily_Usage'[USAGE_DT_Day]), "Usage Date(Day): " & CONCATENATEX(VALUES('TokenFlex_Daily_Usage'[USAGE_DT_Day]),'TokenFlex_Daily_Usage'[USAGE_DT_Day],", "))
+			  VAR Token_Rate = IF(ISFILTERED('Token Rate'[FY22Q3 Token Rate]), "Token Rate: " & CONCATENATEX(VALUES('Token Rate'[FY22Q3 Token Rate]),'Token Rate'[FY22Q3 Token Rate],", ")) 
+			
+			Return
+			Account_Name &UNICHAR(10) &
+			User_Name &UNICHAR(10) &
+			Machine_Name &UNICHAR(10) &
+			Product_Name &UNICHAR(10) &
+			Usage_Date_Year & UNICHAR(10) &
+			Usage_Date_Month &UNICHAR(10) &
+			Usage_Date_Day &UNICHAR(10) &
+			Token_Rate & UNICHAR(10) 
+			
+			```
+		lineageTag: 706574d9-73c7-404a-a3b4-781eba51dda3
+
+	column END_CUSTOMER_AGREEMENT_ID
+		dataType: string
+		lineageTag: 7fc5c61d-a18c-4897-91c8-729a058151d1
+		summarizeBy: none
+		sourceColumn: END_CUSTOMER_AGREEMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGREE_NBR
+		dataType: string
+		lineageTag: 2568f384-6732-40a1-a408-eebeb1b4f334
+		summarizeBy: none
+		sourceColumn: AGREE_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_MONTH
+		dataType: string
+		lineageTag: a72513b0-5be9-4ec9-956a-b44cc2c51ba4
+		summarizeBy: none
+		sourceColumn: USAGE_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_DT
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 42997097-65d3-4d35-ac1b-4ebe0e64011f
+		summarizeBy: none
+		sourceColumn: USAGE_DT
+
+		variation Variation
+			isDefault
+			relationship: f20311c4-49b7-43e0-a2cc-4ba6376a2748
+			defaultHierarchy: LocalDateTable_479ca0f2-49b4-47a0-826e-c67cedd91a33.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PRODUCT_LINE_CD
+		dataType: string
+		lineageTag: 7ea98440-766e-4ce9-abdb-2f94ae88f7f5
+		summarizeBy: none
+		sourceColumn: PRODUCT_LINE_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_LOGIN_ID
+		dataType: string
+		lineageTag: 9bd1cf95-71a2-49bd-8b60-7189eeb61483
+		summarizeBy: none
+		sourceColumn: USER_LOGIN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MACHINE_NM
+		dataType: string
+		lineageTag: d0fce29c-e583-43b5-be3e-944f33dabf21
+		summarizeBy: none
+		sourceColumn: MACHINE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column LICENSE_SERVER_NM
+		dataType: string
+		lineageTag: 1c124257-9397-4e8b-b77f-1e613c96e748
+		summarizeBy: none
+		sourceColumn: LICENSE_SERVER_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DURATION_MNS
+		dataType: double
+		lineageTag: 26f33045-20c0-4a52-86fb-622039cb4370
+		summarizeBy: sum
+		sourceColumn: DURATION_MNS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TXN_UNITS_NBR
+		dataType: double
+		lineageTag: ae176e8c-efad-49c7-a708-9a62707309ab
+		summarizeBy: sum
+		sourceColumn: TXN_UNITS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column END_CUSTOMER_AGREEMENT_YR_IND
+		dataType: double
+		lineageTag: b20a35db-f806-4a9b-ae7a-367c489429c6
+		summarizeBy: sum
+		sourceColumn: END_CUSTOMER_AGREEMENT_YR_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TXN_TYPE_NM
+		dataType: string
+		lineageTag: 9509461c-c9f3-4ba5-900e-45c06cae3ef2
+		summarizeBy: none
+		sourceColumn: TXN_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICE_CATEGORY_NM
+		dataType: string
+		lineageTag: de5016b7-df7c-42ad-ad85-9e7f2c15e413
+		summarizeBy: none
+		sourceColumn: SERVICE_CATEGORY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOKEN_POOL_CD
+		dataType: string
+		lineageTag: 215ddfaf-6ce9-4e08-b7bf-f778538077cf
+		summarizeBy: none
+		sourceColumn: TOKEN_POOL_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column USE_COUNT_FIELD
+		dataType: string
+		lineageTag: 2bc87ffb-cc5d-4c2d-ba81-f3f690a84e1c
+		summarizeBy: none
+		sourceColumn: USE_COUNT_FIELD
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_DT_Day = FORMAT('TokenFlex_Daily_Usage'[USAGE_DT],"DD-MMM")
+		lineageTag: 555ff81f-e9c6-43b8-8fc0-6a4838813985
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column D_M = CONCATENATE('TokenFlex_Daily_Usage'[USAGE_DT]&"_", 'TokenFlex_Daily_Usage'[MACHINE_NM])
+		lineageTag: 390419a8-5112-45b3-bd68-719d3de7f20d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column selected_users = IFERROR(LOOKUPVALUE(Robots[Colonne2],Robots[USER_LOGIN_ID],'TokenFlex_Daily_Usage'[USER_LOGIN_ID],""),"")
+		lineageTag: 443cc671-10cb-41d5-94c9-b5917b5f42f0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'D_M to check' = IF(('TokenFlex_Daily_Usage'[selected_users]=""),"",'TokenFlex_Daily_Usage'[D_M])
+		lineageTag: 6d8a5744-4b63-4956-a146-289e470a445b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column U_P = CONCATENATE('TokenFlex_Daily_Usage'[USER_LOGIN_ID],"_"& TokenFlex_Daily_Usage[Product_Name])
+		lineageTag: 8f6b0a81-5e2d-4efa-a431-975c205bdc10
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Name = RELATED('PRODUCT TABLE'[PRODUCT_LINE_NM])
+		lineageTag: 9881da12-4aa6-4f1e-8a3f-c4ac4dc96c6c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'all Machines Lines' = IF('TokenFlex_Daily_Usage'[D_M]='TokenFlex_Daily_Usage'[D_M to check],'TokenFlex_Daily_Usage'[U_P],"")
+		lineageTag: 284410d8-3018-4116-8e48-f32069a5265d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'selected Machine' = IF('TokenFlex_Daily_Usage'[all Machines Lines]="" ,"","1")
+		lineageTag: b004cd98-1b91-4951-b777-f6401a90331c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Use Count' = if('TokenFlex_Daily_Usage'[TXN_UNITS_NBR]>0,"1","0")
+		lineageTag: c5434f6c-2056-4572-a65b-e72ea831e828
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'USAGE HOURS' = TokenFlex_Daily_Usage[DURATION_MNS]/60
+		lineageTag: 7ac96216-8efc-43fe-8af1-3333bdb5fab6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Missing Tokens' =
+			
+			IF( TokenFlex_Daily_Usage[USAGE HOURS] > (5/60) && TokenFlex_Daily_Usage[TXN_UNITS_NBR] =0,RELATED('Token Rate'[FY22Q3 Token Rate]),0)
+		lineageTag: 99e64d28-45ab-4067-81ad-ba6dd54bdf2a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition TokenFlex_Daily_Usage-5e6b0a3f-e517-4ed4-a66c-f0f9570cf0e4 = m
+		mode: import
+		source =
+				let
+				    Source = TFLEX_USAGE_YEARMONTH("2022-05")
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

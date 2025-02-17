@@ -1,0 +1,176 @@
+table Sharepoint
+	lineageTag: ac5fc7ff-bd45-42a7-846a-666cee6168c6
+
+	column 'Device name'
+		dataType: string
+		lineageTag: 705689d6-42ad-40be-96fd-43ec536e8424
+		summarizeBy: none
+		sourceColumn: Device name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Serial number'
+		dataType: string
+		lineageTag: ef83f4fd-9f5e-4157-9600-31a7e361cf8c
+		summarizeBy: none
+		sourceColumn: Serial number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Private IP'
+		dataType: string
+		lineageTag: e18f0090-e3f7-4b9e-b187-bf9bdd27c84f
+		summarizeBy: none
+		sourceColumn: Private IP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MAC address'
+		dataType: string
+		lineageTag: abbcc6e5-0d3f-488f-b319-c12f0e1eb453
+		summarizeBy: none
+		sourceColumn: MAC address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Site name'
+		dataType: string
+		lineageTag: 962103e2-106b-43cc-87be-24b49db7bb4f
+		summarizeBy: none
+		sourceColumn: Site name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Room name'
+		dataType: string
+		lineageTag: af8a9d4c-886c-48bc-a9b2-144fbbffe03f
+		summarizeBy: none
+		sourceColumn: Room name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device model'
+		dataType: string
+		lineageTag: 6fba087b-c0de-45a6-8199-9e0e76386c91
+		summarizeBy: none
+		sourceColumn: Device model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Software version'
+		dataType: string
+		lineageTag: 3f98f0e8-115e-4136-ba8e-0ee48a5afcc7
+		summarizeBy: none
+		sourceColumn: Current Software version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Groups'
+		dataType: string
+		lineageTag: 6a7cf0d7-4b1d-4c55-89a6-e5e71bcc43f0
+		summarizeBy: none
+		sourceColumn: Device Groups
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 392c055b-849d-4e06-802e-6477acc54067
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 98fb9da7-67d1-46e5-82a3-c5eb2acf50bc
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 00b1dd36-6b71-4527-89f9-bd8f672a7d39
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: acb9b402-b37d-4f48-8335-745d8d9c9a4a
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Site
+		dataType: string
+		lineageTag: e849a49b-155c-427b-9053-521a50a8c4de
+		summarizeBy: none
+		sourceColumn: Site
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Type'
+		dataType: string
+		lineageTag: d97f8163-9055-4141-979a-a2caab32352a
+		summarizeBy: none
+		sourceColumn: Device Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Make'
+		dataType: string
+		lineageTag: 699ebb25-9179-4ada-8e4c-2f95a6c563ca
+		summarizeBy: none
+		sourceColumn: Device Make
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Future Upgrade Version'
+		dataType: string
+		lineageTag: 1ceaf77a-49e7-4209-a106-efd22bdcdb76
+		summarizeBy: none
+		sourceColumn: Future Upgrade Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned Upgrade Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7dc354b6-7288-4081-8aa1-b7742d343b85
+		summarizeBy: none
+		sourceColumn: Planned Upgrade Date
+
+		variation Variation
+			isDefault
+			relationship: aa05e11e-c734-49f9-98dc-1dbeab22615e
+			defaultHierarchy: LocalDateTable_75fb5d44-75d7-4964-baab-23cf2039615e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Sharepoint = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/ConferenceRoomSupport/", [ApiVersion = 15]),
+				    #"ConfRoom_Components_MasterList xlsx_https://share autodesk com/sites/ConferenceRoomSupport/Shared Documents/General/Projects/2024-08 Poly 4 2 2 Firmware Upgrade/" = Source{[Name="ConfRoom_Components_MasterList.xlsx",#"Folder Path"="https://share.autodesk.com/sites/ConferenceRoomSupport/Shared Documents/General/Projects/2024-08 Poly 4.2.2 Firmware Upgrade/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"ConfRoom_Components_MasterList xlsx_https://share autodesk com/sites/ConferenceRoomSupport/Shared Documents/General/Projects/2024-08 Poly 4 2 2 Firmware Upgrade/"),
+				    Inventory_Sheet = #"Imported Excel Workbook"{[Item="Inventory",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Inventory_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Device name", type text}, {"Serial number", type any}, {"Private IP", type text}, {"MAC address", type text}, {"Site name", type text}, {"Room name", type text}, {"Device model", type text}, {"Current Software #(lf)version", type any}, {"Device Groups", type text}, {"Region", type text}, {"Country", type text}, {"State", type text}, {"City", type text}, {"Site", type any}, {"Device Type", type text}, {"Device Make", type text}, {"Planned Upgrade Date", type date}, {"Column19", type any}, {"Column20", type any}, {"Column21", type any}, {"Column22", type any}, {"Column23", type any}, {"Column24", type any}, {"Column25", type any}, {"Column26", type any}, {"Column27", type any}, {"Column28", type any}, {"Column29", type any}, {"Column30", type any}, {"Column31", type any}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Serial number] <> null)),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Column19", "Column20", "Column21", "Column22", "Column23", "Column24", "Column25", "Column26", "Column27", "Column28", "Column29", "Column30", "Column31"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"Serial number", type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type1", {"Serial number"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,51 @@
+table 2023
+	lineageTag: f046b0fd-3486-48aa-9205-f07412256612
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 72558d16-dbc0-4169-826f-83cb96b68986
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How did you learn about AWN?'
+		dataType: string
+		lineageTag: be6eba36-6332-46ad-95c5-d1f1847cdaa2
+		summarizeBy: none
+		sourceColumn: How did you learn about AWN?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What motivated you to sign up with AWN?'
+		dataType: string
+		lineageTag: 466cc965-1103-40ba-9daa-f51a0a777146
+		summarizeBy: none
+		sourceColumn: What motivated you to sign up with AWN?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How has your involvement in AWN impacted your sense of belonging and inclusion within the company?'
+		dataType: string
+		lineageTag: 5f3cdf02-aafc-4c41-bebc-3352b23b87bb
+		summarizeBy: none
+		sourceColumn: How has your involvement in AWN impacted your sense of belonging and inclusion within the company?
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 2023 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\brohlm\Autodesk\AWN - General\Impact Measurement\Annual Member Survey\2023-10\Autodesk Women's Network Impact Measurement Survey.xlsx"), null, true),
+				    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"ID", Int64.Type}, {"Start time", type datetime}, {"Completion time", type datetime}, {"Email", type text}, {"Name", type text}, {"Last modified time", type any}, {"How did you learn about AWN?", type text}, {"What motivated you to sign up with AWN?", type text}, {"AWN has supported my personal goal(s) since I joined.", type text}, {"Based on your answer above, can you share an event or program that positively or negatively impacted your journey?", type text}, {"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?", type text}, {"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?", type text}, {"Please rate the following statement (Rate 1-5): AWN offers the right amount and mix of events", Int64.Type}, {"Please rate the following statement (Rate 1-5): AWN provides opportunities for networking with colleagues outside of my usual work cycle", Int64.Type}, {"What if any additional support or resources would you like to see offered by AWN? ", type text}, {"What would you like to see AWN focus on in FY25?", type text}, {"The AWN FY24 theme was ""Create your next chapter - Discover. Own. Evolve"".  What ideas do you have for a FY25 theme?", type text}, {"Do you have a preference between the following?", type text}, {"Which day of the week do you prefer for attending events vitually?", type text}, {"If you haven't participated in any activities to date please indicate why.", type text}, {"What do you feel AWN is doing well?", type text}, {"How might we improve to better meet your needs?", type text}, {"Can we reach out to you if we have additional follow up questions?", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"ID", "How did you learn about AWN?", "What motivated you to sign up with AWN?", "How has your involvement in AWN impacted your sense of belonging and inclusion within the company?"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

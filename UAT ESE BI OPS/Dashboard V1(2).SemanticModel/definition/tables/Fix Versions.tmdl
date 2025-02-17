@@ -1,0 +1,31 @@
+table 'Fix Versions'
+	lineageTag: e04c66c4-cc5a-4849-b86d-9091b8a528b3
+
+	column Key
+		dataType: string
+		lineageTag: a8ef150b-65c8-4992-87ed-f3fe0226b043
+		summarizeBy: none
+		sourceColumn: Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fix Version Name'
+		dataType: string
+		lineageTag: 44dd330e-889e-442c-b810-1cad78d605a7
+		summarizeBy: none
+		sourceColumn: Fix Version Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fix Versions' = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://jira.autodesk.com/rest/aio-bi/1.0/powerbi/export/ZTQyYTYwNTktNTcyZC00NGE2LTg2MjUtNDFmNWU3ZDE2", null, [Implementation="2.0"]),
+				    #"Fix Versions_table" = Source{[Name="Fix Versions",Signature="table"]}[Data],
+				    #"Removed Duplicates" = Table.Distinct(#"Fix Versions_table", {"Key"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+

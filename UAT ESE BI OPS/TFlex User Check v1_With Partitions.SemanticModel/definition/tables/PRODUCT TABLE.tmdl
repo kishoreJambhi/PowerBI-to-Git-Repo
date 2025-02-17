@@ -1,0 +1,31 @@
+table 'PRODUCT TABLE'
+	lineageTag: 39ee0ee1-d6b5-495e-aeb3-414126c1c844
+
+	column PRODUCT_LINE_CD
+		dataType: string
+		lineageTag: ab9f3522-837c-4f7f-8315-c0870def6a67
+		summarizeBy: none
+		sourceColumn: PRODUCT_LINE_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_LINE_NM
+		dataType: string
+		lineageTag: b658aa52-5c44-4f65-8728-3ba1f812e50e
+		summarizeBy: none
+		sourceColumn: PRODUCT_LINE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'PRODUCT TABLE-882a4eea-9ff7-4506-b8ae-c0e471d84d83' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="ADP_PUBLISH"]}[Data], "select product_line_cd, product_line_nm from (#(lf)select product_line_cd, product_line_nm,#(lf)row_number() over (partition by upper(product_line_cd) order by product_line_cd) as row_no#(lf)from ""ADP_PUBLISH"".""TOKEN_FLEX_CORE_PUBLIC"".""T_ECCR_PRODUCT_LINE""#(lf)  ) where row_no = 1", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

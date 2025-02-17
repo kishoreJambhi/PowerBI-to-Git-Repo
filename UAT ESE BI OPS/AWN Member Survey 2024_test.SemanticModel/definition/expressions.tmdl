@@ -1,0 +1,11 @@
+expression 'DirectQuery to AS - AWN Membership' =
+		let
+		    Source = AnalysisServices.Database("powerbi://api.powerbi.com/v1.0/myorg/UAT%20ESE%20BI%20OPS", "AWN Membership"),
+		    Cubes = Table.Combine(Source[Data]),
+		    Cube = Cubes{[Id="Model", Kind="Cube"]}[Data]
+		in
+		    Cube
+	lineageTag: 17217c91-d98d-4769-8948-e6f790ee9db3
+
+	annotation PBI_IncludeFutureArtifacts = True
+

@@ -1,0 +1,42 @@
+table 'Last Refreshed Date'
+	lineageTag: 8c6e4f59-1d85-4e79-8860-35b7b3458ae6
+
+	column 'Last Report Refresh Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 37c2b0e9-eb86-4f45-8107-1dd000a3a742
+		summarizeBy: none
+		sourceColumn: Last Report Refresh Time
+
+		variation Variation
+			isDefault
+			relationship: 61d0368d-370b-440e-8168-465642d026c4
+			defaultHierarchy: LocalDateTable_20fbc2cf-bc43-42fc-80cf-a6df43675fa3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Last Refreshed Date' = m
+		mode: import
+		source =
+				let
+				    Source = Json.Document(Web.Contents("http://worldtimeapi.org/api/timezone/Asia/Kolkata")),
+				    #"Converted to Table" = Record.ToTable(Source),
+				    #"Filtered Rows" = Table.SelectRows(
+				        #"Converted to Table", each ([Name] = "datetime")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Name"}),
+				    #"Changed Type" = Table.TransformColumnTypes(
+				        #"Removed Columns",{{"Value", type datetimezone}}),
+				    #"Renamed Columns" = Table.RenameColumns(
+				        #"Changed Type",{{"Value", "Asia/Kolkata"}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Renamed Columns", {{"Asia/Kolkata", type text}}, "en-US"), "Asia/Kolkata", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Asia/Kolkata"}),
+				    #"Split Column by Position" = Table.SplitColumn(#"Split Column by Delimiter", "Asia/Kolkata", Splitter.SplitTextByRepeatedLengths(22), {"Asia/Kolkata.1", "Asia/Kolkata.2"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Split Column by Position",{{"Asia/Kolkata.1", type datetime}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type2",{"Asia/Kolkata.2"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns1",{{"Asia/Kolkata.1", "Last Report Refresh Time"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

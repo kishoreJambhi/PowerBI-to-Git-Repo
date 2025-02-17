@@ -1,0 +1,141 @@
+table 'Testing one'
+	lineageTag: aff29da4-9ee0-4f5a-9a55-1c2b25564729
+
+	column END_CUSTOMER_AGREEMENT_ID
+		dataType: string
+		lineageTag: dacca23d-2785-48a8-a608-c7d82cbc7089
+		summarizeBy: none
+		sourceColumn: END_CUSTOMER_AGREEMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGREE_NBR
+		dataType: string
+		lineageTag: 3f7408a5-4798-4efc-b12d-c558107c91e3
+		summarizeBy: none
+		sourceColumn: AGREE_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_MONTH
+		dataType: string
+		lineageTag: ed578041-c2f8-408e-816b-fb4df2eae388
+		summarizeBy: none
+		sourceColumn: USAGE_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_DT
+		dataType: string
+		lineageTag: 17fbedf0-28bd-43a9-b97f-7597516fd5a9
+		summarizeBy: none
+		sourceColumn: USAGE_DT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_LINE_CD
+		dataType: string
+		lineageTag: 432805e5-10a6-4fb7-982a-2e4df5a5f763
+		summarizeBy: none
+		sourceColumn: PRODUCT_LINE_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column USER_LOGIN_ID
+		dataType: string
+		lineageTag: aae2142e-448d-49af-87c5-2279c70e208a
+		summarizeBy: none
+		sourceColumn: USER_LOGIN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MACHINE_NM
+		dataType: string
+		lineageTag: d127378d-a985-45f9-b3d2-70e482bd82d5
+		summarizeBy: none
+		sourceColumn: MACHINE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column LICENSE_SERVER_NM
+		dataType: string
+		lineageTag: bab22d31-d89e-43fb-99ef-dbb582a3e47a
+		summarizeBy: none
+		sourceColumn: LICENSE_SERVER_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DURATION_MNS
+		dataType: double
+		lineageTag: 7fa24bf0-c7f6-4e35-ba94-f9c768676bdf
+		summarizeBy: sum
+		sourceColumn: DURATION_MNS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TXN_UNITS_NBR
+		dataType: double
+		lineageTag: c909740e-f752-474d-8849-45461db78677
+		summarizeBy: sum
+		sourceColumn: TXN_UNITS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column END_CUSTOMER_AGREEMENT_YR_IND
+		dataType: double
+		lineageTag: e9b0507c-5e6d-4808-b114-6c9ea6e6fcd8
+		summarizeBy: sum
+		sourceColumn: END_CUSTOMER_AGREEMENT_YR_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TXN_TYPE_NM
+		dataType: string
+		lineageTag: be56eccf-28b8-402d-a382-c35985d072fd
+		summarizeBy: none
+		sourceColumn: TXN_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICE_CATEGORY_NM
+		dataType: string
+		lineageTag: d2e253fb-2427-470b-a628-4ebd94302469
+		summarizeBy: none
+		sourceColumn: SERVICE_CATEGORY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOKEN_POOL_CD
+		dataType: string
+		lineageTag: fed58732-1613-4d1a-a46a-c27f2ec411a6
+		summarizeBy: none
+		sourceColumn: TOKEN_POOL_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column USE_COUNT_FIELD
+		dataType: string
+		lineageTag: ac6fc894-3ce9-45fe-9976-705bf061fee0
+		summarizeBy: none
+		sourceColumn: USE_COUNT_FIELD
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Testing one' = m
+		mode: import
+		source =
+				let
+				    Source = YearM("2022-05")
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

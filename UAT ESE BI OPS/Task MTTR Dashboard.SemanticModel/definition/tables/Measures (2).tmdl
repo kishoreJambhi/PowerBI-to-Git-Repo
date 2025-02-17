@@ -1,0 +1,182 @@
+table 'Measures (2)'
+	lineageTag: a26e72ac-3678-4537-9614-c77304d08c91
+
+	measure 'Colors MTTA' = IF([MTTA %]>=95,1) & IF([MTTA %]<95,0)
+		lineageTag: a55d1bbf-bb99-4f19-ad4b-f7cdc108545c
+
+	measure 'Colour Format MTTA' = ```
+			[Final Achieved_Response]/[Response Total Count]
+			
+			```
+		lineageTag: 20dc43f2-62cc-42dd-a8b6-c9035b323488
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Colour Format MTTR' = [Final Achieved_Rl]/[Resolution Total Count]
+		lineageTag: da230ae0-1671-4203-851c-92c1368dab2c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current Selection' =
+			
+			VAR  Createdon = IF(ISFILTERED('Final Data'[sys_created_on]), "Created On : " & MIN('Final Data'[sys_created_on]) & " to " &max('Final Data'[sys_created_on]),blank())
+			VAR  Resolved = IF(ISFILTERED('Final Data'[Resolved Date]), "Resolved On : " & MIN('Final Data'[Resolved Date]) & " to " &max('Final Data'[Resolved Date]),blank())
+			VAR Fiscal_Year = IF(ISFILTERED('Final Data'[FY]), "Fiscal Year : " & CONCATENATEX(VALUES('Final Data'[FY]),'Final Data'[FY],", "))
+			VAR Fiscal_Month = IF(ISFILTERED('Final Data'[Fiscal Month]), "Fiscal Month : " & CONCATENATEX(VALUES('Final Data'[Fiscal Month]),'Final Data'[Fiscal Month],", "))
+			VAR AssignmentGroup = IF(ISFILTERED('Final Data'[u_assignment_group]), "Assignment Group : " & CONCATENATEX(VALUES('Final Data'[u_assignment_group]),'Final Data'[u_assignment_group],", "))
+			VAR AssignedTo = IF(ISFILTERED('Final Data'[u_assigned_to]), "Assigned To : " & CONCATENATEX(VALUES('Final Data'[u_assigned_to]),'Final Data'[u_assigned_to],", "))
+			VAR Priority = IF(ISFILTERED('Final Data'[task.priority]), "Priority : " & CONCATENATEX(VALUES('Final Data'[task.priority]),'Final Data'[task.priority],", "))
+			VAR Service_Line = IF(ISFILTERED('Final Data'[Service Line]), "Service Line : " & CONCATENATEX(VALUES('Final Data'[Service Line]),'Final Data'[Service Line],", "))
+			VAR Incident_Number = IF(ISFILTERED('Final Data'[task]), "Incident Number : " & CONCATENATEX(VALUES('Final Data'[task]),'Final Data'[task],", "))
+			
+			VAR Fiscal_Quarter = IF(ISFILTERED('Final data'[F Quarter]), "Fiscal Quarter : " & CONCATENATEX(VALUES('Final data'[F Quarter]),'Final Data'[F Quarter],", "))
+			VAR  Resolved_date = IF(ISFILTERED('Table'[Date]), "Resolved On : " & MIN('Table'[Date]) & " to " &max('Table'[Date]),blank())
+			VAR Exclude_Include = IF(ISFILTERED('Final Data'[Exclude Include]), "Exclude Include : " & CONCATENATEX(VALUES('Final Data'[Exclude Include]),'Final Data'[Exclude Include],", "))
+			return
+			Createdon&UNICHAR(10) &
+			Resolved&UNICHAR(10) &
+			Fiscal_Year&UNICHAR(10) &
+			Fiscal_Month&UNICHAR(10) &
+			AssignmentGroup&UNICHAR(10) &
+			AssignedTo&UNICHAR(10) &
+			Priority&UNICHAR(10) &
+			Service_Line&UNICHAR(10) &
+			Incident_Number&UNICHAR(10) &
+			Fiscal_Quarter&UNICHAR(10) &
+			Resolved_date&UNICHAR(10) &
+			Exclude_Include&UNICHAR(10)
+		lineageTag: 4f8f8303-a2c9-4389-8563-08fd906ec4b1
+
+	measure 'Final Achieved_Response' = CALCULATE([Distinct count of Inc Number], FILTER(VALUES('Final Data'[stage]), 'Final Data'[stage] = "Achieved"), FILTER(VALUES('Final Data'[Type]), 'Final Data'[Type]="Response"))+0
+		formatString: #,0
+		lineageTag: 3aec5dd2-32be-4196-aa68-13dc10d984ac
+
+	measure 'Final Achieved_Rl' = CALCULATE([Distinct count of Inc Number],FILTER(VALUES('Final Data'[stage]), 'Final Data'[stage] = "Achieved"),FILTER(VALUES('Final Data'[Type]), 'Final Data'[Type]="Resolution"))
+		formatString: #,0
+		lineageTag: 9778eba7-89a3-4928-9604-7a282ca1648f
+
+	measure 'MTTA %' = IFERROR([Final Achieved_Response]/[Response Total Count], "0")
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e21069d2-cc70-4048-93ac-5bed7a2b6beb
+
+		changedProperty = FormatString
+
+	measure 'MTTR %' = [Final Achieved_Rl]/[Resolution Total Count]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f1141312-b4e1-4d58-8268-e5ddf039b8c2
+
+	measure 'Resolution Total Count' = CALCULATE([Distinct count of Inc Number],FILTER(VALUES('Final Data'[Type]), 'Final Data'[Type]="Resolution"))
+		formatString: #,0
+		lineageTag: 99dd6fe7-f996-4e9a-ae6f-1f4a17eb8e91
+
+	measure 'Response Total Count' = CALCULATE([Distinct count of Inc Number],FILTER(VALUES('Final Data'[Type]), 'Final Data'[Type]="Response"))+0
+		formatString: #,0
+		lineageTag: 53039344-4580-422f-84cf-47c97e168e26
+
+	measure 'Distinct count of Inc Number' = DISTINCTCOUNT('Final Data'[task])
+		formatString: 0
+		lineageTag: a5183bff-65f1-4487-942d-445cf564af6c
+
+	measure Avg_MTTA_byhour = ```
+			
+			VAR MTTA_TEST= DIVIDE(SUM('Final Data'[MTTA]),[Distinctcount Task number])
+			RETURN 
+			format((( MTTA_TEST / 60))/24, "HH:mm:ss") 
+			
+			//ROUND(DIVIDE(DIVIDE(SUM(snow_cmdb_ci_outage[MTTA]),60),[Distinctcount Task number]),2) & " hour(s)"))
+			```
+		lineageTag: 23ef5290-de3c-4ed2-80bd-de8fe86efbc6
+
+	measure 'Avg_MTTR_byhour (Snow)' = ```
+			
+			VAR MTTR_TEST= DIVIDE(SUM('Final Data'[# MTTR]),[Distinctcount Task number])
+			RETURN 
+			format((( MTTR_TEST / 60))/24, "HH:mm:ss")
+			
+			
+			//ROUND(DIVIDE(DIVIDE(SUM(snow_cmdb_ci_outage[# MTTR]),60),[Distinctcount Task number]),2) & " hour(s)"
+			
+			```
+		lineageTag: 999a42e8-a5ed-4bd3-8d08-f5f6aea0f352
+
+	measure 'Resolution Breach' = CALCULATE(COUNT('Final Data'[Type]),FILTER('Final Data','Final Data'[Type]="Resolution" && 'Final Data'[stage]="Breached"))
+		formatString: 0
+		lineageTag: 34e6adec-7d0f-4654-a5d0-aa43edcaeeb6
+
+	measure 'Response Breach' = CALCULATE(COUNT('Final Data'[task]),FILTER('Final Data','Final Data'[Type]="Response" && 'Final Data'[stage]="Breached"))
+		formatString: 0
+		lineageTag: 89e90d29-d7ae-4bed-8d5e-0dad57414fd1
+
+	measure MTTR = [Final Achieved_Rl]/[Resolution Total Count]
+		formatString: 0
+		lineageTag: 4a70037c-0b4a-4710-b9c6-8af35fc3c51c
+
+		changedProperty = FormatString
+
+	measure 'SLA Achieved Count' = CALCULATE(COUNT('Final Data'[sla]),FILTER('Final Data','Final Data'[stage]="Achieved"))
+		formatString: 0%;-0%;0%
+		lineageTag: da341e2e-1a24-4083-9bc2-a8356f535473
+
+		changedProperty = FormatString
+
+	measure Selectedvalue = SELECTEDVALUE('Final Data'[stage])
+		lineageTag: fbde0bf9-3a86-4058-8ad4-63b5d0d1e446
+
+	measure 'P1 Title' =
+			
+			VAR T1 = COMBINEVALUES(" ","Avg Time for P1 Tickets for ", [Selectedvalue])
+			VAR T2 = "Avg Time for P1 Tickets"
+			RETURN
+			IF(ISFILTERED('Final Data'[stage]),T1,T2)
+		lineageTag: 4d0a48c9-6aa7-4969-b746-f6c8cb57c9e2
+
+	measure 'P2 Title' =
+			
+			VAR T1 = COMBINEVALUES(" ","Avg Time for P2 Tickets for ", [Selectedvalue])
+			VAR T2 = "Avg Time for P2 Tickets"
+			RETURN
+			IF(ISFILTERED('Final Data'[stage]),T1,T2)
+		lineageTag: 56149cc3-16da-4ee9-b5f9-f36cca6d509e
+
+	measure 'P3 Title' =
+			
+			VAR T1 = COMBINEVALUES(" ","Avg Time for P3 Tickets for ", [Selectedvalue])
+			VAR T2 = "Avg Time for P3 Tickets"
+			RETURN
+			IF(ISFILTERED('Final Data'[stage]),T1,T2)
+		lineageTag: 3c88650f-a599-4732-8bf5-5507ffd9bff8
+
+	measure 'P4 Title' =
+			
+			VAR T1 = COMBINEVALUES(" ","Avg Time for P4 Tickets for ", [Selectedvalue])
+			VAR T2 = "Avg Time for P4 Tickets"
+			RETURN
+			IF(ISFILTERED('Final Data'[stage]),T1,T2)
+		lineageTag: 365c2d73-28f3-4768-92d8-3b944983aef8
+
+	measure 'Final Achieved Count' = CALCULATE([Distinct count of Inc Number],FILTER(VALUES('Final Data'[stage]), 'Final Data'[stage] = "Achieved"),FILTER(VALUES('Final Data'[Type]), 'Final Data'[Type] in {"Resolution","Response"}))
+		formatString: 0
+		lineageTag: afc5fd91-b6fa-4a44-ad08-832b0301572b
+
+	measure 'Resolution Count' = CALCULATE([Distinct count of Inc Number],FILTER(VALUES('Final Data'[Type]), 'Final Data'[Type] in {"Resolution","Response"}))
+		formatString: 0
+		lineageTag: 76a037d0-6995-469c-9ff8-f92ae9564ec2
+
+	measure 'MTTR %%' = [Final Achieved Count]/[Resolution Count]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 23b89ff4-f401-41cd-8347-c0aa05a79479
+
+	partition 'Measures (2)-d6e312ce-4162-42f2-ba41-ca95bde0c5ac' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
