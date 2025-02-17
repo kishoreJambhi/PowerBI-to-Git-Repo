@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.128.1380.0 (24.04)
+
+annotation PBI_QueryOrder = ["DIM_COURSE","DIM_USER","DIM_DEPARTMENT","FACT_COURSE_ENROLLMENT","DIM_CATEGORY","Measures Table"]
+
+ref table DIM_COURSE
+ref table DIM_USER
+ref table DIM_DEPARTMENT
+ref table FACT_COURSE_ENROLLMENT
+ref table DIM_CATEGORY
+ref table 'Measures Table'
+
+ref cultureInfo en-US
+

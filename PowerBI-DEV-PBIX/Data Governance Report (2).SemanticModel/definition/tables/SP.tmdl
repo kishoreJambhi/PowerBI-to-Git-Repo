@@ -1,0 +1,137 @@
+table SP
+	lineageTag: 65814aee-4659-4cdf-9766-b1a8865c86c8
+
+	measure Scores = Sum(SP[assessed]) & "/" & sum(SP[total])
+		lineageTag: d093a21d-df5b-49d7-a910-2dc060311d1f
+
+	measure 'score Bar' = sum(SP[assessed])/sum(SP[total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 81e1a1f5-9cf0-4b22-bb48-a37e7e44c09b
+
+	measure Image = ```
+			
+			SWITCH(
+			    MAX([manager_name]),
+			    "Adib Mohamed Ibrahim", "https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/pexels-photo-2379005.jpeg?Web=1",
+			    "Jason Smathers", "https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/2.jpg?Web=1",
+			    "Krishna R", "https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/3.jpeg?Web=1",
+			    "Rajat Verma", "https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/6.jpg?Web=1",
+			    "Sudip Satapathy","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/3.jpeg?Web=1",
+			    "Uddipan Mukherjee","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/8.jpg?Web=1",
+			    "Ranjana Chakraborthy","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/w2.jpg?Web=1",
+			    "sameulla Allabakash","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/7.jpg?Web=1",
+			    "Sridhar Brahmadevara","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/5.jpg?Web=1",
+			    "Vicki Schirado","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/4.jpeg?Web=1",
+			    "yugandhar Pulluru","https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/w1.jpg?Web=1",
+			    "https://myshare.autodesk.com/personal/sairohit_chitraju_autodesk_com/Documents/Desktop/default-image.jpeg?Web=1" // Optional "else" case
+			)
+			
+			```
+		lineageTag: 5bfdd20b-9eb3-42ce-b13c-d217cdd11e15
+
+	measure 'Manager Label' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    MAX([manager_name]) = "Adib Mohamed Ibrahim", "Adib@autodesk.com",
+			    MAX([manager_name]) = "Jason Smathers", "Jason@autodesk.com",
+			    MAX([manager_name]) = "Krishna R", "Krishna@autodesk.com",
+			    MAX([manager_name]) = "Rajat Verma", "Rajat@autodesk.com",
+			    MAX([manager_name]) = "Sameulla Allabakash", "sameulla@autodesk.com",
+			    MAX([manager_name]) = "Sridhar Brahmadevara", "sridhar@autodesk.com",
+			    MAX([manager_name]) = "Uddipan Mukherjee", "Uddipan@autodesk.com",
+			    MAX([manager_name]) = "Vicki SChirado", "vicki@autodesk.com",
+			    MAX([manager_name]) = "Yugandhar Pulluru", "yugandhar@autodesk.com",
+			    "Other Teams"
+			)
+			
+			```
+		lineageTag: de0a12e8-826f-4815-a086-f64e9c29957c
+
+	column title
+		dataType: string
+		lineageTag: 8b5ad414-7665-445d-8afd-af6f3b1bb408
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column principle
+		dataType: string
+		lineageTag: af919083-1511-458e-8ba5-5c0c9d132b98
+		summarizeBy: none
+		sourceColumn: principle
+
+		annotation SummarizationSetBy = Automatic
+
+	column objective
+		dataType: string
+		lineageTag: 87f8a24c-ce79-4bb5-be13-309084f327ef
+		summarizeBy: none
+		sourceColumn: objective
+
+		annotation SummarizationSetBy = Automatic
+
+	column total
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ff92999-38c0-40d5-a9ae-264f8eeb4fc3
+		summarizeBy: sum
+		sourceColumn: total
+
+		annotation SummarizationSetBy = Automatic
+
+	column Levels = "Level "& SP[level_id]
+		lineageTag: 20f43a1c-5f23-40c4-8b8f-51b17f040135
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column manager_name
+		dataType: string
+		lineageTag: 9f8eb610-64ad-4845-bcf5-fed6e45a5924
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: manager_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column level_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c5b5ffa3-0a8f-4f85-a9ab-29853b9c2ea7
+		summarizeBy: sum
+		sourceColumn: level_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column assessed
+		dataType: int64
+		formatString: 0
+		lineageTag: 35848ae0-a26b-42f1-b608-b877997bb2d7
+		summarizeBy: sum
+		sourceColumn: assessed
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fad6e46-d12b-4e71-ac1c-34d89f45c94d
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SP = m
+		mode: import
+		source =
+				let
+				    Source = MySQL.Database("data-gov-portal-db-setup-datagovdb-ag71zs9vr6xk.cxs4a8ixh1eg.us-east-1.rds.amazonaws.com", "datagovdb", [ReturnSingleDatabase=true, Query="CALL GetFullReport ()"])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

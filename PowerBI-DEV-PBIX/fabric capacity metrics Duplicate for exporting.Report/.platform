@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "fabric capacity metrics Duplicate for exporting"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "819b9cce-b960-8162-4a95-bc0685c76d31"
+  }
+}

@@ -1,0 +1,85 @@
+table FACT_COURSE_ENROLLMENT
+	lineageTag: 4ad28783-2d90-44fd-88cb-bc0417b0aa0a
+
+	column COURSE_ENROLLMENT_KEY
+		dataType: double
+		lineageTag: bc37e8bc-6cf5-40d8-a554-ce32755cbf54
+		summarizeBy: sum
+		sourceColumn: COURSE_ENROLLMENT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column USER_KEY
+		dataType: int64
+		lineageTag: dc91d7f4-f540-445f-b56a-00d5678dd45b
+		summarizeBy: none
+		sourceColumn: USER_KEY
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COURSE_KEY
+		dataType: double
+		lineageTag: 82e8b1c1-151b-4dec-9d72-757fb54b0d03
+		summarizeBy: none
+		sourceColumn: COURSE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DATE_COMPLETED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 710952d2-8d48-4176-959c-5aed46d56745
+		summarizeBy: none
+		sourceColumn: DATE_COMPLETED
+
+		annotation SummarizationSetBy = Automatic
+
+	column SCORE
+		dataType: double
+		lineageTag: 61bb08ce-148d-485d-a017-6597e2b9ac04
+		summarizeBy: sum
+		sourceColumn: SCORE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EN_STATUS
+		dataType: string
+		lineageTag: 41ce041e-29d7-4925-9acd-6178880d10db
+		summarizeBy: none
+		sourceColumn: EN_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_STARTED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9a1b4ed9-f184-4994-92ca-b4399cef1660
+		summarizeBy: none
+		sourceColumn: DATE_STARTED
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FACT_COURSE_ENROLLMENT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("mxb11004.us-east-1.snowflakecomputing.com","ANALYZE_DIRECT_WAREHOUSE"),
+				    ANALYZE_DIRECT_Database = Source{[Name="ANALYZE_DIRECT",Kind="Database"]}[Data],
+				    DIRECT_Schema = ANALYZE_DIRECT_Database{[Name="DIRECT",Kind="Schema"]}[Data],
+				    FACT_COURSE_ENROLLMENT_View = DIRECT_Schema{[Name="FACT_COURSE_ENROLLMENT",Kind="View"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(FACT_COURSE_ENROLLMENT_View,{"COURSE_ENROLLMENT_KEY", "USER_KEY", "COURSE_KEY", "DATE_STARTED", "DATE_COMPLETED", "SCORE", "EN_STATUS"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Exception
+
