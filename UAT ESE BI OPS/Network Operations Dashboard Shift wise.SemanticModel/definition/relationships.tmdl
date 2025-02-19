@@ -1,0 +1,34 @@
+relationship aae24833-e71f-4cd7-961d-6a4cf8c7c033
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SNOW_INCIDENTS.DATE_SYNCED
+	toColumn: LocalDateTable_1b17296f-a076-4b6e-b2e0-e312a6789351.Date
+
+relationship 4b5a0bfb-17c1-4472-a4ee-e7e0e81d16c1
+	fromColumn: SNOW_INCIDENTS._+AgeingBucket
+	toColumn: 'Order Table'.'Time Period'
+
+relationship 280bfc1b-efce-4df5-880c-06fb170b3b60
+	joinOnDateBehavior: datePartOnly
+	fromColumn: LastRefresh_Local.'Last Refresh.1'
+	toColumn: LocalDateTable_66685ec2-3315-4694-a1de-4909683a9c25.Date
+
+relationship 8bce0dfa-f13a-49b8-b9a8-8454f8de817b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SNOW_INCIDENTS.SYS_CREATED_ON
+	toColumn: LocalDateTable_6df63ec7-c1b2-4d58-aef4-4188159eccf6.Date
+
+relationship 2b40cd3d-cd82-49ac-987a-a7c299f5a559
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SNOW_INCIDENTS.New_Created_Date
+	toColumn: LocalDateTable_8dd596b8-6a28-4e9e-ab99-bee11f106761.Date
+
+relationship 6be78249-a3df-4e85-abb4-d43e5659b164
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SNOW_INCIDENTS.Created_Date
+	toColumn: LocalDateTable_a451d6da-cccf-4a79-9cc4-209abde78831.Date
+
+relationship 8cd6e77d-f0e7-4e91-bcf1-b6dfd915b7dc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SNOW_INCIDENTS.ShiftClassification
+	toColumn: LocalDateTable_0aea4ac4-54cd-4c72-b300-34dbd3257321.Date
+

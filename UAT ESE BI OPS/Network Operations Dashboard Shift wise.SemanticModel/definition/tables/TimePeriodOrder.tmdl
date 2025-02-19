@@ -1,0 +1,40 @@
+table TimePeriodOrder
+	lineageTag: 13340730-839e-404a-87f9-766125ebd237
+
+	column TimePeriod
+		lineageTag: e13d6a29-a3d8-42d5-a81c-1d1338df60a9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [TimePeriod]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		formatString: 0
+		lineageTag: cdeddded-f3a1-4d02-80ad-398a66dd9f56
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [SortOrder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TimePeriodOrder = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "TimePeriod", STRING,
+				    "SortOrder", INTEGER,
+				    {
+				        {"Less than 24 hours", 1},
+				        {"1-2 Days", 2},
+				        {"2-5 Days", 3},
+				        {"5-7 Days", 4},
+				        {"1-2 Weeks", 5},
+				        {"2-4 Weeks", 6},
+				        {"Over 1 month", 7}
+				    }
+				)
+
+	annotation PBI_Id = 82bc479894b340829b4f91b12389962d
+

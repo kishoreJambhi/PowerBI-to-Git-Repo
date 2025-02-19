@@ -1,0 +1,450 @@
+table ServiceNow
+	lineageTag: b9cf2c82-11cc-453f-a121-a44a9ab221a4
+
+	measure '_Avg_MTTR_byhour (Snow)' = ```
+			
+			VAR MTTR_TEST= DIVIDE(SUM(ServiceNow[_MTTR-Task]),[_Distinctcount Task number])
+			RETURN 
+			format((( MTTR_TEST / 60))/24, "HH:mm:ss")
+			```
+		lineageTag: c85c71d2-a43d-4bd4-bd1c-de4312390b78
+
+	measure '_Distinctcount Task number' = CALCULATE(DISTINCTCOUNT(ServiceNow[Task]))
+		formatString: 0
+		lineageTag: 8a8e9455-65b0-425c-9700-c28557431084
+
+	measure '_Resolution Breach' = CALCULATE(COUNT(ServiceNow[TYPE]), FILTER(ServiceNow,ServiceNow[TYPE] in {"Resolution","Response"} && ServiceNow[Stage] ="Breached"))
+		formatString: 0
+		lineageTag: 5e9facac-ea05-4e3a-9267-4acac573c8ae
+
+	measure '_Final Achieved Count' = CALCULATE([_Distinctcount Task number],FILTER(VALUES(ServiceNow[Stage]), ServiceNow[Stage] ="Achieved"))
+		formatString: 0
+		lineageTag: 194104a1-97cb-417d-8676-78d34141c4bc
+
+	measure '_Resolution Count' = CALCULATE([_Distinctcount Task number],FILTER(VALUES(ServiceNow[Stage]), ServiceNow[Stage] In {"Achieved","Breached"}))
+		formatString: 0
+		lineageTag: 6e6ebef2-3cb0-45a9-8067-07e822eefb8f
+
+	measure _MTTR = [_Final Achieved Count]/[_Resolution Count]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8c6e2005-5a0f-40d9-b492-9e85217eaeff
+
+	measure '_Final Breached Count' = CALCULATE([_Distinctcount Task number],FILTER(VALUES(ServiceNow[Stage]), ServiceNow[Stage]="Breached"))
+		formatString: 0
+		lineageTag: c68c935f-6ca5-41dc-a6fd-e425615311c3
+
+	column Name
+		dataType: string
+		lineageTag: 9c52072b-0f8f-4d4d-99e8-0bf88f836f11
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assigned to'
+		dataType: string
+		lineageTag: fc273539-0430-4078-bcec-42b06f33b9d8
+		summarizeBy: none
+		sourceColumn: Assigned to
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 78b61898-4b6c-4c05-bf53-3615fc94bbcc
+		summarizeBy: none
+		sourceColumn: Created
+
+		variation Variation
+			isDefault
+			relationship: 1ab0ff99-4612-40bd-91f0-ce69d3006ed9
+			defaultHierarchy: LocalDateTable_073a3dfa-9a40-4139-9cb3-1bd528764e36.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _MTTR-Task = DATEDIFF(ServiceNow[Created],ServiceNow[Resolved Date],MINUTE)
+		formatString: 0
+		lineageTag: a2efa142-f1f8-4738-9b83-7ebe49e37dec
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5298d2af-9a01-4cb0-a1d4-f5140594d0ef
+		summarizeBy: none
+		sourceColumn: Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business elapsed time'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ddb1155-837c-472f-94af-9af7a0e04cba
+		summarizeBy: sum
+		sourceColumn: Business elapsed time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business pause duration'
+		dataType: int64
+		formatString: 0
+		lineageTag: f416ed28-6a28-42e9-884f-628847e1b775
+		summarizeBy: sum
+		sourceColumn: Business pause duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business elapsed percentage'
+		dataType: double
+		lineageTag: 368c0cd3-230d-4718-b0ea-a0058240fcac
+		summarizeBy: sum
+		sourceColumn: Business elapsed percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Has breached'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 67495946-311c-4d1e-a0f1-b63ff465e032
+		summarizeBy: none
+		sourceColumn: Has breached
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Original breach time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a6ca799c-f53f-4e46-8da8-c6225f59b9a0
+		summarizeBy: none
+		sourceColumn: Original breach time
+
+		variation Variation
+			isDefault
+			relationship: a3c44225-34b4-4ff1-9691-57dc36de1fbb
+			defaultHierarchy: LocalDateTable_abf061e2-553e-4ffc-88d9-dbd89a13e505.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pause duration'
+		dataType: int64
+		formatString: 0
+		lineageTag: 39808173-7038-4d0f-8268-63c2e7e1820a
+		summarizeBy: sum
+		sourceColumn: Pause duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actual elapsed percentage'
+		dataType: double
+		lineageTag: a07f50f0-784e-42d6-8321-4655671ef821
+		summarizeBy: sum
+		sourceColumn: Actual elapsed percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Actual time left'
+		dataType: int64
+		formatString: 0
+		lineageTag: af27f281-1270-4bdf-bcd3-7724d4a46361
+		summarizeBy: sum
+		sourceColumn: Actual time left
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assignment Group'
+		dataType: string
+		lineageTag: a379d484-ace3-4eab-8c52-3eba9b5665fc
+		summarizeBy: none
+		sourceColumn: Assignment Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Duration in Hours'
+		dataType: double
+		lineageTag: 2d3c7b48-a47d-4497-bbee-8b3a436c0c41
+		summarizeBy: sum
+		sourceColumn: Business Duration in Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Created by'
+		dataType: string
+		lineageTag: b602d1b0-6754-4881-bc24-3d241977b637
+		summarizeBy: none
+		sourceColumn: Created by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Alert'
+		dataType: string
+		lineageTag: 58aa8f7a-022d-4410-8f2c-098809e63a68
+		summarizeBy: none
+		sourceColumn: Last Alert
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pause time'
+		dataType: string
+		lineageTag: 0152bf3b-d544-4690-8174-c730ec274f48
+		summarizeBy: none
+		sourceColumn: Pause time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stage
+		dataType: string
+		lineageTag: 241d8ed9-789b-46c4-bc4c-bffe9415623b
+		summarizeBy: none
+		sourceColumn: Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f309a16d-e1e7-4785-8321-c815500c355a
+		summarizeBy: none
+		sourceColumn: Start time
+
+		variation Variation
+			isDefault
+			relationship: 9989dcb2-db5b-4153-a495-910cbe429596
+			defaultHierarchy: LocalDateTable_453c9119-da74-4281-a93a-374fbf11db78.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tags
+		dataType: string
+		lineageTag: 60e4c6ef-54e1-47df-8ed7-16c940ec7264
+		summarizeBy: none
+		sourceColumn: Tags
+
+		annotation SummarizationSetBy = Automatic
+
+	column Task
+		dataType: string
+		lineageTag: 148cb4f7-f477-4c09-a7f4-2818615566b6
+		summarizeBy: none
+		sourceColumn: Task
+
+		annotation SummarizationSetBy = Automatic
+
+	column Timezone
+		dataType: string
+		lineageTag: ed21799e-2c56-4ee7-ae4a-254b2320b135
+		summarizeBy: none
+		sourceColumn: Timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Updated
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 19b2bd33-b9d4-4fbc-839a-c0fd1021938b
+		summarizeBy: none
+		sourceColumn: Updated
+
+		variation Variation
+			isDefault
+			relationship: 5baba103-e313-42d7-88cd-a485a6447617
+			defaultHierarchy: LocalDateTable_1c9bd9c7-9fe5-4d21-993b-90d9171ad256.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Updated by'
+		dataType: string
+		lineageTag: b41a7127-494a-4746-a6a1-e3466c511ce9
+		summarizeBy: none
+		sourceColumn: Updated by
+
+		annotation SummarizationSetBy = Automatic
+
+	column Updates
+		dataType: int64
+		formatString: 0
+		lineageTag: 35ca5da2-a637-43c9-a78d-3869ab26220a
+		summarizeBy: sum
+		sourceColumn: Updates
+
+		annotation SummarizationSetBy = Automatic
+
+	column TYPE
+		dataType: string
+		lineageTag: 80d00f1c-bdbf-4eab-aa57-4bd4f32090f7
+		summarizeBy: none
+		sourceColumn: TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: b1e960c7-1edb-4839-b691-999e950de891
+		summarizeBy: sum
+		sourceColumn: Calendar Year
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f4e33ff-6061-43ad-9404-025bce069348
+		summarizeBy: sum
+		sourceColumn: Calendar Month
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_Fiscal Year' = SWITCH(MONTH(ServiceNow[Created]),1,CONCATENATE("FY ",YEAR(ServiceNow[Created])),CONCATENATE("FY ",YEAR(ServiceNow[Created])+1))
+		lineageTag: 7325f360-75e4-4999-be55-cb735c164012
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column _FY = CONCATENATE("FY " , RIGHT(ServiceNow[_Fiscal Year],2))
+		lineageTag: bb220542-09ed-4929-87bd-c26f55f48f5e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_Fiscal Quarter' = IF(ServiceNow[Calendar Month] IN {2,3,4},{ServiceNow[_Fiscal Year] & " Q1"},IF(ServiceNow[Calendar Month] IN {5,6,7},{ServiceNow[_Fiscal Year] & " Q2"},IF(ServiceNow[Calendar Month] IN {8,9,10},{ServiceNow[_Fiscal Year] & " Q3"},IF(ServiceNow[Calendar Month] IN {11,12,1},{ServiceNow[_Fiscal Year] & " Q4"}))))
+		lineageTag: afaae7da-66d0-4acd-80c9-0d7bc4a64c74
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_F Quarter' = CONCATENATE("FY", RIGHT(ServiceNow[_Fiscal Quarter],5))
+		lineageTag: 8670fc88-bbe4-4b02-878d-ff75714682a4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column _Month = FORMAT(ServiceNow[Created],"MMM YYYY")
+		lineageTag: 487f7c03-408b-48c2-b105-cb6412f72138
+		summarizeBy: none
+		sortByColumn: _F_Month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column _F_Month = ```
+			FORMAT(ServiceNow[Created],"YYYYMM") 
+			```
+		dataType: int64
+		formatString: 0
+		lineageTag: 351e6dd0-7eea-4947-8541-88f6eb52fc4e
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = User
+
+	column 'Resolved Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a0d1f2a5-cbdc-4190-9a67-707a0743adbd
+		summarizeBy: none
+		sourceColumn: Resolved Date
+
+		variation Variation
+			isDefault
+			relationship: baf1595f-cd5c-4648-bbdf-67477331595e
+			defaultHierarchy: LocalDateTable_222fff1f-c658-405a-9942-d26eb5b7f2d3.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 2dabb540-9574-40a5-a044-5795f84596d3
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_time
+		dataType: string
+		lineageTag: 90329ea9-e8f7-4fff-a3bd-e9d9114c7023
+		summarizeBy: none
+		sourceColumn: end_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_time_left
+		dataType: string
+		lineageTag: 3e36e33d-4bad-49e3-9f32-14c32ef03795
+		summarizeBy: none
+		sourceColumn: business_time_left
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration
+		dataType: string
+		lineageTag: 696b57db-8fb0-485a-85be-34dfe09cdabf
+		summarizeBy: none
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column planned_end_time
+		dataType: string
+		lineageTag: cc7e6d75-b404-45ff-9da2-221cd1e7db6d
+		summarizeBy: none
+		sourceColumn: planned_end_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column SLA
+		dataType: string
+		lineageTag: 472cfa79-20a2-41ee-9bdd-7c821e4e914c
+		summarizeBy: none
+		sourceColumn: SLA
+
+		annotation SummarizationSetBy = Automatic
+
+	column schedule
+		dataType: string
+		lineageTag: bb679465-d018-4866-918d-13ba6bae0a9a
+		summarizeBy: none
+		sourceColumn: schedule
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ServiceNow = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/ESEBIOPS/", [ApiVersion = 15]),
+				    #"Task_SLA xlsx_https://share autodesk com/sites/ESEBIOPS/Shared Documents/ServiceNow-Task/" = Source{[Name="Task_SLA.xlsx",#"Folder Path"="https://share.autodesk.com/sites/ESEBIOPS/Shared Documents/ServiceNow-Task/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"Task_SLA xlsx_https://share autodesk com/sites/ESEBIOPS/Shared Documents/ServiceNow-Task/"),
+				    #"Page 1_Sheet" = #"Imported Excel Workbook"{[Item="Page 1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Page 1_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Active", type logical}, {"Business elapsed time", Int64.Type}, {"Name", type text}, {"Business pause duration", Int64.Type}, {"Business elapsed percentage", type number}, {"Has breached", type logical}, {"Original breach time", type datetime}, {"Pause duration", Int64.Type}, {"Actual elapsed percentage", type number}, {"Actual time left", Int64.Type}, {"Assigned to", type text}, {"Assignment Group", type text}, {"Business Duration in Hours", type number}, {"Created", type datetime}, {"Created by", type text}, {"Last Alert", type text}, {"Pause time", type text}, {"Stage", type text}, {"Start time", type datetime}, {"Tags", type text}, {"Task", type text}, {"Timezone", type text}, {"Updated", type datetime}, {"Updated by", type text}, {"Updates", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.StartsWith([Task], "TASK")),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Filtered Rows",{"Closed", "end_time", "Created", "Active", "Business elapsed time", "Name", "Business pause duration", "Business elapsed percentage",  "Has breached", "Original breach time", "Pause duration", "Actual elapsed percentage", "Actual time left", "Assigned to", "Assignment Group",  "Business Duration in Hours", "Created by", "Last Alert", "Pause time", "Stage", "Start time", "Tags", "Task", "Timezone", "Updated", "Updated by", "Updates", "Priority"}),
+				    #"Added Custom" = Table.AddColumn(#"Reordered Columns", "TYPE", each "Resolution"),
+				    #"Inserted Year" = Table.AddColumn(#"Added Custom", "Year", each Date.Year([Created])),
+				    #"Inserted Month" = Table.AddColumn(#"Inserted Year", "Month", each Date.Month([Created])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Month",{{"Year", "Calendar Year"}, {"Month", "Calendar Month"}, {"Closed", "Resolved Date"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns1", {"Task"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

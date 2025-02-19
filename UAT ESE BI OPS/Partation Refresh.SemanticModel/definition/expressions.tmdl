@@ -1,0 +1,27 @@
+expression SYS_CREATED_ON =
+		let
+		    Source = (YearMonth as text) => let
+		    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="DEXDH_INGEST"]}[Data], "select substr(cast(SYS_CREATED_ON as string),1,10) as SYS_CREATED_ON,#(lf)substr(cast(SYS_CREATED_ON as string),1,7) as Year_Month#(lf) from DEXDH_INGEST.ESE_DEX_DATAINSIGHTS_SERVICENOW_PRIVATE.SNOW_TASK_SLA where left(SYS_CREATED_ON,7)='"&YearMonth&"'", null, [EnableFolding=true])
+		in
+		    Source
+		in
+		    Source
+	lineageTag: 1135e34b-56a1-4360-92bb-e61fb10fee82
+	queryGroup: YearMonth\YearM\YearM\SYS_CREATED_ON
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression SNOW_TASK_SLA =
+		let
+		    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="DEXDH_INGEST"]}[Data], "select substr(cast(SYS_CREATED_ON as string),1,10) as SYS_CREATED_ON,#(lf)substr(cast(SYS_CREATED_ON as string),1,7) as Year_Month#(lf) from DEXDH_INGEST.ESE_DEX_DATAINSIGHTS_SERVICENOW_PRIVATE.SNOW_TASK_SLA where left(SYS_CREATED_ON,7)='2024-09'", null, [EnableFolding=true])
+		in
+		    Source
+	lineageTag: 7a8ce4b8-3136-4809-81b4-5398d7900629
+	queryGroup: YearMonth\YearM\YearM\SYS_CREATED_ON
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

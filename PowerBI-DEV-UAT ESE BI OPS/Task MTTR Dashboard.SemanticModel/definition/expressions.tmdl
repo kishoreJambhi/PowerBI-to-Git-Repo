@@ -1,0 +1,13 @@
+expression Date_Sort =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8krMU9JRMlSK1YlWcktNArKNwGzfxCIg2xjMdiwAsU2g4pVAtimY7VUK0msGZecA2eYQ9aXpQLYFmB2cWgBkW4LZ/sklILsMwBy//DIQB2KzS2oyiAO0OhYA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Month = _t, No = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Month", type text}, {"No", Int64.Type}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"No", "Month_No"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: 154c5a24-b89e-42ff-baf9-967da703f9ab
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

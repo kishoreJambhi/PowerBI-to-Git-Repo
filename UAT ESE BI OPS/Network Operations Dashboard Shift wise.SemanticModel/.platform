@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Network Operations Dashboard Shift wise"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6ddfdcfc-0461-9092-4437-1229f8d6ad44"
+  }
+}

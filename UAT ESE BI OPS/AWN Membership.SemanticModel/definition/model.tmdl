@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["AWN_Membership_Consolidated"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+
+ref table AWN_Membership_Consolidated
+ref table DateTableTemplate_e490b56c-061a-4c2b-9870-84a43fe0dd49
+ref table LocalDateTable_703abf8b-3c94-4615-813a-d1c72090cc44
+ref table LocalDateTable_f5f8af6e-dee4-432e-8e40-61705e96d110
+ref table LocalDateTable_da4f603e-78df-441d-a1bb-7ef40a1e593a
+ref table LocalDateTable_87fc74f0-dc99-402a-86df-108ba4f0f1a1
+
+ref cultureInfo en-US
+

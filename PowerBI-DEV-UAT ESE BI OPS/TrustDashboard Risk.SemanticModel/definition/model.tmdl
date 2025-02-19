@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["risks_security_controls_privacy","TrustApp-Master","Query1","risks_security_controls_privacy (3)"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+
+ref table DateTableTemplate_4eafeb25-0ff2-40ac-abf6-ed6c9a35d8e6
+ref table risks_security_controls_privacy
+ref table TrustApp-Master
+ref table LocalDateTable_012f4e83-8b7b-42e8-b8d7-77c842d70504
+ref table Query1
+ref table 'risks_security_controls_privacy (3)'
+ref table LocalDateTable_1a3c2cf2-687c-479e-bc53-30fa6151883b
+
+ref cultureInfo en-US
+

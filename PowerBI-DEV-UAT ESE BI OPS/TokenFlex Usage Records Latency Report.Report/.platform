@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "TokenFlex Usage Records Latency Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7d94cdb4-242c-bba4-4a5a-1c473b2b75f9"
+  }
+}

@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBIDesktopVersion = 2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55
+
+annotation PBI_QueryOrder = ["Refresh","Measures (2)","Date_Sort","ServiceNow"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table DateTableTemplate_1e77b798-a11e-432a-a45c-5e421fe3ac1f
+ref table Refresh
+ref table LocalDateTable_276a7a12-d68e-4122-95b8-47b9297a4e78
+ref table Table
+ref table 'Measures (2)'
+ref table LocalDateTable_1f6fb6ff-92b9-49e8-897e-30b5443a6eef
+ref table ServiceNow
+ref table LocalDateTable_073a3dfa-9a40-4139-9cb3-1bd528764e36
+ref table LocalDateTable_abf061e2-553e-4ffc-88d9-dbd89a13e505
+ref table LocalDateTable_453c9119-da74-4281-a93a-374fbf11db78
+ref table LocalDateTable_1c9bd9c7-9fe5-4d21-993b-90d9171ad256
+ref table LocalDateTable_222fff1f-c658-405a-9942-d26eb5b7f2d3
+
+ref cultureInfo en-US
+

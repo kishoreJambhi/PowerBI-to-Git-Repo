@@ -1,0 +1,46 @@
+table Motivation
+	lineageTag: 21b71587-1d30-4135-94e6-fff3096d5470
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 81d84e8d-0454-4a42-b6f1-6631f89194ce
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 7d4cf20b-478a-4341-ab12-a2a1f5578cbc
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What motivated you to sign up with AWN?'
+		dataType: string
+		lineageTag: ab4b66a1-4a7b-4ece-bef5-cbe229a491d5
+		summarizeBy: none
+		sourceColumn: What motivated you to sign up with AWN?
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Motivation = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\brohlm\Autodesk\AWN - General\Impact Measurement\Annual Member Survey\2024-10\Autodesk Women's Network Impact Measurement Survey FY25(1-105).xlsx"), null, true),
+				    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"ID", Int64.Type}, {"Start time", type datetime}, {"Completion time", type datetime}, {"Email", type text}, {"Name", type text}, {"Last modified time", type any}, {"How did you learn about AWN?", type text}, {"What motivated you to sign up with AWN?", type text}, {"AWN has supported my personal goal(s) since I joined.", type text}, {"Based on your answer above, can you share an event or program that positively or negatively impacted your journey?", type text}, {"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?", type text}, {"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?", type text}, {"What if any additional support or resources would you like to see offered by AWN? ", type text}, {"What would you like to see AWN focus on in FY26?", type text}, {"If you haven't participated in any activities to date please indicate why.", type text}, {"What do you feel AWN is doing well?", type text}, {"How might we improve to better meet your needs?", type text}, {"Can we reach out to you if we have additional follow up questions?", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"ID", "Email", "What motivated you to sign up with AWN?"}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Removed Other Columns", {{"What motivated you to sign up with AWN?", Splitter.SplitTextByDelimiter(";", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "What motivated you to sign up with AWN?"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"What motivated you to sign up with AWN?", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each ([#"What motivated you to sign up with AWN?"] <> ""))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

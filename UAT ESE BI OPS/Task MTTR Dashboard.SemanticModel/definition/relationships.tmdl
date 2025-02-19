@@ -1,0 +1,35 @@
+relationship 531ec895-03d6-4953-bb34-212af599af57
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Refresh.'Last Refresh'
+	toColumn: LocalDateTable_276a7a12-d68e-4122-95b8-47b9297a4e78.Date
+
+relationship ee3178bb-d391-45a2-9eb6-fd76e0b5a141
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Table.Date
+	toColumn: LocalDateTable_1f6fb6ff-92b9-49e8-897e-30b5443a6eef.Date
+
+relationship 1ab0ff99-4612-40bd-91f0-ce69d3006ed9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceNow.Created
+	toColumn: LocalDateTable_073a3dfa-9a40-4139-9cb3-1bd528764e36.Date
+
+relationship a3c44225-34b4-4ff1-9691-57dc36de1fbb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceNow.'Original breach time'
+	toColumn: LocalDateTable_abf061e2-553e-4ffc-88d9-dbd89a13e505.Date
+
+relationship 9989dcb2-db5b-4153-a495-910cbe429596
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceNow.'Start time'
+	toColumn: LocalDateTable_453c9119-da74-4281-a93a-374fbf11db78.Date
+
+relationship 5baba103-e313-42d7-88cd-a485a6447617
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceNow.Updated
+	toColumn: LocalDateTable_1c9bd9c7-9fe5-4d21-993b-90d9171ad256.Date
+
+relationship baf1595f-cd5c-4648-bbdf-67477331595e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceNow.'Resolved Date'
+	toColumn: LocalDateTable_222fff1f-c658-405a-9942-d26eb5b7f2d3.Date
+

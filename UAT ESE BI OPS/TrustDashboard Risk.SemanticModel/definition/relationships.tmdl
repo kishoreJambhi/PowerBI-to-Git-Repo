@@ -1,0 +1,26 @@
+relationship 350fcb2f-4012-4fb7-bebb-afade538ea98
+	toCardinality: many
+	fromColumn: risks_security_controls_privacy.product/service
+	toColumn: TrustApp-Master.'Applications / Services'
+
+relationship 338722b5-81d5-459a-b7ef-52c60b29b66f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: risks_security_controls_privacy.Date
+	toColumn: LocalDateTable_012f4e83-8b7b-42e8-b8d7-77c842d70504.Date
+
+relationship ed618386-7269-4c05-9193-df9c87837f28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'risks_security_controls_privacy (3)'.'Extracted Date'
+	toColumn: LocalDateTable_1a3c2cf2-687c-479e-bc53-30fa6151883b.Date
+
+relationship 0c31fd2b-1ce7-4504-957f-cfa5480d8359
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Query1.'Extracted Date'
+	toColumn: 'risks_security_controls_privacy (3)'.'Extracted Date'
+
+relationship 84d6c787-d027-4da5-823d-538568ef7d7b
+	toCardinality: many
+	fromColumn: risks_security_controls_privacy.'Extracted Date'
+	toColumn: Query1.'Extracted Date'
+

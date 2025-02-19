@@ -1,0 +1,99 @@
+relationship 27ae5d2e-a966-4e75-a0b0-e258aa280be3
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: JiraTickets.Key
+	toColumn: Issues.Key
+
+relationship f6cd16b8-1a9b-4619-89b7-baf1eb7c7428
+	fromColumn: 'Participant''s'.Key
+	toColumn: Issues.Key
+
+relationship 5a67363d-fabe-4114-a925-ed1bdd4a749c
+	fromColumn: Components.Key
+	toColumn: Issues.Key
+
+relationship 87159320-b1e5-4982-8313-43d7c88ffb7f
+	fromColumn: JiraTickets.'Current Assignee:  Name'
+	toColumn: TeamVsMembers.TeamMembers
+
+relationship f55e2356-b4ed-4989-ad09-5e1245f2c7fe
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Issues.Key
+	toColumn: 'Fix Versions'.Key
+
+relationship 026e86bb-7e49-4cc6-b53a-a18a1fc41f6e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Issues.Created_Old
+	toColumn: LocalDateTable_adcc5f53-b4d3-4e92-b02b-4c42e319c823.Date
+
+relationship 64e541be-31a1-4a28-9162-3970a7ee2a9f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Issues.Updated
+	toColumn: LocalDateTable_1d942bf8-ff13-4b03-a5c6-d4fec2925f71.Date
+
+relationship c89a4ed5-786e-400c-adb3-fa2d3bef4f17
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Issues.Resolved
+	toColumn: LocalDateTable_92f44e3d-b60f-4834-8ed6-65af60436e5a.Date
+
+relationship 6812d5e2-f257-4015-b71e-681ec260001b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Issues.'Closed Date'
+	toColumn: LocalDateTable_9f239c73-bf56-4bf8-8007-13ab13da3f22.Date
+
+relationship 252c2d20-512e-4efc-91ad-d5b536442733
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Issues.'Closed Date Time'
+	toColumn: LocalDateTable_eb0b451b-0c63-40af-a62c-23b9c90fbdce.Date
+
+relationship 61d0368d-370b-440e-8168-465642d026c4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refreshed Date'.'Last Report Refresh Time'
+	toColumn: LocalDateTable_20fbc2cf-bc43-42fc-80cf-a6df43675fa3.Date
+
+relationship fbdf9abe-1039-4077-b883-e2f5bcac31f1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: JiraTickets.Created
+	toColumn: LocalDateTable_670f7c5d-9b4e-49fa-a25e-c7f0b80a9ece.Date
+
+relationship 9035ec44-a2f8-46bb-b3d4-9f19d4c9786f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: JiraTickets.Resolved
+	toColumn: LocalDateTable_d07dc8eb-a5a3-4221-b16f-7bfc41513fd6.Date
+
+relationship 0a0423bb-49bf-4851-b4c5-7c19221ae845
+	joinOnDateBehavior: datePartOnly
+	fromColumn: JiraTickets.ResolvedOn
+	toColumn: LocalDateTable_3713c6c0-6c50-4c22-9b65-1e1cc73b6011.Date
+
+relationship e3c00d2a-d5d3-4d53-ae2a-7a6ec8134e07
+	joinOnDateBehavior: datePartOnly
+	fromColumn: JiraTickets.Updated
+	toColumn: LocalDateTable_d5de3bd4-5b54-4e3d-8ebb-349bb61f30d5.Date
+
+relationship 8f189385-ccc5-47dd-8e06-b417f7fe946d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateDim.Date
+	toColumn: LocalDateTable_15576534-c8cb-41f3-860e-88803739ee42.Date
+
+relationship 310bc1f7-91d2-4f12-8bfe-927b89bb099d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: JiraTickets.'Resolved on1'
+	toColumn: LocalDateTable_ddcccfcc-7b28-4778-a8be-1cf5ce711837.Date
+
+relationship 8f97a519-1f58-4a31-bf42-cfdc81f42516
+	toCardinality: many
+	fromColumn: JiraTickets.'Date (bins)'
+	toColumn: DateDim.'Date (bins)'
+
+relationship 5cc7280a-6daf-4075-864c-ad736c294cf5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: JiraTickets.Created_Old
+	toColumn: LocalDateTable_2646edc1-87be-40f1-bffc-69cc2b08ecf9.Date
+
+relationship 18c19b24-af09-49c8-a835-58dd0674703b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Issues.Created
+	toColumn: LocalDateTable_34d6d9a7-ce23-44c0-8c86-9b52f434182f.Date
+

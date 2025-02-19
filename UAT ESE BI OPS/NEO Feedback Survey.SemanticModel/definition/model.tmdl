@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["NEO Feedback Survey","NEO Feedback Survey (2)","Query1"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+
+ref table 'NEO Feedback Survey'
+ref table DateTableTemplate_84b7b1a2-f3ea-4a7a-b9bb-07d6dcd367e6
+ref table LocalDateTable_76b64d88-a501-4c62-a623-64883fbe8d62
+ref table LocalDateTable_2fd23cbb-4312-43f8-b60d-545bba006652
+ref table LocalDateTable_10afcfac-0aca-4bbd-a71b-3db8a22048e4
+ref table 'NEO Feedback Survey (2)'
+ref table LocalDateTable_a3871185-df9d-471f-a096-38c08535dc6c
+
+ref cultureInfo en-US
+

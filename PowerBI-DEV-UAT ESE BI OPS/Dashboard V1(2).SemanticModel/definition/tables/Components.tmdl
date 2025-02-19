@@ -1,0 +1,32 @@
+table Components
+	lineageTag: 6abded1d-6bea-4c1a-bdbf-25de4ac64c3b
+
+	column Key
+		dataType: string
+		lineageTag: 4dbb995c-fb6b-407b-8ebc-4fc9ad13e48b
+		summarizeBy: none
+		sourceColumn: Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Component Name (1)'
+		dataType: string
+		lineageTag: 7ef2384d-d83e-4953-9b28-8b104bf49852
+		summarizeBy: none
+		sourceColumn: Component Name (1)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Components = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://jira.autodesk.com/rest/aio-bi/1.0/powerbi/export/ZTQyYTYwNTktNTcyZC00NGE2LTg2MjUtNDFmNWU3ZDE2", null, [Implementation="2.0"]),
+				    Components_table = Source{[Name="Components",Signature="table"]}[Data]
+				in
+				    Components_table
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

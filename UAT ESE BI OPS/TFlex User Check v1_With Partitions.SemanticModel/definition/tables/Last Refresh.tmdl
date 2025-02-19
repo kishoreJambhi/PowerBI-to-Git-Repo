@@ -1,0 +1,23 @@
+table 'Last Refresh'
+	lineageTag: d3783f90-60b0-4417-b5a5-98d11a107c27
+
+	column 'Last Refresh'
+		dataType: string
+		lineageTag: 0d822e69-a16c-4b81-b104-28ff008aa176
+		summarizeBy: none
+		sourceColumn: Last Refresh
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Last Refresh-48a19bf3-a03e-4737-a78d-acf47ecfa97b' = m
+		mode: import
+		source =
+				let
+				    Source = DateTime.LocalNow(),
+				    #"Converted to Table" = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Last Refresh"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

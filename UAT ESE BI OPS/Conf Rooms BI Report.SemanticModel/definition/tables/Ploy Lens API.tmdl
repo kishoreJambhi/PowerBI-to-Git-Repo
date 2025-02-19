@@ -1,0 +1,356 @@
+table 'Ploy Lens API'
+	lineageTag: 7d0582d3-9605-43dd-a33e-77d7998909ec
+
+	measure _AMER =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName])+0,
+			    'Ploy Lens API'[Region] = "AMER"
+			)
+		formatString: 0
+		lineageTag: 83b2ca94-af3c-4f95-af24-f0d73f04440f
+
+	measure _Rutledge =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName])+0,
+			    'Ploy Lens API'[Region] = "Rutledge"
+			)
+		formatString: 0
+		lineageTag: 4608b4f1-8fbf-499e-8be6-9cd0bc8a8d47
+
+	measure _APAC =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName])+0,
+			    'Ploy Lens API'[Region] = "APAC"
+			)
+		formatString: 0
+		lineageTag: 84f8fffc-c4a1-4bfb-8726-083bb9f8ce19
+
+	measure _EMEA =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName])+0,
+			    'Ploy Lens API'[Region] = "EMEA"
+			)
+		formatString: 0
+		lineageTag: e296cb15-4e2c-47ee-a9ec-6bbbaac991ef
+
+	measure _Blank =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName])+0,
+			    'Ploy Lens API'[Region] = ""
+			)
+		formatString: 0
+		lineageTag: f243c83d-7cb3-4ae6-ba1a-c6818a9c3db6
+
+	column 'Device name'
+		dataType: string
+		lineageTag: d3996887-ea10-4ce3-a679-90c1d28a11a0
+		summarizeBy: none
+		sourceColumn: Device name
+
+		annotation SummarizationSetBy = Automatic
+
+	column serialNumber
+		dataType: string
+		lineageTag: bd3d0a0e-70e0-43b1-84e9-f98e115678ea
+		summarizeBy: none
+		sourceColumn: serialNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column macAddress
+		dataType: string
+		lineageTag: 68198abf-5594-4d91-b117-30877356c1d4
+		summarizeBy: none
+		sourceColumn: macAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardwareFamily
+		dataType: string
+		lineageTag: e3fa005e-3a07-4484-9ad5-06f75c877ede
+		summarizeBy: none
+		sourceColumn: hardwareFamily
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardwareModel
+		dataType: string
+		lineageTag: 6c5bf697-865f-48a7-a3de-f199bf09d23f
+		summarizeBy: none
+		sourceColumn: hardwareModel
+
+		annotation SummarizationSetBy = Automatic
+
+	column softwareVersion
+		dataType: string
+		lineageTag: c24dcc42-d8e0-49cd-bb85-51a98f52ca9a
+		summarizeBy: none
+		sourceColumn: softwareVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	column activeApplicationName
+		dataType: string
+		lineageTag: 092d052c-7a2f-47ac-8525-0628a3d2db67
+		summarizeBy: none
+		sourceColumn: activeApplicationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column hasPeripherals
+		dataType: string
+		lineageTag: cfe54d5e-cc0a-4c5b-ae93-c2eb2e30c04d
+		summarizeBy: none
+		sourceColumn: hasPeripherals
+
+		annotation SummarizationSetBy = Automatic
+
+	column displayName
+		dataType: string
+		lineageTag: 8ea12a14-d4ed-4723-b7eb-5eeaa0c972ca
+		summarizeBy: none
+		sourceColumn: displayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: a94994df-2188-42f6-8f44-835483860f17
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 7bac4d66-a304-4541-a48f-1adf7f86f92d
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column State/City
+		dataType: string
+		lineageTag: 23569512-87ee-42a4-8dfa-640e8ddd5a03
+		summarizeBy: none
+		sourceColumn: State/City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: ee32a8be-6e00-4f6f-9d49-1dceba250660
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'room.name'
+		dataType: string
+		lineageTag: 30c89e57-dc36-4227-8cc6-15c3c2cf3292
+		summarizeBy: none
+		sourceColumn: room.name
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardwareProduct
+		dataType: string
+		lineageTag: ead8388c-2db7-404d-86c2-867555cde04f
+		summarizeBy: none
+		sourceColumn: hardwareProduct
+
+		annotation SummarizationSetBy = Automatic
+
+	column externalIp
+		dataType: string
+		lineageTag: 75038cc6-0dd9-4985-8557-91bf69bd3d21
+		summarizeBy: none
+		sourceColumn: externalIp
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Future Upgrade Version'
+		dataType: string
+		lineageTag: 93dc82c6-c70e-4e9d-9d7a-2c8b61ad219a
+		summarizeBy: none
+		sourceColumn: Future Upgrade Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned Upgrade Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 44ad73a9-40a8-4c31-8d38-06b8600f968d
+		summarizeBy: none
+		sourceColumn: Planned Upgrade Date
+
+		variation Variation
+			isDefault
+			relationship: 702f9ed2-d25e-402d-af86-511b2131a1de
+			defaultHierarchy: LocalDateTable_fc71c1c3-6bb7-4667-9931-8133d33386b4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AMER =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName]),
+			    'Ploy Lens API'[Region] = "AMER",ALLSELECTED('Ploy Lens API'[displayName]))
+		formatString: 0
+		lineageTag: 289edee6-4dfc-49e8-a9f2-9d80f531005e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rutiedge
+		type: calculated
+		lineageTag: b4245a20-e0d2-4193-907c-b7ea27944f67
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":"\nCALCULATE(\n    COUNT('Ploy Lens API'[Device name]),\n    'Ploy Lens API'[Region] = \"Rutiedge\"\n)"}
+
+		annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = ```
+				A circular dependency was detected: Ploy Lens API[Column], Ploy Lens API[AMER], Ploy Lens API[Column].
+				
+				```
+
+	column APAC =
+			
+			CALCULATE(
+			    COUNT('Ploy Lens API'[displayName]),
+			    'Ploy Lens API'[Region] ="APAC", ALL('Ploy Lens API'))
+		formatString: 0
+		lineageTag: 1bf3d7f8-72ea-44ef-91eb-c4ce3a8eb6ad
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Region Hierarchy'
+		lineageTag: 4271d36e-2f48-4ad7-ae60-0a118a168ba3
+
+		level Region
+			lineageTag: 9fc79c72-1a58-45af-9fa3-e3ac56c20660
+			column: Region
+
+		level Country
+			lineageTag: e87bd360-d744-4fd2-8179-7f46276fabe6
+			column: Country
+
+		level State/City
+			lineageTag: c8c87d5d-1f88-486b-b5c2-65347977b40f
+			column: State/City
+
+		level Location
+			lineageTag: bfaeeac4-465c-4c39-b0d9-334d2d125d65
+			column: Location
+
+	partition 'Ploy Lens API' = m
+		mode: import
+		source = ```
+				let
+				    // Step 1: Define the credentials and endpoints
+				    clientId = "WFobsI65OKKYy1Y9MpKLybESlOEGUxhh",
+				    clientSecret = "D0vmPf1kgbftqoKoAcwhmr2mZv1rgNpSZ3snqGyGQ7a25Pv8",
+				    authUrl = "https://login.silica-prod01.io.lens.poly.com/oauth/token",
+				    endpoint = "https://api.silica-prod01.io.lens.poly.com/graphql",
+				     // Step 2: Authenticate and get the access token
+				    authBody = "grant_type=client_credentials&client_id=" & clientId & "&client_secret=" & clientSecret,
+				    authResponse = Web.Contents(authUrl,
+				        [
+				            Headers = [#"Content-Type"="application/x-www-form-urlencoded"],
+				            Content = Text.ToBinary(authBody)
+				        ]
+				    ),
+				    authResponseJson = Json.Document(authResponse),
+				    accessToken = try authResponseJson[access_token] otherwise null,
+				    // Step 3: Handle cases where the access token is not retrieved
+				    result = if accessToken = null then
+				        error "Authorization failed: " & Text.FromBinary(authResponse) // Include raw response for details
+				    else
+				        let
+				            // Step 4: Create the GraphQL query
+				            GetData = (nextToken) => 
+				                let 
+				                    APIResponse = Web.Contents(endpoint, 
+				                    [
+				                        Headers = [
+				                            #"Authorization"="Bearer " & accessToken, 
+				                            #"Content-Type"="application/json"
+				                        ], 
+				                        Content = Text.ToBinary("{""query"": ""query Node($params: DeviceFindArgs) { deviceSearch(params: $params) { edges { node { name serialNumber macAddress hardwareFamily hardwareModel softwareVersion activeApplicationName hasPeripherals id displayName hardwareProduct externalIp site{name} room{name} }} pageInfo { hasNextPage nextToken } }}"",""variables"": " & nextToken & "}")
+				                        ]),
+				                    json = Json.Document(APIResponse)
+				                in
+				                    json,
+				            
+				            GetDataRecursive = (res) => 
+				                let
+				                    nextTokenInfo = res[data][deviceSearch][pageInfo],
+				                    data = res[data][deviceSearch][edges]
+				                in
+				                    if nextTokenInfo[hasNextPage] then List.Combine({data, @GetDataRecursive(GetData("{""params"": {""nextToken"": """ & nextTokenInfo[nextToken] & """}}"))}) else data,
+				            
+				            intialResponse = Web.Contents(endpoint, 
+				                    [
+				                        Headers = [
+				                            #"Authorization"="Bearer " & accessToken, 
+				                            #"Content-Type"="application/json"
+				                        ], 
+				                        Content = Text.ToBinary("{""query"": ""query Node { deviceSearch { edges { node { name serialNumber macAddress hardwareFamily hardwareModel softwareVersion activeApplicationName hasPeripherals id displayName hardwareProduct externalIp site{name} room{name} } } pageInfo { hasNextPage nextToken } }}""}")
+				                        ]),
+				            data = GetDataRecursive(Json.Document(intialResponse)),
+				
+				
+				
+				            // // Step 5: Use the access token to make the API request
+				            // apiResponse = Web.Contents(endpoint,
+				            //     [
+				            //         Headers = [#"Authorization"="Bearer " & accessToken, #"Content-Type"="application/json"],
+				            //         Content = Text.ToBinary(graphqlQuery)
+				            //     ]
+				            // ),
+				            // jsonResponse = Json.Document(apiResponse),
+				            // Step 6: Extract the required data
+				            // data = jsonResponse[data][deviceSearch][edges],
+				            nodes = List.Transform(data, each [node]),
+				            // Step 7: Convert the list into a table
+				            tableData = Table.FromList(nodes, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				            // Step 8: Expand the columns to extract the specific fields
+				            expandedData = Table.ExpandRecordColumn(tableData, "Column1",
+				                {"name", "serialNumber", "macAddress", "hardwareFamily", "hardwareModel", "softwareVersion", "activeApplicationName", "hasPeripherals", "displayName", "hardwareProduct", "externalIp", "site", "room"},
+				                {"name", "serialNumber", "macAddress", "hardwareFamily", "hardwareModel", "softwareVersion", "activeApplicationName", "hasPeripherals", "displayName", "hardwareProduct", "externalIp", "site", "room"})
+				        in
+				            expandedData,
+				    #"Expanded site" = Table.ExpandRecordColumn(result, "site", {"name"}, {"site.name"}),
+				    #"Expanded room" = Table.ExpandRecordColumn(#"Expanded site", "room", {"name"}, {"room.name"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded room", each ([displayName] <> null)),
+				    #"Trimmed Text" = Table.TransformColumns(#"Filtered Rows",{{"site.name", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"site.name", Text.Clean, type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Cleaned Text", "site.name", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"site.name.1", "site.name.2", "site.name.3", "site.name.4", "site.name.5", "site.name.6", "site.name.7"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Split Column by Delimiter",null,"",Replacer.ReplaceValue,{"site.name.5", "site.name.6"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value",{{"site.name.2", "Cuntry"}, {"site.name.3", "State/City"}, {"site.name.1", "Region"}, {"name", "Device name"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"serialNumber", type text}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Changed Type1",{"site.name.4", "site.name.5", "site.name.6", "site.name.7"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Merged"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Merged Columns",{{"Merged", "Location"}, {"Cuntry", "Country"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns1", {"serialNumber"}, Sharepoint, {"Serial number"}, "Sharepoint", JoinKind.LeftOuter),
+				    #"Expanded Sharepoint" = Table.ExpandTableColumn(#"Merged Queries", "Sharepoint", {"Future Upgrade #(lf)Version", "Planned Upgrade Date"}, {"Future Upgrade #(lf)Version", "Planned Upgrade Date"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Sharepoint",{{"Planned Upgrade Date", type date}}),
+				    #"Trimmed Text1" = Table.TransformColumns(#"Changed Type",{{"Device name", Text.Trim, type text}}),
+				    #"Cleaned Text1" = Table.TransformColumns(#"Trimmed Text1",{{"Device name", Text.Clean, type text}})
+				in
+				    #"Cleaned Text1"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

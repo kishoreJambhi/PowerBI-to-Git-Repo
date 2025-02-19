@@ -1,0 +1,48 @@
+table 'risks_security_controls_privacy (3)'
+	lineageTag: 1089b0f9-c7d1-494b-9132-b74a34c9a38e
+
+	column 'Extracted Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6f8c4acb-111f-4023-a104-468520ce374f
+		summarizeBy: none
+		sourceColumn: Extracted Date
+
+		variation Variation
+			isDefault
+			relationship: ed618386-7269-4c05-9193-df9c87837f28
+			defaultHierarchy: LocalDateTable_1a3c2cf2-687c-479e-bc53-30fa6151883b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Priority/Severity_new
+		dataType: string
+		lineageTag: e653f8dc-f431-44c9-a2f8-6557da05cb1a
+		summarizeBy: none
+		sourceColumn: Priority/Severity_new
+
+		annotation SummarizationSetBy = Automatic
+
+	column finding
+		dataType: string
+		lineageTag: 7064b9ed-256d-41b3-b765-7597e86b6d20
+		summarizeBy: none
+		sourceColumn: finding
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'risks_security_controls_privacy (3)' = m
+		mode: import
+		source =
+				let
+				    Source = risks_security_controls_privacy,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"finding", "Extracted Date", "Priority/Severity_new"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,174 @@
+table Survey_Results
+	lineageTag: b49d1e02-a00d-4bda-b892-6eeabd384822
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: ebf9b11e-9174-43b6-9bf3-4c9d68127f88
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d26acaa3-5568-4cc1-8a68-7341df00a798
+		summarizeBy: none
+		sourceColumn: Start time
+
+		variation Variation
+			isDefault
+			relationship: d8388c06-ba4d-4174-828b-aa6f8fb952c0
+			defaultHierarchy: LocalDateTable_e0e3ef95-4ef4-45b0-9784-e8eb3fec5b78.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completion time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d11d081a-3031-4fc8-8d14-9fcde7cfa6de
+		summarizeBy: none
+		sourceColumn: Completion time
+
+		variation Variation
+			isDefault
+			relationship: 0cb511a8-3313-4f96-abc7-60bda512ca3f
+			defaultHierarchy: LocalDateTable_905fe3b7-3f16-4b57-8a31-f4af8b2e5ee1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 3142f4e8-2ce4-4a07-90f0-8c0e903afcaa
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 846e82e8-8cb5-4577-b368-d34fa2d1b8ee
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last modified time'
+		dataType: string
+		lineageTag: 4be08666-0d5c-4607-ad6a-b18670bc21f2
+		summarizeBy: none
+		sourceColumn: Last modified time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How did you learn about AWN?'
+		dataType: string
+		lineageTag: 561395ca-d9e6-44e2-9ffc-2e087fd46944
+		summarizeBy: none
+		sourceColumn: How did you learn about AWN?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What motivated you to sign up with AWN?'
+		dataType: string
+		lineageTag: af69c5fc-f4bc-41a6-8fc1-f94aa4f7acca
+		summarizeBy: none
+		sourceColumn: What motivated you to sign up with AWN?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AWN has supported my personal goal(s) since I joined.'
+		dataType: string
+		lineageTag: bc930961-6bbe-439d-9a15-59785ef89b4c
+		summarizeBy: none
+		sourceColumn: AWN has supported my personal goal(s) since I joined.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Based on your answer above, can you share an event or program that positively or negatively impacted your journey?'
+		dataType: string
+		lineageTag: c823f177-e0bb-488d-bd8c-bc0c2a61a3c1
+		summarizeBy: none
+		sourceColumn: Based on your answer above, can you share an event or program that positively or negatively impacted your journey?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How has your involvement in AWN impacted your sense of belonging and inclusion within the company?'
+		dataType: string
+		lineageTag: 74185bee-d16e-426c-8f68-f5262f2f2f5b
+		summarizeBy: none
+		sourceColumn: How has your involvement in AWN impacted your sense of belonging and inclusion within the company?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?'
+		dataType: string
+		lineageTag: fc01399c-59e5-44d7-aa93-5dafe957f128
+		summarizeBy: none
+		sourceColumn: How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What if any additional support or resources would you like to see offered by AWN? '
+		dataType: string
+		lineageTag: 128c99c5-727d-44aa-9403-ac1733aadb15
+		summarizeBy: none
+		sourceColumn: "What if any additional support or resources would you like to see offered by AWN? "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What would you like to see AWN focus on in FY26?'
+		dataType: string
+		lineageTag: e711e90b-9f9a-419d-9fac-3647a922724c
+		summarizeBy: none
+		sourceColumn: What would you like to see AWN focus on in FY26?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'If you haven''t participated in any activities to date please indicate why.'
+		dataType: string
+		lineageTag: 6edd539b-5bef-4200-a80d-93ca4f19671e
+		summarizeBy: none
+		sourceColumn: If you haven't participated in any activities to date please indicate why.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'What do you feel AWN is doing well?'
+		dataType: string
+		lineageTag: acd7f6d1-2750-4705-8aea-08eaf09f7174
+		summarizeBy: none
+		sourceColumn: What do you feel AWN is doing well?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'How might we improve to better meet your needs?'
+		dataType: string
+		lineageTag: e4329ff3-79af-4324-9d3e-8d533cdc5d4b
+		summarizeBy: none
+		sourceColumn: How might we improve to better meet your needs?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Can we reach out to you if we have additional follow up questions?'
+		dataType: string
+		lineageTag: a275c19a-cbd3-4fd3-bf91-4035862d90f0
+		summarizeBy: none
+		sourceColumn: Can we reach out to you if we have additional follow up questions?
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Survey_Results = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\brohlm\Autodesk\AWN - General\Impact Measurement\Annual Member Survey\2024-10\Autodesk Women's Network Impact Measurement Survey FY25(1-105).xlsx"), null, true),
+				    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"ID", Int64.Type}, {"Start time", type datetime}, {"Completion time", type datetime}, {"Email", type text}, {"Name", type text}, {"Last modified time", type any}, {"How did you learn about AWN?", type text}, {"What motivated you to sign up with AWN?", type text}, {"AWN has supported my personal goal(s) since I joined.", type text}, {"Based on your answer above, can you share an event or program that positively or negatively impacted your journey?", type text}, {"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?", type text}, {"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?", type text}, {"What if any additional support or resources would you like to see offered by AWN? ", type text}, {"What would you like to see AWN focus on in FY26?", type text}, {"If you haven't participated in any activities to date please indicate why.", type text}, {"What do you feel AWN is doing well?", type text}, {"How might we improve to better meet your needs?", type text}, {"Can we reach out to you if we have additional follow up questions?", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

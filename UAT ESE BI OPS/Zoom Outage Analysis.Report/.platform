@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Zoom Outage Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3a95d6d3-ccb1-8632-4370-634e0f76170d"
+  }
+}

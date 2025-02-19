@@ -1,0 +1,54 @@
+expression Sharepoint = "https://share.autodesk.com/sites/ESEPowerBIRepository/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 5ea48722-39d4-476f-a8a0-d7b30c4a3a27
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Sharepoint1 = "https://share.autodesk.com/sites/SPO_WWCO_Pricing_Repository/Token Rates/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: aaba2d85-f9a7-49f2-b9be-220aec6a3b19
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Query2 =
+		let
+		    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="ADP_PUBLISH"]}[Data], "SELECT#(lf)   dd.end_customer_agreement_id#(lf)   ,dd.agree_nbr#(lf)   ,substr(cast(dd.usage_dt as string),1,7) as usage_month#(lf)   ,substr(cast(dd.usage_dt as string),1,10) as usage_dt#(lf)   ,dd.product_line_cd#(lf)   ,dd.user_login_id#(lf)   ,dd.machine_nm#(lf)   ,dd.license_server_nm#(lf)   ,dd.duration_mns#(lf)   ,dd.txn_units_nbr#(lf)   ,dd.end_customer_agreement_yr_ind#(lf)   ,'DESKTOP_PRODUCT' as txn_type_nm#(lf)   ,case when dd.service_category_nm in ('NULL','INCREMENTAL') then 'CHARGED'#(lf)         else dd.service_category_nm#(lf)    end as service_category_nm#(lf)   ,case when dd.multi_year_flg='Y' then 'MY' else 'CY' end as token_pool_cd#(lf)     ,concat(DD.user_login_id,DD.product_line_cd,DD.usage_dt) as use_count_field -- Count derived dynamically based on filters applied#(lf)FROM ""ADP_PUBLISH"".""TOKEN_FLEX_CORE_PUBLIC"".""t_eccr_agg_product_usage_dd"" dd#(lf)WHERE dd.txn_type_nm='PRODUCT_CONSUMPTION'and left(usage_dt,7) ='2021-04'", null, [EnableFolding=true])
+		in
+		    Source
+	lineageTag: d775ff62-651e-49dd-968f-930cad0a2f3d
+	queryGroup: TFLEX_USAGE_YEARMONTH\YearM
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression TFLEX_USAGE_YEARMONTH =
+		let
+		    Source = (YearMonth as text) => let
+		        Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="ADP_PUBLISH"]}[Data], "SELECT#(lf)   dd.end_customer_agreement_id#(lf)   ,dd.agree_nbr#(lf)   ,substr(cast(dd.usage_dt as string),1,7) as usage_month#(lf)   ,substr(cast(dd.usage_dt as string),1,10) as usage_dt#(lf)   ,dd.product_line_cd#(lf)   ,dd.user_login_id#(lf)   ,dd.machine_nm#(lf)   ,dd.license_server_nm#(lf)   ,dd.duration_mns#(lf)   ,dd.txn_units_nbr#(lf)   ,dd.end_customer_agreement_yr_ind#(lf)   ,'DESKTOP_PRODUCT' as txn_type_nm#(lf)   ,case when dd.service_category_nm in ('NULL','INCREMENTAL') then 'CHARGED'#(lf)         else dd.service_category_nm#(lf)    end as service_category_nm#(lf)   ,case when dd.multi_year_flg='Y' then 'MY' else 'CY' end as token_pool_cd#(lf)     ,concat(DD.user_login_id,DD.product_line_cd,DD.usage_dt) as use_count_field -- Count derived dynamically based on filters applied#(lf)FROM ""ADP_PUBLISH"".""TOKEN_FLEX_CORE_PUBLIC"".""t_eccr_agg_product_usage_dd"" dd#(lf)WHERE dd.txn_type_nm='PRODUCT_CONSUMPTION'and left(usage_dt,7) ='"&YearMonth&"'", null, [EnableFolding=true])
+		    in
+		        Source
+		in
+		    Source
+	lineageTag: a8955171-a477-4cfd-b87f-5f7b9835bd92
+	queryGroup: TFLEX_USAGE_YEARMONTH
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression YearM =
+		let
+		    Source = (YearMonth as text) => let
+		    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="ADP_PUBLISH"]}[Data], "SELECT#(lf)   dd.end_customer_agreement_id#(lf)   ,dd.agree_nbr#(lf)   ,substr(cast(dd.usage_dt as string),1,7) as usage_month#(lf)   ,substr(cast(dd.usage_dt as string),1,10) as usage_dt#(lf)   ,dd.product_line_cd#(lf)   ,dd.user_login_id#(lf)   ,dd.machine_nm#(lf)   ,dd.license_server_nm#(lf)   ,dd.duration_mns#(lf)   ,dd.txn_units_nbr#(lf)   ,dd.end_customer_agreement_yr_ind#(lf)   ,'DESKTOP_PRODUCT' as txn_type_nm#(lf)   ,case when dd.service_category_nm in ('NULL','INCREMENTAL') then 'CHARGED'#(lf)         else dd.service_category_nm#(lf)    end as service_category_nm#(lf)   ,case when dd.multi_year_flg='Y' then 'MY' else 'CY' end as token_pool_cd#(lf)     ,concat(DD.user_login_id,DD.product_line_cd,DD.usage_dt) as use_count_field -- Count derived dynamically based on filters applied#(lf)FROM ""ADP_PUBLISH"".""TOKEN_FLEX_CORE_PUBLIC"".""t_eccr_agg_product_usage_dd"" dd#(lf)WHERE dd.txn_type_nm='PRODUCT_CONSUMPTION'and left(usage_dt,7) ='2021-04'", null, [EnableFolding=true])
+		in
+		    Source
+		in
+		    Source
+	lineageTag: 1ec24327-a992-4f51-8c41-07cee40b7da9
+	queryGroup: TFLEX_USAGE_YEARMONTH\YearM
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

@@ -1,0 +1,43 @@
+relationship 21b018f2-b2ed-4a20-9a58-8473def36176
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'File Modified Date'.'Date modified'
+	toColumn: LocalDateTable_726ec32a-2b8e-4477-8aa5-591ac1dd1450.Date
+
+relationship b077b2d4-058a-4e5c-950f-1534188e91d1
+	crossFilteringBehavior: bothDirections
+	fromColumn: TokenFlex_Daily_Usage.AGREE_NBR
+	toColumn: 'CUSTOMER TABLE'.AGREE_NBR
+
+relationship 32525b61-e929-4caa-b80a-727d5ae59dab
+	fromColumn: TokenFlex_Daily_Usage.USER_LOGIN_ID
+	toColumn: Robots.USER_LOGIN_ID
+
+relationship f20311c4-49b7-43e0-a2cc-4ba6376a2748
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TokenFlex_Daily_Usage.USAGE_DT
+	toColumn: LocalDateTable_479ca0f2-49b4-47a0-826e-c67cedd91a33.Date
+
+relationship dda4ca14-194c-4c57-83ce-6fa0cd62bd52
+	crossFilteringBehavior: bothDirections
+	fromColumn: TokenFlex_Daily_Usage.PRODUCT_LINE_CD
+	toColumn: 'PRODUCT TABLE'.PRODUCT_LINE_CD
+
+relationship e2f97736-7266-4eda-b75d-c0a364e906ee
+	crossFilteringBehavior: bothDirections
+	fromColumn: TokenFlex_Daily_Usage.Product_Name
+	toColumn: 'Token Rate'.'Product Name'
+
+relationship 8d5e49e2-e1ca-4080-b408-6f5f6acf73c5
+	crossFilteringBehavior: bothDirections
+	fromColumn: TokenFlex_Daily_Usage.USER_LOGIN_ID
+	toColumn: 'TOP USERS BY DAY'.USER_LOGIN_ID
+
+relationship 0544c5a8-0829-464d-aa18-d64b2cd21eaa
+	fromColumn: 'Testing one'.AGREE_NBR
+	toColumn: 'CUSTOMER TABLE'.AGREE_NBR
+
+relationship ae189ef3-31bb-428c-a7cd-40c76283db64
+	isActive: false
+	fromColumn: 'Testing one'.PRODUCT_LINE_CD
+	toColumn: 'PRODUCT TABLE'.PRODUCT_LINE_CD
+

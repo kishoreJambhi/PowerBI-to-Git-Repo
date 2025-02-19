@@ -1,0 +1,109 @@
+table ZOOM_STATUS_LOG
+	lineageTag: 800c4a97-c897-4b66-8d6f-721314bc135d
+
+	column 'Zoom Room Name '
+		dataType: string
+		lineageTag: 7ddb2ee8-e944-41c7-ba11-422e8532fed8
+		summarizeBy: none
+		sourceColumn: "Zoom Room Name "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Received Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 72f89b9d-f12e-4481-a41c-6fda8f64c55c
+		summarizeBy: none
+		sourceColumn: Received Date
+
+		variation Variation
+			isDefault
+			relationship: 71196e65-e077-4336-a362-47734760920c
+			defaultHierarchy: LocalDateTable_0a8b585e-7b1f-40c8-ab61-7a5a62e9682d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Component
+		dataType: string
+		lineageTag: 690522be-273a-4277-bf8e-b3931d035f8a
+		summarizeBy: none
+		sourceColumn: Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column Message
+		dataType: string
+		lineageTag: 7f05af56-a337-4622-96df-aaa3b624b77f
+		summarizeBy: none
+		sourceColumn: Message
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fcfa313-be18-4d2e-a0dc-feffc876a47e
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 9c07ec84-6621-4dae-ad28-0cc2d0ecbb08
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = CONCATENATE(IF(MONTH(ZOOM_STATUS_LOG[Received Date]) in{2,3,4}, "Q1" , IF(MONTH(ZOOM_STATUS_LOG[Received Date]) in{5,6,7}, "Q2" ,IF(MONTH(ZOOM_STATUS_LOG[Received Date]) in {8,9,10}, "Q3" ,IF(MONTH(ZOOM_STATUS_LOG[Received Date]) in{11,12,1}, "Q4")))),"-"& 'ZOOM_STATUS_LOG'[FY])
+		lineageTag: 9f1f1efc-2fc1-4e30-94f5-716856612dfe
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY = if(MONTH('ZOOM_STATUS_LOG'[Received Date])=1,"FY" & right(YEAR('ZOOM_STATUS_LOG'[Received Date]),2),"FY" & right(YEAR('ZOOM_STATUS_LOG'[Received Date]),2)+1)
+		lineageTag: dc4b863c-c356-4824-8c88-1517814dd751
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ZOOM_STATUS_LOG = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/ESEBIOPS/", [ApiVersion = 15]),
+				    #"Zoom Alerts Feb-23-Jan-24 xlsx_https://share autodesk com/sites/ESEBIOPS/Shared Documents/Zoom Outage Analysis/Source/" = Source{[Name="Zoom Outage Alerts.xlsx",#"Folder Path"="https://share.autodesk.com/sites/ESEBIOPS/Shared Documents/Zoom Outage Analysis/Source/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"Zoom Alerts Feb-23-Jan-24 xlsx_https://share autodesk com/sites/ESEBIOPS/Shared Documents/Zoom Outage Analysis/Source/"),
+				    Outlook_Sheet = #"Imported Excel Workbook"{[Item="Outlook",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Outlook_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Zoom Room Name ", type text}, {"Zoom Room Status", type text}, {"Received Day", type any}, {"Received Date", type datetime}, {"Received Time(IST)", type datetime}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Changed Type", each [#"Zoom Room Name "] <> null and [#"Zoom Room Name "] <> ""),
+				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [Zoom Room Status] <> null and [Zoom Room Status] <> ""),
+				    #"Trimmed Text1" = Table.TransformColumns(#"Filtered Rows2",{{"Zoom Room Status", Text.Trim, type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Trimmed Text1","Untrusted certificate is detected","Untrust certificate is detected",Replacer.ReplaceText,{"Zoom Room Status"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Replaced Value", "Component", each if Text.Contains([Zoom Room Status], "Zoom room") then "Zoom room" else if Text.Contains([Zoom Room Status], "Battery") then "Controller Battery" else if Text.Contains([Zoom Room Status], "Controller (iPad)") then "Controller (iPad)" else if Text.Contains([Zoom Room Status], "Controller") then "Controller" else if Text.Contains([Zoom Room Status], "Display") then "Display" else if Text.Contains([Zoom Room Status], "microphone") then "Microphone" else if Text.Contains([Zoom Room Status], "speaker") then "Speaker" else if Text.Contains([Zoom Room Status], "camera") then "Camera" else if Text.Contains([Zoom Room Status], "CPU") then "CPU" else if Text.Contains([Zoom Room Status], "bandwidth") then "Bandwidth" else if Text.Contains([Zoom Room Status], "certificate") then "Certificate" else null),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "Message", each if Text.Contains([Zoom Room Status], "offline") then "Offline" else if Text.Contains([Zoom Room Status], "disconnected") then "Disconnected" else if Text.Contains([Zoom Room Status], "reconnected") then "Reconnected" else if Text.Contains([Zoom Room Status], "online") then "Online" else if Text.Contains([Zoom Room Status], "connected") then "Connected" else if Text.Contains([Zoom Room Status], "High CPU usage") then "High CPU Usage" else if Text.Contains([Zoom Room Status], "Low bandwidth network") then "Low Bandwidth Network" else if Text.Contains([Zoom Room Status], "battery is low") then "Low Battery" else if Text.Contains([Zoom Room Status], "battery is normal") then "Battery Normal" else if Text.Contains([Zoom Room Status], "Untrust") then "Untrusted" else if Text.Contains([Zoom Room Status], "trusted") then "Trusted" else null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Conditional Column1",{"Received Time(IST)", "Received Day","Zoom Room Status"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"Zoom Room Name ", "Received Date", "Component", "Message"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each ([Message] <> "High CPU Usage" and [Message] <> "Low Bandwidth Network")),
+				    #"Trimmed Text" = Table.TransformColumns(#"Filtered Rows",{{"Zoom Room Name ", Text.Trim, type text}, {"Component", Text.Trim, type text}, {"Message", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"Zoom Room Name ", Text.Clean, type text}, {"Component", Text.Clean, type text}, {"Message", Text.Clean, type text}}),
+				    #"Sorted Rows" = Table.Sort(#"Cleaned Text",{{"Zoom Room Name ", Order.Ascending}, {"Component", Order.Ascending}, {"Received Date", Order.Ascending}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 0, 1, Int64.Type),
+				     #"Duplicated Column" = Table.DuplicateColumn(#"Added Index", "Zoom Room Name ", "Zoom Room Name  - Copy"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"Zoom Room Name  - Copy", "Zoom Room"}}),
+				    #"Added Conditional Column2" = Table.AddColumn(#"Renamed Columns1", "Custom", each if Text.Contains([Zoom Room], "San Diego") then "San-Diego" else if Text.Contains([Zoom Room], "North Ryde") then "Ryde" else if Text.Contains([Zoom Room], "North Sydney") then "Sydney" else if Text.Contains([Zoom Room], "Aristotle") then "San-Francisco" else if Text.Contains([Zoom Room], "Symbiosis One North") then "Singapore" else if Text.Contains([Zoom Room], "Caribbean Sea") then "San-Francisco" else if Text.Contains([Zoom Room], "SF") then "San-Francisco" else if Text.Contains([Zoom Room], "L7") then "Singapore" else if Text.Contains([Zoom Room], "Mobile") then "Singapore" else if Text.Contains([Zoom Room], "Sunriver4F-EGL") then "Bangalore" else if Text.Contains([Zoom Room], "Tel") then "Tel-Aviv" else if Text.Contains([Zoom Room], "CEO") then "San-Francisco" else if Text.Contains([Zoom Room], "MGF") then "Delhi" else if Text.Contains([Zoom Room], "Pier") then "San-Francisco" else if Text.Contains([Zoom Room], "WP&T") then "San-Francisco" else if Text.Contains([Zoom Room], "Training") then "Tokyo" else if Text.Contains([Zoom Room], "ESE") then "San-Francisco" else [Zoom Room]),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Added Conditional Column2", "Custom", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, false), {"Zoom Room Name  - Copy.1", "Zoom Room Name  - Copy.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Zoom Room Name  - Copy.1", type text}, {"Zoom Room Name  - Copy.2", type text}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"Zoom Room Name  - Copy.2","Zoom Room"}),
+				    #"Replaced Value16" = Table.ReplaceValue(#"Removed Columns1","San-Francisco","San Francisco",Replacer.ReplaceText,{"Zoom Room Name  - Copy.1"}),
+				    #"Replaced Value18" = Table.ReplaceValue(#"Replaced Value16","San-Diego","San Diego",Replacer.ReplaceText,{"Zoom Room Name  - Copy.1"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value18",{{"Zoom Room Name  - Copy.1", "City"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

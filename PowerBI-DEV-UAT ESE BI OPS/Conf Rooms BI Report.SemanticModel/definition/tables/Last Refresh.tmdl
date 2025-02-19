@@ -1,0 +1,43 @@
+table 'Last Refresh'
+	lineageTag: bdc3632b-8f64-44bc-876d-6b0aeb82cf1a
+
+	column 'Last Refresh' = 'Last Refresh'[Last Refresh.1] & " PST"
+		lineageTag: e7a9679b-96b7-4f08-ad67-7d305ff574c9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Refresh.1'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cff19b1f-4c2e-4b5a-9913-1b594131b57d
+		summarizeBy: none
+		sourceColumn: Last Refresh.1
+
+		variation Variation
+			isDefault
+			relationship: dbbd65e2-67f5-473e-bcb5-a79f1e8c2942
+			defaultHierarchy: LocalDateTable_5b1d6580-6052-402e-8ed3-e00bd6d1d374.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Last Refresh' = m
+		mode: import
+		source =
+				let
+				    Source = Web.Page(Web.Contents("https://timezonedb.com/time-zones/America/Los_Angeles")),
+				    Data = Source{0}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Data,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Column1] = "Current Time")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Column1"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Column2", "Last Refresh"}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Renamed Columns", "Last Refresh", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, true), {"Last Refresh.1", "Last Refresh.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Last Refresh.1", type datetime}, {"Last Refresh.2", type text}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"Last Refresh.2"})
+				in
+				    #"Removed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

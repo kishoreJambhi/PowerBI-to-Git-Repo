@@ -1,0 +1,247 @@
+table Issues
+	lineageTag: 1b9f758b-a21d-4098-a60c-23c7ed6267d4
+
+	column Key
+		dataType: string
+		lineageTag: c56418eb-6d2e-4058-b5d9-1b4e5dd3714d
+		summarizeBy: none
+		sourceColumn: Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue Type'
+		dataType: string
+		lineageTag: e68c252f-b213-4db6-a1ad-0a7662bd9ca3
+		summarizeBy: none
+		sourceColumn: Issue Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Status'
+		dataType: string
+		lineageTag: 27455bfb-5b40-48e6-a9a1-08b86ba1c2d0
+		summarizeBy: none
+		sourceColumn: Current Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Assignee:  Name'
+		dataType: string
+		lineageTag: bd7e6c2d-53cf-45cb-91bc-0188d0c5e465
+		summarizeBy: none
+		sourceColumn: Current Assignee:  Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created_Old
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4c5c0e46-bfb2-4f13-bc4e-a7e9a729b369
+		summarizeBy: none
+		sourceColumn: Created_Old
+
+		variation Variation
+			isDefault
+			relationship: 026e86bb-7e49-4cc6-b53a-a18a1fc41f6e
+			defaultHierarchy: LocalDateTable_adcc5f53-b4d3-4e92-b02b-4c42e319c823.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Updated
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0703147e-4dc7-412f-9726-35c08dccc6ec
+		summarizeBy: none
+		sourceColumn: Updated
+
+		variation Variation
+			isDefault
+			relationship: 64e541be-31a1-4a28-9162-3970a7ee2a9f
+			defaultHierarchy: LocalDateTable_1d942bf8-ff13-4b03-a5c6-d4fec2925f71.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Component
+		dataType: string
+		lineageTag: dfa5433a-dee7-4613-90b3-7b577bbea7b7
+		summarizeBy: none
+		sourceColumn: Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Component Name'
+		dataType: string
+		lineageTag: 80b373a0-c94d-4279-97c9-36977c34662b
+		summarizeBy: none
+		sourceColumn: Component Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Summary
+		dataType: string
+		lineageTag: e5f6114c-72a7-4bdf-a3bd-a2b811420f43
+		summarizeBy: none
+		sourceColumn: Summary
+
+		annotation SummarizationSetBy = Automatic
+
+	column System
+		dataType: string
+		lineageTag: b2270ce3-389d-4408-bb45-6c8773137c64
+		summarizeBy: none
+		sourceColumn: System
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed By'
+		dataType: string
+		lineageTag: 0e76296f-73d1-4134-a0ba-378bfb543a2a
+		summarizeBy: none
+		sourceColumn: Closed By
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resolved
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 826311f1-d1e1-4acb-b798-95b42d46f419
+		summarizeBy: none
+		sourceColumn: Resolved
+
+		variation Variation
+			isDefault
+			relationship: c89a4ed5-786e-400c-adb3-fa2d3bef4f17
+			defaultHierarchy: LocalDateTable_92f44e3d-b60f-4834-8ed6-65af60436e5a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resolved By:  Name'
+		dataType: string
+		lineageTag: 73d64c08-2066-43da-ad8e-fabf3124a560
+		summarizeBy: none
+		sourceColumn: Resolved By:  Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ec1456da-5d7b-45e8-9d1e-87c2837ce719
+		summarizeBy: none
+		sourceColumn: Closed Date
+
+		variation Variation
+			isDefault
+			relationship: 6812d5e2-f257-4015-b71e-681ec260001b
+			defaultHierarchy: LocalDateTable_9f239c73-bf56-4bf8-8007-13ab13da3f22.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed Date Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 03ccd29d-feb8-4190-96be-a30f9e4fa5f3
+		summarizeBy: none
+		sourceColumn: Closed Date Time
+
+		variation Variation
+			isDefault
+			relationship: 252c2d20-512e-4efc-91ad-d5b536442733
+			defaultHierarchy: LocalDateTable_eb0b451b-0c63-40af-a62c-23b9c90fbdce.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Task Type'
+		dataType: string
+		lineageTag: e6f6dd06-940d-4175-9959-7669cd8fd16f
+		summarizeBy: none
+		sourceColumn: Task Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Historical Status'
+		dataType: string
+		lineageTag: 5e8c6637-7543-4c63-8b38-e56816244e65
+		summarizeBy: none
+		sourceColumn: Historical Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporter:  Name'
+		dataType: string
+		lineageTag: 81823078-0486-479a-b113-a14d1df0f9eb
+		summarizeBy: none
+		sourceColumn: Reporter:  Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue ID'
+		dataType: double
+		lineageTag: 594b8dd8-8d31-4ce1-a357-59743c602646
+		summarizeBy: count
+		sourceColumn: Issue ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 446c71f3-9795-4e13-a96d-509172e1db2c
+		summarizeBy: none
+		sourceColumn: Created
+
+		variation Variation
+			isDefault
+			relationship: 18c19b24-af09-49c8-a835-58dd0674703b
+			defaultHierarchy: LocalDateTable_34d6d9a7-ce23-44c0-8c86-9b52f434182f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolved_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8e9ea824-4321-4e59-9460-027a3ebfa4d3
+		summarizeBy: none
+		sourceColumn: resolved_Date
+
+		variation Variation
+			isDefault
+			relationship: 54eda31c-dbae-4c5b-b61a-676902409cb9
+			defaultHierarchy: LocalDateTable_8d6d3b16-53ef-435c-8bde-ceb5fa785ddb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Issues = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://jira.autodesk.com/rest/aio-bi/1.0/powerbi/export/ZTQyYTYwNTktNTcyZC00NGE2LTg2MjUtNDFmNWU3ZDE2", null, [Implementation="2.0"]),
+				    Issues_table = Source{[Name="Issues",Signature="table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Issues_table,{{"Created", type datetime}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Created] >= #datetime(2020, 2, 1, 0, 0, 0)),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Filtered Rows",{{"Created", type datetimezone}}),
+				    #"Added Custom1" = Table.AddColumn(#"Changed Type2", "Created_Date", each [Created]+ #duration(0, 12, 30, 0)),
+				    #"Split Column by Position1" = Table.SplitColumn(Table.TransformColumnTypes(#"Added Custom1", {{"Created_Date", type text}}, "en-US"), "Created_Date", Splitter.SplitTextByPositions({0, 22}, false), {"Created_Date.1", "Created_Date.2"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Split Column by Position1",{"Created_Date.2"}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Removed Columns", "Created_Date.1", Splitter.SplitTextByDelimiter("+", QuoteStyle.Csv), {"Created_Date.1.1", "Created_Date.1.2"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Split Column by Delimiter",{"Created_Date.1.2"}),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Removed Columns1",{{"Created_Date.1.1", type datetime}, {"Created", type datetime}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type4",{{"Created", "Created_Old"}, {"Created_Date.1.1", "Created"}}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Renamed Columns",{{"Resolved", type datetimezone}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type3", "resolved_Date", each [Resolved]+ #duration(0, 12, 30, 0)),
+				    #"Split Column by Position" = Table.SplitColumn(Table.TransformColumnTypes(#"Added Custom", {{"resolved_Date", type text}}, "en-US"), "resolved_Date", Splitter.SplitTextByRepeatedLengths(22), {"resolved_Date.1", "resolved_Date.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Position",{{"resolved_Date.1", type text}, {"resolved_Date.2", type text}}),
+				    #"Split Column by Delimiter1" = Table.SplitColumn(#"Changed Type1", "resolved_Date.1", Splitter.SplitTextByDelimiter("+", QuoteStyle.Csv), {"resolved_Date.1.1", "resolved_Date.1.2"}),
+				    #"Changed Type5" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"resolved_Date.1.1", type datetime}, {"resolved_Date.1.2", Int64.Type}}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Changed Type5",{"resolved_Date.1.2", "resolved_Date.2"}),
+				    #"Changed Type6" = Table.TransformColumnTypes(#"Removed Columns2",{{"resolved_Date.1.1", type datetime}, {"Resolved", type datetime}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type6",{{"resolved_Date.1.1", "resolved_Date"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

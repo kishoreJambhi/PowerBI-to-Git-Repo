@@ -1,0 +1,27 @@
+table Table
+	isHidden
+	lineageTag: 50b276d5-ed7c-45b0-a8b6-4df5772f5740
+
+	column Date
+		isHidden
+		formatString: Long Date
+		lineageTag: 51f3b26b-59cf-4044-b505-963228f2783f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: ee3178bb-d391-45a2-9eb6-fd76e0b5a141
+			defaultHierarchy: LocalDateTable_1f6fb6ff-92b9-49e8-897e-30b5443a6eef.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Table-3acc8d99-6947-4733-b1bd-4275c0cf0420 = calculated
+		mode: import
+		source = CALENDAR(min('Final Data'[Resolved Date]),TODAY())
+
+	annotation PBI_Id = f093dc4877b34e31b2276442709749c7
+

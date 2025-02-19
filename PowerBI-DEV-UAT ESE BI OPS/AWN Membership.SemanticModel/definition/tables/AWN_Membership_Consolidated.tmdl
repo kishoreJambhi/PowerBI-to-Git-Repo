@@ -1,0 +1,265 @@
+table AWN_Membership_Consolidated
+	lineageTag: 6f959353-5529-46fc-9e42-a2330515a1dd
+
+	column 'Worker ID'
+		dataType: string
+		lineageTag: 22dcd9dd-f2dc-419d-9b65-fdda8c9e2bc6
+		summarizeBy: none
+		sourceColumn: Worker ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Preferred Name'
+		dataType: string
+		lineageTag: 244bef8b-41dd-415e-bf71-adcd0b0c86af
+		summarizeBy: none
+		sourceColumn: Preferred Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currently Active'
+		dataType: string
+		lineageTag: 8414724e-ed91-40c0-9e1d-9b9d390ca606
+		summarizeBy: none
+		sourceColumn: Currently Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Most Recent Hire Date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: add4de7a-61de-4276-9455-d806cd7d8548
+		summarizeBy: none
+		sourceColumn: Most Recent Hire Date
+
+		variation Variation
+			isDefault
+			relationship: 248d66b9-52df-455a-a4d6-35861ab605c2
+			defaultHierarchy: LocalDateTable_703abf8b-3c94-4615-813a-d1c72090cc44.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Worker Type'
+		dataType: string
+		lineageTag: b82bf8fd-241f-49a4-a388-bd63d5bf6fbd
+		summarizeBy: none
+		sourceColumn: Worker Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Worker Sub Type'
+		dataType: string
+		lineageTag: e64d42a3-f368-479a-98cb-c8327e792985
+		summarizeBy: none
+		sourceColumn: Worker Sub Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Title'
+		dataType: string
+		lineageTag: 47de3f07-e507-4a6f-878d-6bded8483a53
+		summarizeBy: none
+		sourceColumn: Business Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Managers Display Name'
+		dataType: string
+		lineageTag: 510c6582-5e50-4242-a831-172473f7b5b8
+		summarizeBy: none
+		sourceColumn: Managers Display Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervisory Org Division'
+		dataType: string
+		lineageTag: 36188a61-365a-4eb4-bfc2-f8f24040ffda
+		summarizeBy: none
+		sourceColumn: Supervisory Org Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervisory Organization Name'
+		dataType: string
+		lineageTag: 4df0acbc-20db-4d42-a41d-66750d1b4544
+		summarizeBy: none
+		sourceColumn: Supervisory Organization Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Location Building'
+		dataType: string
+		lineageTag: e69f753e-10d8-4d45-aa72-ab1ca8a12f03
+		summarizeBy: none
+		sourceColumn: Work Location Building
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Location Name'
+		dataType: string
+		lineageTag: 54d79656-5ade-430b-8e02-3cfb1bfbc9d3
+		summarizeBy: none
+		sourceColumn: Work Location Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Location City'
+		dataType: string
+		lineageTag: 74c8ce10-e3ad-4382-9a16-f2e00a31b948
+		summarizeBy: none
+		sourceColumn: Work Location City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Location State/Prov'
+		dataType: string
+		lineageTag: 5dc5c14d-29e9-474d-bdf4-feed8368bb7c
+		summarizeBy: none
+		sourceColumn: Work Location State/Prov
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Location Country'
+		dataType: string
+		lineageTag: 3ede819f-3df9-4917-805c-d97650e912cd
+		summarizeBy: none
+		sourceColumn: Work Location Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Location Geo'
+		dataType: string
+		lineageTag: c24323e6-6754-40bf-8d56-dd2b99466080
+		summarizeBy: none
+		sourceColumn: Work Location Geo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Phones'
+		dataType: string
+		lineageTag: 27fee6f9-9c13-48c5-aeea-f35846cdc7b7
+		summarizeBy: none
+		sourceColumn: Work Phones
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Email'
+		dataType: string
+		lineageTag: cb9d35b1-a241-4099-824b-59859cea5069
+		summarizeBy: none
+		sourceColumn: Work Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Type'
+		dataType: string
+		lineageTag: b810bbe6-a0dd-4fdd-ba53-64a4ad4efee0
+		summarizeBy: none
+		sourceColumn: Time Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Extract
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: c6225260-5e95-4fef-9b87-eb1d116c9f00
+		summarizeBy: none
+		sourceColumn: Extract
+
+		variation Variation
+			isDefault
+			relationship: 3a98915b-a88a-430f-b795-861969f4808d
+			defaultHierarchy: LocalDateTable_f5f8af6e-dee4-432e-8e40-61705e96d110.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Membership Status'
+		dataType: string
+		lineageTag: 0c6aca70-cc6c-41f2-8fbe-45b4f8586c1e
+		summarizeBy: none
+		sourceColumn: Membership Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 241ca725-adb4-4bd6-851c-e959a7deaedf
+		summarizeBy: none
+		sourceColumn: Current Date
+
+		variation Variation
+			isDefault
+			relationship: 98e3c661-56fd-4dc0-863d-c17d0d35c92a
+			defaultHierarchy: LocalDateTable_da4f603e-78df-441d-a1bb-7ef40a1e593a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Work Years'
+		dataType: string
+		lineageTag: 5f33577f-dca8-4a09-873e-f4f3a69afbfe
+		summarizeBy: none
+		sourceColumn: Work Years
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Most Recent Extract Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0ad4a9ca-6a15-4b4c-8518-3720390332c1
+		summarizeBy: none
+		sourceColumn: Most Recent Extract Date
+
+		variation Variation
+			isDefault
+			relationship: c0933c1a-8612-45db-ac76-fbc06459ddd2
+			defaultHierarchy: LocalDateTable_87fc74f0-dc99-402a-86df-108ba4f0f1a1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Current Extract'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: feaf0eb9-0bcd-4e1a-a235-3a80f8e28307
+		summarizeBy: none
+		sourceColumn: Current Extract
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chapter
+		dataType: string
+		lineageTag: 4f3a483c-1276-49ff-8cbf-10b8051b8088
+		summarizeBy: none
+		sourceColumn: Chapter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AWN_Membership_Consolidated-af67a0ac-4f24-47ac-af09-4a82031492a2 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\brohlm\Autodesk\AWN - General\Impact Measurement\Reporting\Membership\AWN Membership.xlsx"), null, true),
+				    AWN_Membership_Consolidated1 = Source{[Name="AWN_Membership_Consolidated"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(AWN_Membership_Consolidated1, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Worker ID", Int64.Type}, {"Preferred Name", type text}, {"Currently Active", type text}, {"Most Recent Hire Date", type date}, {"Worker Type", type text}, {"Worker Sub Type", type text}, {"Business Title", type text}, {"Managers Display Name", type text}, {"Supervisory Org Division", type text}, {"Supervisory Organization Name", type text}, {"Work Location Building", type text}, {"Work Location Name", type text}, {"Work Location City", type text}, {"Work Location State/Prov", type text}, {"Work Location Country", type text}, {"Work Location Geo", type text}, {"Work Phones", type text}, {"Work Email", type text}, {"Time Type", type text}, {"Extract", type date}, {"Membership Status", type text}, {"Current Date", type date}, {"Work Years", type text}, {"Current Extract", type logical}, {"Most Recent Extract Date", type date}, {"Chapter", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

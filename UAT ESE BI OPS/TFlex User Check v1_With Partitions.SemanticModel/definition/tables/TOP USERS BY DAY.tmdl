@@ -1,0 +1,29 @@
+table 'TOP USERS BY DAY'
+	lineageTag: 68e1dcab-3b4b-4b9f-a235-4b315baa8155
+
+	column USER_LOGIN_ID
+		lineageTag: 5f1f59e5-eacf-4cc3-a355-4bc413b44079
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [USER_LOGIN_ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'USAGE IN DAYS'
+		formatString: 0
+		lineageTag: 5d76d8c4-7c8a-4d03-923c-c881380ca782
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [USAGE IN DAYS]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'TOP USERS BY DAY-8aed4ea9-3de3-441c-8d9f-dad44eff86b6' = calculated
+		mode: import
+		source =
+				
+				VAR User_GT3 = FILTER(SUMMARIZE('TokenFlex_Daily_Usage', 'TokenFlex_Daily_Usage'[USER_LOGIN_ID], 'TokenFlex_Daily_Usage'[USAGE_DT], "Count", [Measure1]), [Count] > 3)
+				RETURN GROUPBY(User_GT3, [USER_LOGIN_ID], "USAGE IN DAYS", Countx(currentgroup(), 1))
+
+	annotation PBI_Id = fec7b067549d4be6b8f7128db13eaa3a
+

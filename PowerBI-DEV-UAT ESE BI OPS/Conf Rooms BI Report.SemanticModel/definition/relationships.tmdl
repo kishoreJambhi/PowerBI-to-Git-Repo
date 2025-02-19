@@ -1,0 +1,36 @@
+relationship aa05e11e-c734-49f9-98dc-1dbeab22615e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sharepoint.'Planned Upgrade Date'
+	toColumn: LocalDateTable_75fb5d44-75d7-4964-baab-23cf2039615e.Date
+
+relationship 702f9ed2-d25e-402d-af86-511b2131a1de
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Ploy Lens API'.'Planned Upgrade Date'
+	toColumn: LocalDateTable_fc71c1c3-6bb7-4667-9931-8133d33386b4.Date
+
+relationship dbbd65e2-67f5-473e-bcb5-a79f1e8c2942
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh'.'Last Refresh.1'
+	toColumn: LocalDateTable_5b1d6580-6052-402e-8ed3-e00bd6d1d374.Date
+
+relationship 2afadd22-f779-43dc-80ed-6f1005bb9bbc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Devices.'Planned Upgrade Date'
+	toColumn: LocalDateTable_c01d07c1-94bc-4a7c-bc4f-60dd3fa54d08.Date
+
+relationship f2c632bb-11a2-4d6f-8f9a-3c6a16e029cd
+	fromColumn: Devices.serialNumber
+	toColumn: Sharepoint.'Serial number'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 9bbb6558-8d16-4bfb-8004-a06d85fcc163
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Devices.timestamp
+	toColumn: LocalDateTable_2db8d4b1-8278-44c3-bd94-603302efbdba.Date
+
+relationship aa7dc4df-dc48-488b-f1f7-c0e071e28128
+	toCardinality: many
+	fromColumn: 'Ploy Lens API'.serialNumber
+	toColumn: Devices.serialNumber
+

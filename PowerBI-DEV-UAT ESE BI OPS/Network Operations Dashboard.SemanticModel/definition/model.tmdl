@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.138.1004.0 (24.11)
+
+annotation PBI_QueryOrder = ["LastRefresh_Local","SNOW_INCIDENTS","Sharepoint","Order Table"]
+
+ref table DateTableTemplate_71f0dc7a-2b5e-494a-97a1-6fb54e0149f4
+ref table LastRefresh_Local
+ref table SNOW_INCIDENTS
+ref table LocalDateTable_1b17296f-a076-4b6e-b2e0-e312a6789351
+ref table Sharepoint
+ref table TimePeriodOrder
+ref table 'Order Table'
+ref table LocalDateTable_66685ec2-3315-4694-a1de-4909683a9c25
+ref table LocalDateTable_6df63ec7-c1b2-4d58-aef4-4188159eccf6
+ref table LocalDateTable_8dd596b8-6a28-4e9e-ab99-bee11f106761
+ref table LocalDateTable_f06a2929-171a-43b0-83e2-b536dcc34d99
+ref table LocalDateTable_ccc0a1ae-2499-4cd1-b792-986c784a3e6b
+
+ref cultureInfo en-US
+

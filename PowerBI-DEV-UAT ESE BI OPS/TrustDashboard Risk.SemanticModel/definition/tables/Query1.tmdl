@@ -1,0 +1,53 @@
+table Query1
+	lineageTag: 24a8aaf4-a646-4e67-bb20-c3883b8de0ff
+
+	column 'Extracted Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ca531425-500c-423a-a1c1-12714b24bda3
+		summarizeBy: none
+		sourceColumn: Extracted Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Count
+		dataType: int64
+		formatString: 0
+		lineageTag: 6528f382-b0c9-441d-9291-6992b9f260f3
+		summarizeBy: sum
+		sourceColumn: Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority/Severity_new
+		dataType: string
+		lineageTag: 77e42ab7-3b4b-4163-97f5-c25e0aeb173c
+		summarizeBy: none
+		sourceColumn: Priority/Severity_new
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Query1 = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/Pset-TrustRisk/", [ApiVersion = 15]),
+				    #"Date_Dim xlsx_https://share autodesk com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/" = Source{[Name="Date_Dim.xlsx",#"Folder Path"="https://share.autodesk.com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"Date_Dim xlsx_https://share autodesk com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/"),
+				    Sheet1_Sheet = #"Imported Excel Workbook"{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Extracted Date", type date}, {"Column2", type any}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column2"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"Extracted Date"}, #"risks_security_controls_privacy (3)", {"Extracted Date"}, "risks_security_controls_privacy (3)", JoinKind.LeftOuter),
+				    #"Expanded risks_security_controls_privacy (2)" = Table.ExpandTableColumn(#"Merged Queries", "risks_security_controls_privacy (3)", {"Priority/Severity_new", "Count"}, {"Priority/Severity_new", "Count"}),
+				    #"Grouped Rows" = Table.Group(#"Expanded risks_security_controls_privacy (2)", {"Extracted Date", "Priority/Severity_new"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+				    #"Sorted Rows" = Table.Sort(#"Grouped Rows",{{"Extracted Date", Order.Ascending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

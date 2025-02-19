@@ -1,0 +1,377 @@
+table risks_security_controls_privacy
+	lineageTag: 15608302-22ee-484a-a909-36c422c002f4
+
+	measure '# of Category' = COUNT('risks_security_controls_privacy'[nn])+0
+		formatString: #,0
+		lineageTag: c8a91c09-da12-4a12-83f0-0fe7f624b98f
+
+	measure '# of Environment' = COUNT('risks_security_controls_privacy'[environment])+0
+		formatString: #,0
+		lineageTag: 615f4394-1752-4f5a-908b-3e6a1bb9ce5b
+
+	measure '# of NM' = COUNT('risks_security_controls_privacy'[nn])+0
+		formatString: #,0
+		lineageTag: 5e3ceefd-0a55-4ab2-adc2-1c9a80fd7fd6
+
+	measure '# of Division' = COUNT(risks_security_controls_privacy[TrustApp-Master.Division])+0
+		formatString: 0
+		lineageTag: 3d035373-949d-4232-a696-2fd168f8121b
+
+	measure '# of Desktop' = CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Type])+0,risks_security_controls_privacy[TrustApp-Master.Type]="Desktop")
+		formatString: 0
+		lineageTag: e57a8aea-0650-482a-b2ed-2e4890df8854
+
+	measure '# of Cloud' = CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Type])+0,risks_security_controls_privacy[TrustApp-Master.Type]="Cloud")
+		formatString: 0
+		lineageTag: 969ae5e7-ed04-4ab4-a9b3-971b013873f3
+
+	measure '# of Vendor' = CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Type])+0,risks_security_controls_privacy[TrustApp-Master.Type]="Vendor")
+		formatString: 0
+		lineageTag: 6efc9f16-8359-4a45-a155-e6c04b76e360
+
+	measure '# of ADSK-Datacenter' = CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Type])+0,risks_security_controls_privacy[TrustApp-Master.Type]="ADSK-Datacenter")
+		formatString: 0
+		lineageTag: 7fe2f16d-979c-4051-917c-21692de551d7
+
+	measure '# of Compliance' = COUNT('risks_security_controls_privacy'[TrustApp-Master.Compliance])+0
+		formatString: #,0
+		lineageTag: ae88c285-82ec-49a8-ab4d-9436e2cd65a2
+
+	measure '% SOC2' = DIVIDE(CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]="SOC2"),CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]<> BLANK()))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5f8dba53-082c-45eb-b33e-bf6a21fc11bf
+
+	measure '# of Blanks' = CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]="")
+		formatString: 0
+		lineageTag: e97f9871-73e8-4b80-8e6b-0b497eb88f54
+
+	measure '# of Findings- All App Type' = COUNT(risks_security_controls_privacy[TrustApp-Master.Type])+0
+		formatString: 0
+		lineageTag: 7e741e0f-9fe1-4a6a-8197-09cfe1a2f6c3
+
+	measure '# of Compliance1' = CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]<> BLANK())
+		formatString: 0
+		lineageTag: 9047ae25-e736-4dab-82b7-e8a1bc135f76
+
+	measure '% ISO' = DIVIDE(CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]="ISO"),CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]<> BLANK()))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 182952f6-adb0-4db4-b2b1-fb2b033f2bc3
+
+	measure '% FedRAMP' = DIVIDE(CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]="FedRAMP"),CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]<> BLANK()))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9871d0c0-5791-45c4-9a7f-9d0a332fe280
+
+	measure '% Mutiple' =
+			DIVIDE(CALCULATE(
+			    COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,
+			    (
+			        CONTAINSSTRING(risks_security_controls_privacy[TrustApp-Master.Compliance], "ISO, SOC2, FedRAMP") ||
+			        CONTAINSSTRING(risks_security_controls_privacy[TrustApp-Master.Compliance], "ISO, SOC2") ||
+			        CONTAINSSTRING(risks_security_controls_privacy[TrustApp-Master.Compliance], "SOC2, ISO") ||
+			        CONTAINSSTRING(risks_security_controls_privacy[TrustApp-Master.Compliance], "SOC2, ISO, FedRAMP")
+			    )
+			),CALCULATE(COUNT(risks_security_controls_privacy[TrustApp-Master.Compliance])+0,risks_security_controls_privacy[TrustApp-Master.Compliance]<> BLANK()))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ea09816b-6795-4304-9a71-6d4e410dd606
+
+	measure '%% SOC2' = ```
+			
+			SWITCH(
+			    TRUE(), 
+			    [% SOC2]>0.5,"#C34822",
+			    [% SOC2]>=0.3 && [% SOC2]<0.5,"#FFC21A",
+			    [% SOC2]>=0.1 && [% SOC2]<0.3,"#88A943",
+			    [% SOC2]< 0.1,"#038C4A"
+			)
+			
+			```
+		lineageTag: e90c2f65-ee78-4d0b-804b-a5d95460d75e
+
+	measure '%% FedRAMP' = ```
+			
+			SWITCH(
+			    TRUE(), 
+			    [% FedRAMP]>0.5,"#C34822",
+			    [% FedRAMP]>=0.3 && [% FedRAMP]<0.5,"#FFC21A",
+			    [% FedRAMP]>=0.1 && [% FedRAMP]<0.3,"#88A943",
+			    [% FedRAMP]< 0.1,"#038C4A"
+			)
+			```
+		lineageTag: 072a02b0-5e11-4582-ba47-c12b4303db96
+
+	measure '# of Findings' = COUNT('risks_security_controls_privacy'[finding])+0
+		formatString: #,0
+		lineageTag: b5a43c9d-ffb1-47f4-b172-c4f35500014e
+
+	measure Previous_DateData = ```
+			
+			VAR CurrentDate = MAX(DateTable[Date])
+			RETURN 
+			    CALCULATE(
+			        COUNT(risks_security_controls_privacy[finding]),
+			        FILTER(
+			            risks_security_controls_privacy,
+			            risks_security_controls_privacy[Extracted Date] <= CurrentDate
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: d9be00d9-bb24-4ae8-8c63-1e635c4788db
+
+	column category
+		dataType: string
+		lineageTag: d0268e0f-0a17-4c06-b394-3beafc17324d
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority/severity
+		dataType: double
+		lineageTag: d83eedd1-7301-474e-9875-1fed86e8d5ea
+		summarizeBy: sum
+		sourceColumn: priority/severity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column finding
+		dataType: string
+		lineageTag: 930a5068-8951-4083-985e-2d5ab020789d
+		summarizeBy: none
+		sourceColumn: finding
+
+		annotation SummarizationSetBy = Automatic
+
+	column environment
+		dataType: string
+		lineageTag: 6e4e9eff-c59a-46e7-b40a-f3f319cc4339
+		summarizeBy: none
+		sourceColumn: environment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'due date'
+		dataType: string
+		lineageTag: 986cf8ac-1055-4552-9a71-2f7f6fb36e8d
+		summarizeBy: none
+		sourceColumn: due date
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource
+		dataType: string
+		lineageTag: 12d5b6d4-5432-418c-acbc-6baeb9890a70
+		summarizeBy: none
+		sourceColumn: resource
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier
+		dataType: string
+		lineageTag: 344d46fb-0700-4ca7-a137-eaaa227b216e
+		summarizeBy: none
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column nn
+		dataType: string
+		lineageTag: e908fd37-08ef-4004-83b4-fa6ec3a678b4
+		summarizeBy: none
+		sourceColumn: nn
+
+		annotation SummarizationSetBy = Automatic
+
+	column product/service
+		dataType: string
+		lineageTag: 5e16c6a8-fe07-4729-9776-b073075688e9
+		summarizeBy: none
+		sourceColumn: product/service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'product/service.1'
+		dataType: string
+		lineageTag: bf166e26-1d0d-462e-b211-cb4fc4df26d2
+		summarizeBy: none
+		sourceColumn: product/service.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TrustApp-Master.Applications / Services'
+		dataType: string
+		lineageTag: 90156880-7f5c-47d9-9726-01d85b707eb4
+		summarizeBy: none
+		sourceColumn: TrustApp-Master.Applications / Services
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TrustApp-Master.Type'
+		dataType: string
+		lineageTag: c5b74c05-0c7e-473d-aa5f-ee94f69d9bbc
+		summarizeBy: none
+		sourceColumn: TrustApp-Master.Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TrustApp-Master.Division'
+		dataType: string
+		lineageTag: 99918a32-96b0-4c5e-a07a-140d7b32a7cd
+		summarizeBy: none
+		sourceColumn: TrustApp-Master.Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TrustApp-Master.Owner'
+		dataType: string
+		lineageTag: a860dd6b-862f-431a-ad3c-55e0da021978
+		summarizeBy: none
+		sourceColumn: TrustApp-Master.Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TrustApp-Master.Compliance'
+		dataType: string
+		lineageTag: cb6891c2-5bda-450d-b53c-a3190df213bf
+		summarizeBy: none
+		sourceColumn: TrustApp-Master.Compliance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TrustApp-Master.Tier'
+		dataType: string
+		lineageTag: 8deccec0-d6e2-4fcc-a2bd-7f684ec5e205
+		summarizeBy: none
+		sourceColumn: TrustApp-Master.Tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extracted Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f095b842-0cd7-44fd-b9c6-ba455f4e9db7
+		summarizeBy: none
+		sourceColumn: Extracted Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date = FORMAT(risks_security_controls_privacy[Extracted Date],"DD-MM-YYYY")
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 61a7e663-c14c-4064-b8c0-00581d8aa307
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 338722b5-81d5-459a-b7ef-52c60b29b66f
+			defaultHierarchy: LocalDateTable_012f4e83-8b7b-42e8-b8d7-77c842d70504.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'priority/severity - Copy'
+		dataType: string
+		lineageTag: 335bfe66-41fe-4237-bfcf-629a3f9fd194
+		summarizeBy: none
+		sourceColumn: priority/severity - Copy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority/Severity_new
+		dataType: string
+		lineageTag: efe5da57-367d-4add-9ef8-5e15ed944613
+		summarizeBy: none
+		sourceColumn: Priority/Severity_new
+
+		annotation SummarizationSetBy = Automatic
+
+	column %_SOC2
+		type: calculated
+		lineageTag: 52a9d78e-7221-4f31-a8f6-d6a49013f2d6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":"\nSWITCH(\n    TRUE(), \n    [% SOC2]>0.5,\"#C34822\",\n    [% SOC2]>=0.3 && [% SOC2]<0.5,\"#FFC21A\",\n    [% SOC2]>=0.1 && [% SOC2]<0.3,\"#88A943\",\n    [% SOC2]< 0.1,\"#038C4A\"\n)\n"}
+
+		annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = ```
+				A circular dependency was detected: risks_security_controls_privacy[Column], risks_security_controls_privacy[% Mutiple1], risks_security_controls_privacy[Column].
+				
+				```
+
+	column '# of Compliance_' = COUNT('risks_security_controls_privacy'[TrustApp-Master.Compliance])+0
+		formatString: 0
+		lineageTag: 3bf111c0-4e35-462a-b0ba-33e565c7e838
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreviousDateData = ```
+			
+			VAR CurrentDate = MAX(DateTable[Date])
+			RETURN 
+			    CALCULATE(
+			        COUNT(risks_security_controls_privacy[finding]),
+			        FILTER(
+			            risks_security_controls_privacy,
+			            risks_security_controls_privacy[Extracted Date] <= CurrentDate
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: eeea884f-44a1-4011-bdb0-5f834aebf92e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Findings' = COUNT(risks_security_controls_privacy[finding])+0
+		formatString: 0
+		lineageTag: d8a62321-dd3f-4e0d-a4c9-0ba5b4502532
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition risks_security_controls_privacy = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/Pset-TrustRisk/", [ApiVersion = 15]),
+				    #"risks_security_controls_privacy csv_https://share autodesk com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/" = Source{[Name="risks_security_controls_privacy.csv",#"Folder Path"="https://share.autodesk.com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"risks_security_controls_privacy csv_https://share autodesk com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/",[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Trimmed Text1" = Table.TransformColumns(#"Promoted Headers",{{"Extracted Date", Text.Trim, type text}}),
+				    #"Cleaned Text1" = Table.TransformColumns(#"Trimmed Text1",{{"Extracted Date", Text.Clean, type text}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Cleaned Text1",{{"category", type text}, {"finding", type text}, {"environment", type text}, {"due date", type text}, {"resource", type text}, {"tier", type text}, {"product/service", type text}, {"nn", type text}, {"Extracted Date", type date}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"Extracted Date", "nn", "product/service", "tier", "environment", "finding", "priority/severity", "category"}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Removed Duplicates", "product/service", Splitter.SplitTextByDelimiter("/", QuoteStyle.Csv), {"product/service.1", "product/service.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"product/service.1", type text}, {"product/service.2", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"product/service.1", "product/service"}, {"product/service.2", "product/service.1"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"product/service"}, #"TrustApp-Master", {"Applications / Services"}, "TrustApp-Master", JoinKind.LeftOuter),
+				    #"Expanded TrustApp-Master" = Table.ExpandTableColumn(#"Merged Queries", "TrustApp-Master", {"Applications / Services", "Type", "Division", "Owner", "Compliance", "Tier"}, {"TrustApp-Master.Applications / Services", "TrustApp-Master.Type", "TrustApp-Master.Division", "TrustApp-Master.Owner", "TrustApp-Master.Compliance", "TrustApp-Master.Tier"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Expanded TrustApp-Master",null,"",Replacer.ReplaceValue,{"TrustApp-Master.Compliance"}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Replaced Value", "priority/severity", "priority/severity - Copy"),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Duplicated Column",{{"priority/severity", Int64.Type}}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Changed Type2",{{"priority/severity", type number}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type3", "Priority/Severity_new", each if [#"priority/severity - Copy"]="Critical" then "Critical" else if [#"priority/severity"] >=9 and [#"priority/severity"] <= 10 then "Critical" else if [#"priority/severity"] >=7.0 and [#"priority/severity"] <4.0 then "High" else if [#"priority/severity"] >=7.0 and [#"priority/severity"] <9.0 then "Medium" else if [#"priority/severity"] <4.0 then "Low" else ""),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Added Custom", {{"Priority/Severity_new", ""}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Replaced Errors", {{"priority/severity", 0}}),
+				    #"Split Column by Delimiter1" = Table.ExpandListColumn(Table.TransformColumns(#"Replaced Errors1", {{"TrustApp-Master.Compliance", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "TrustApp-Master.Compliance"),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"TrustApp-Master.Compliance", type text}, {"priority/severity - Copy", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type4",{{"TrustApp-Master.Compliance", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"TrustApp-Master.Compliance", Text.Clean, type text}})
+				in
+				    #"Cleaned Text"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

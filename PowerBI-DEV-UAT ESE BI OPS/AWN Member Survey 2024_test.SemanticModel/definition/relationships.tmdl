@@ -1,0 +1,62 @@
+relationship d8388c06-ba4d-4174-828b-aa6f8fb952c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Survey_Results.'Start time'
+	toColumn: LocalDateTable_e0e3ef95-4ef4-45b0-9784-e8eb3fec5b78.Date
+
+relationship 0cb511a8-3313-4f96-abc7-60bda512ca3f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Survey_Results.'Completion time'
+	toColumn: LocalDateTable_905fe3b7-3f16-4b57-8a31-f4af8b2e5ee1.Date
+
+relationship AutoDetected_b467dc6a-c909-4c42-83fa-b6ae6b7e3e55
+	fromColumn: Motivation.Email
+	toColumn: Survey_Results.Email
+
+relationship AutoDetected_bb26d9bf-0920-404e-8a79-6379f2b6580e
+	fromColumn: Add_Resources.Email
+	toColumn: Survey_Results.Email
+
+relationship AutoDetected_3f544bc2-6986-4712-b223-25be2df7d872
+	fromColumn: Know_AWN.Email
+	toColumn: Survey_Results.Email
+
+relationship 9f2b0741-3207-c18c-7995-c7317b918cb5
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 2023.'How has your involvement in AWN impacted your sense of belonging and inclusion within the company?'
+	toColumn: Survey_Results.'How has your involvement in AWN impacted your sense of belonging and inclusion within the company?'
+
+relationship cd8b4694-f840-2ecf-67f4-abc57757ae75
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Know_AWN_2023.'How did you learn about AWN?'
+	toColumn: Know_AWN.'How did you learn about AWN?'
+
+relationship 554a44ac-3e12-0567-9113-bee87c694fc7
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Motivation.'What motivated you to sign up with AWN?'
+	toColumn: Motivation_2023.'What motivated you to sign up with AWN?'
+
+relationship 25d2895c-30cf-4fa0-894a-4906a751ddb5
+	fromColumn: 'AWN_Membership_Consolidated 2'.'Most Recent Hire Date'
+	toColumn: 'LocalDateTable_703abf8b-3c94-4615-813a-d1c72090cc44 2'.Date
+
+relationship 1b8e3468-cd36-43ff-9110-15f9aa839b40
+	fromColumn: 'AWN_Membership_Consolidated 2'.Extract
+	toColumn: 'LocalDateTable_f5f8af6e-dee4-432e-8e40-61705e96d110 2'.Date
+
+relationship 172eecdf-b77f-42cd-ac44-f82b536b810a
+	fromColumn: 'AWN_Membership_Consolidated 2'.'Current Date'
+	toColumn: 'LocalDateTable_da4f603e-78df-441d-a1bb-7ef40a1e593a 2'.Date
+
+relationship 48d241af-9157-4435-a0d4-56dca2938b4e
+	fromColumn: 'AWN_Membership_Consolidated 2'.'Most Recent Extract Date'
+	toColumn: 'LocalDateTable_87fc74f0-dc99-402a-86df-108ba4f0f1a1 2'.Date
+
+relationship 2343081e-ff0f-d693-4a11-f68ed4e9359f
+	crossFilteringBehavior: bothDirections
+	securityFilteringBehavior: none
+	fromColumn: 'AWN_Membership_Consolidated 2'.'Work Email'
+	toColumn: Survey_Results.Email
+

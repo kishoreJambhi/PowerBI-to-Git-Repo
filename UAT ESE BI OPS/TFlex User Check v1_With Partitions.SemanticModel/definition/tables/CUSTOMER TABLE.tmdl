@@ -1,0 +1,31 @@
+table 'CUSTOMER TABLE'
+	lineageTag: ffd8ca36-c728-4e7a-96b2-6f41b850bce8
+
+	column AGREE_NBR
+		dataType: string
+		lineageTag: e66a1874-c646-4a25-a52c-59fcac369d1d
+		summarizeBy: none
+		sourceColumn: AGREE_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_ACCOUNT_NM
+		dataType: string
+		lineageTag: 14ca7260-daba-4f06-bf46-de095f7926ac
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ACCOUNT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CUSTOMER TABLE-cb326b76-2bf9-469c-beb7-dc4d597d2b29' = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("autodesk.us-east-1.snowflakecomputing.com","ADP_PUBLISH"){[Name="ADP_PUBLISH"]}[Data], "SELECT AGREE_NBR,CUSTOMER_ACCOUNT_NM from ""ADP_PUBLISH"".""TOKEN_FLEX_CORE_OPTIMIZED"".""T_AGREE_DTL"" GROUP BY AGREE_NBR,CUSTOMER_ACCOUNT_NM", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

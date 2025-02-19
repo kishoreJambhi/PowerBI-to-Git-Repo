@@ -1,0 +1,40 @@
+relationship 8a663d04-59db-4340-8ff1-98e4afe14229
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.BATCH_PROCESS_DT
+	toColumn: LocalDateTable_a58d875f-bb72-457c-9016-4e5139c6b7ff.Date
+
+relationship fc971312-c805-4907-9a83-23c66636799f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.TERM_START_DT
+	toColumn: LocalDateTable_ac5ae767-aae5-4eeb-869b-1af7552bcf79.Date
+
+relationship 2778b7c7-3003-4de7-b3e8-8678b8a1bf9d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.TERM_END_DT
+	toColumn: LocalDateTable_12bf0983-3f96-43fe-bddb-993b1ab24166.Date
+
+relationship d12b507e-1cc9-495c-91db-b97cf869c2ab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.EXHIBIT_START_DT
+	toColumn: LocalDateTable_ea7d32cb-c5c2-4a15-9aea-3982cc3ca622.Date
+
+relationship 66a57d8c-2269-4c1f-a957-062987d1c52c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.EXHIBIT_END_DT
+	toColumn: LocalDateTable_9a24f88f-c208-4219-8a5b-9f446c5fa082.Date
+
+relationship 5a0632ba-08c2-4920-8fb3-7811f453f990
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Refresh Date'.'Refresh Date'
+	toColumn: LocalDateTable_3e164769-7762-4d7a-a939-2a33a6de74fa.Date
+
+relationship 10209325-3d46-4425-bc69-eb1b047cd316
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.USAGE_START_DT
+	toColumn: LocalDateTable_3c871c3b-8c10-4457-ae6f-53a2d23b3e08.Date
+
+relationship 7fa38028-ede4-4735-9959-7b6889d446b8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Token Flex usage records'.USAGE_END_DT
+	toColumn: LocalDateTable_6d884648-3d09-4032-ab63-5e5de9c78df5.Date
+

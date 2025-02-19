@@ -1,0 +1,633 @@
+table JiraTickets
+	lineageTag: e58dfabe-d9c2-47a7-bca4-142de06d9d81
+
+	measure 'Total Tickets' = COUNT(JiraTickets[Key])+0
+		formatString: #,0
+		lineageTag: c25bdea9-0a49-483f-a314-8d4b5f38d277
+
+	measure 'EDC Tickets' = CALCULATE(count('JiraTickets'[Key]), FILTER('TeamVsMembers', 'TeamVsMembers'[Team]= "EDC"))+0
+		formatString: #,0
+		lineageTag: 793b38b6-0eed-46fc-a853-06905c0c6622
+
+	measure EDCPercentage = ([EDC Tickets]/[Total Tickets])+0
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b7eb2d08-775b-44c7-9d11-cb31f3173697
+
+	measure Measure
+		lineageTag: e530f2a3-a14b-4037-891e-71e6ea332394
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'ESS Tickets' = CALCULATE(count('JiraTickets'[Key]), FILTER('TeamVsMembers', 'TeamVsMembers'[Team]= "ESS"))
+		formatString: 0
+		lineageTag: 5670416e-6567-4668-9b51-14fd88a145c3
+
+	measure ACS-Tickets = CALCULATE(count('JiraTickets'[Key]), FILTER('TeamVsMembers', 'TeamVsMembers'[Team]= "ACS"))
+		formatString: 0
+		lineageTag: b16554af-d418-4a1d-8a73-e9e1b48b4908
+
+	measure Others = [Total Tickets]-[EDC Tickets]-[ESS Tickets]-[ACS-Tickets]
+		formatString: 0
+		lineageTag: bf06ad01-3c46-4e3a-97a6-9309749140f7
+
+	measure 'ESS Percentage' = [ESS Tickets]/[Total Tickets]*100
+		lineageTag: f27d4918-972b-4bc2-a553-b27efc15faa8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTTR Average' = AVERAGE(JiraTickets[MTTR in hours])
+		formatString: 0.00
+		lineageTag: 20678d0d-fe33-4d28-85d9-88d80971df67
+
+	measure 'Percentile 90th' = PERCENTILE.EXC(JiraTickets[MTTR in hours],0.9)
+		lineageTag: 1e02ace0-fc36-44f4-a2f4-e8a98e06fbff
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Median = MEDIAN(JiraTickets[MTTR in hours])
+		lineageTag: 4246db72-785a-4eb7-8bf5-5b448daf89ec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DIGI Tickets' = CALCULATE(count('JiraTickets'[Key]), FILTER('TeamVsMembers', 'TeamVsMembers'[Team]= "DIGI"))
+		formatString: 0
+		lineageTag: 7b33f22d-618c-454b-b6da-3a15f2ba090a
+
+	measure ESSParticipants = CALCULATE(count(JiraTickets[Issue Type]), FILTER('Participant''s','Participant''s'[Participants: Name]= "hazaria"))+0
+		formatString: 0
+		lineageTag: 5ebb3abf-65ab-4087-893f-124c2e92cad0
+
+	measure 'Sale QoQ%' = ```
+			
+			    VAR __PREV_QUARTER =
+			        CALCULATE(
+			            [Total Tickets],
+			            DATEADD('DateDim'[Date], -1, QUARTER)
+			        )
+			    RETURN
+			        DIVIDE(COUNTA(JiraTickets[Key]) - __PREV_QUARTER, __PREV_QUARTER)
+			```
+		formatString: 0
+		lineageTag: 89254861-7060-4959-8e1c-fd17df56e04a
+
+	measure '% Resolved in a Week' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(JiraTickets, JiraTickets[Resolved In A Week] = "Yes")),
+			    COUNTROWS(JiraTickets),
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 08133167-7475-4b0b-95cc-ffadad928fce
+
+	measure 'Team wise Tickets' = CALCULATE(count('JiraTickets'[Key]), FILTER('TeamVsMembers', 'TeamVsMembers'[Team] in{ "EDC","ESS","ACS",""}))+0
+		formatString: 0
+		lineageTag: 27952585-751b-42eb-9c22-bd5adc4edcf0
+
+	measure 'Team wise Percentage' = ([Team wise Tickets]/[Total Tickets])+0
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1b798235-6172-4cfb-87f5-1fa08c3bc1a9
+
+	measure ACSPercentage = ([ACS-Tickets]/[Total Tickets])+0
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a3160522-9c6b-456d-9a12-5cddfd48867a
+
+	column Key
+		dataType: string
+		lineageTag: 9d6dd372-7644-4bfc-ab1b-a55a96b96f86
+		summarizeBy: none
+		sourceColumn: Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue Type'
+		dataType: string
+		lineageTag: 2579f07b-9a0a-4d0e-9f98-968c154cea8d
+		summarizeBy: none
+		sourceColumn: Issue Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fdc83ce1-312f-48ef-a2a2-fe030e73edcd
+		summarizeBy: none
+		sourceColumn: Created
+
+		variation Variation
+			isDefault
+			relationship: fbdf9abe-1039-4077-b883-e2f5bcac31f1
+			defaultHierarchy: LocalDateTable_670f7c5d-9b4e-49fa-a25e-c7f0b80a9ece.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Updated
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3366a258-fbc8-477a-a5f9-84c852f5daaa
+		summarizeBy: none
+		sourceColumn: Updated
+
+		variation Variation
+			isDefault
+			relationship: e3c00d2a-d5d3-4d53-ae2a-7a6ec8134e07
+			defaultHierarchy: LocalDateTable_d5de3bd4-5b54-4e3d-8ebb-349bb61f30d5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Summary
+		dataType: string
+		lineageTag: 434b856a-1bc1-4152-9864-fe862ddaaa7d
+		summarizeBy: none
+		sourceColumn: Summary
+
+		annotation SummarizationSetBy = Automatic
+
+	column System
+		dataType: string
+		lineageTag: f01aa56e-200e-43b8-adcb-378b51ff58d6
+		summarizeBy: none
+		sourceColumn: System
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed By'
+		dataType: string
+		lineageTag: c091a1ae-a784-4be2-9564-64e0021f99f6
+		summarizeBy: none
+		sourceColumn: Closed By
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resolved
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5536f975-5208-4b69-b8b2-ba930a6f096b
+		summarizeBy: none
+		sourceColumn: Resolved
+
+		variation Variation
+			isDefault
+			relationship: 9035ec44-a2f8-46bb-b3d4-9f19d4c9786f
+			defaultHierarchy: LocalDateTable_d07dc8eb-a5a3-4221-b16f-7bfc41513fd6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"JiraTickets","TableItemName":"Monthly Bin","ObjectType":4},"LinkType":"UsedInGroup"},{"LinkTarget":{"TableName":"JiraTickets","TableItemName":"Weekly Trend","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Closed Date'
+		dataType: string
+		lineageTag: f2ee2560-e05a-4f0a-96ce-1d3ebc0ffb4d
+		summarizeBy: none
+		sourceColumn: Closed Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed Date Time'
+		dataType: string
+		lineageTag: d9c3c066-f1cd-421a-bb34-49f1812d21c2
+		summarizeBy: none
+		sourceColumn: Closed Date Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Task Type'
+		dataType: string
+		lineageTag: d249328e-1834-4934-b479-dd8d72582a0b
+		summarizeBy: none
+		sourceColumn: Task Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResolvedOn
+		dataType: dateTime
+		lineageTag: de455856-ce89-4f60-b9eb-9b8e5683d12e
+		summarizeBy: none
+		sourceColumn: ResolvedOn
+
+		variation Variation
+			isDefault
+			relationship: 0a0423bb-49bf-4851-b4c5-7c19221ae845
+			defaultHierarchy: LocalDateTable_3713c6c0-6c50-4c22-9b65-1e1cc73b6011.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column MTTR = JiraTickets[Resolved]-JiraTickets[Created].[Date]
+		lineageTag: c28fafe8-803c-41ab-9c9a-e2a973dd57f3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'MTTR in hours' = HOUR(JiraTickets[MTTR])+MINUTE(JiraTickets[MTTR])/60
+		formatString: 0
+		lineageTag: cf8c93c6-7f29-4812-a344-6e06f9188586
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monthly Bin' =
+			IF(
+			  ISBLANK('JiraTickets'[Resolved]),
+			  BLANK(),
+			  DATE(
+			    YEAR('JiraTickets'[Resolved]),
+			    1 + (MONTH('JiraTickets'[Resolved]) - 1),
+			    1
+			  )
+			)
+		formatString: General Date
+		lineageTag: f0e9be65-c6c5-493d-bf34-60f175ac29a0
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "JiraTickets"
+				          }
+				        },
+				        "Property": "Resolved"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 1.0,
+				      "unit": 6
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"j","Entity":"JiraTickets"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"j"}},"Property":"Resolved"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"j"}},"Property":"Resolved"}},"Size":1.0,"TimeUnit":2}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekly Trend' =
+			IF(
+			  ISBLANK('JiraTickets'[Resolved]),
+			  BLANK(),
+			  1 + (INT((INT('JiraTickets'[Resolved]) - 1) / 7) * 7)
+			)
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2cf3af29-b284-4f7d-8907-67c40995822b
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "JiraTickets"
+				          }
+				        },
+				        "Property": "Resolved"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 7.0,
+				      "unit": 8
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"j","Entity":"JiraTickets"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"j"}},"Property":"Resolved"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"j"}},"Property":"Resolved"}},"Size":7.0,"TimeUnit":0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Status'
+		dataType: string
+		lineageTag: 48b29ebe-f88a-4646-8a11-21c46a9506fa
+		summarizeBy: none
+		sourceColumn: Current Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Assignee:  Name'
+		dataType: string
+		lineageTag: 91cf2fb0-b55c-4c05-867c-1e08eb1df99a
+		summarizeBy: none
+		sourceColumn: Current Assignee:  Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Component
+		dataType: string
+		lineageTag: 9694ef82-f47b-4424-8952-f3ddb9605139
+		summarizeBy: none
+		sourceColumn: Component
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Component Name'
+		dataType: string
+		lineageTag: 43f59a34-c9e4-4a6e-991d-69961955e1b9
+		summarizeBy: none
+		sourceColumn: Component Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resolved By:  Name'
+		dataType: string
+		lineageTag: 470724a7-29c0-45c0-92b6-e84d6214f500
+		summarizeBy: none
+		sourceColumn: Resolved By:  Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Historical Status'
+		dataType: string
+		lineageTag: 898a72f0-a654-4c5a-aa36-048557cc3967
+		summarizeBy: none
+		sourceColumn: Historical Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporter:  Name'
+		dataType: string
+		lineageTag: dc071d03-c541-4ce5-90ef-3870cceef7e2
+		summarizeBy: none
+		sourceColumn: Reporter:  Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fix Versions.Fix Version Name'
+		dataType: string
+		lineageTag: 59695e25-f791-44a4-92bd-91ecf471546f
+		summarizeBy: none
+		sourceColumn: Fix Versions.Fix Version Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Components.Component Name (1)'
+		dataType: string
+		lineageTag: 97f9840b-c93e-4d79-b488-9335641de179
+		summarizeBy: none
+		sourceColumn: Components.Component Name (1)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue ID'
+		dataType: string
+		lineageTag: 79f6930d-e3f6-479c-82ea-892d02e04a1b
+		summarizeBy: none
+		sourceColumn: Issue ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resolution Time' = DATEDIFF(JiraTickets[Created], JiraTickets[Resolved], DAY)
+		formatString: 0
+		lineageTag: 907c72ae-96b0-4cf4-be83-4e60dd95e929
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Bucket' =
+			SWITCH(
+			    TRUE(),
+			    JiraTickets[Resolution Time1] <= 1, "*Same Day",
+			    JiraTickets[Resolution Time1] > 1 && JiraTickets[Resolution Time1] <= 7, "1 to 7 Days",
+			    JiraTickets[Resolution Time1] > 7 && JiraTickets[Resolution Time1] <= 30, "8 to 30 Days",
+			    JiraTickets[Resolution Time1] > 30, "Above 30 Days",
+			    "Unknown"
+			)
+		dataType: string
+		lineageTag: 1ec5643d-23de-4de3-9ca8-6b140c956bb9
+		summarizeBy: none
+		sortByColumn: 'Resolved By:  Name'
+
+		changedProperty = SortByColumn
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'QoQ_Tickets Change' =
+			
+			VAR CurrentQuarterTickets = [Total Tickets]
+			VAR PreviousQuarterTickets = CALCULATE([Total Tickets], PREVIOUSQUARTER('DateDim'[Date]))
+			RETURN CurrentQuarterTickets - PreviousQuarterTickets
+		formatString: 0
+		lineageTag: 0cbb7b8a-0feb-4359-a72e-7ef8133ecfbe
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: c7c79686-1d89-426f-bae2-aa01a3f71594
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfYear = MONTH(JiraTickets[Created])
+		formatString: 0
+		lineageTag: 09fe8e71-4719-4d8b-a935-be8c5ea9e016
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Quarter' =
+			SWITCH( True(),
+			JiraTickets[MonthOfYear] = 1, "Q4",
+			JiraTickets[MonthOfYear] = 2, "Q1",
+			JiraTickets[MonthOfYear] = 3, "Q1",
+			JiraTickets[MonthOfYear] = 4, "Q1",
+			JiraTickets[MonthOfYear] = 5, "Q2",
+			JiraTickets[MonthOfYear] = 6, "Q2",
+			JiraTickets[MonthOfYear] = 7, "Q2",
+			JiraTickets[MonthOfYear] = 8, "Q3",
+			JiraTickets[MonthOfYear] = 9, "Q3",
+			JiraTickets[MonthOfYear] = 10, "Q3",
+			JiraTickets[MonthOfYear] = 11, "Q4",
+			JiraTickets[MonthOfYear] = 12, "Q4",
+			Blank() )
+		lineageTag: cc09a550-c06a-435e-801b-679ef04df1f4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = Year(JiraTickets[Created])
+		formatString: 0
+		lineageTag: c6ab782b-ddf0-4818-9ee0-eb75f1efdbf8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Quarter and Year' = CONCATENATE(JiraTickets[FY Year],JiraTickets[FY Quarter])
+		lineageTag: 0febbcc0-36cb-43c0-83be-aa08ffe357a5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT(JiraTickets[Created],"YYYY-MMM")
+		lineageTag: afff4458-8760-48ff-bef0-830a975f3954
+		summarizeBy: none
+		sortByColumn: 'Year-Month Code'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_No = FORMAT(JiraTickets[Created],"MMMM")
+		lineageTag: 9375fb46-479d-43a8-a6ce-b3621dd7a5e6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column
+		type: calculated
+		lineageTag: 72f6e0ee-aec8-4321-bf19-32a1c4d6eb8b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column WeekOfYear = CONCATENATE("Week_",WEEKNUM(JiraTickets[Created]))
+		lineageTag: 405d6e39-d85a-406d-957e-d06afe615fc0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekSort = CONCATENATE(JiraTickets[Year]," " & JiraTickets[WeekOfYear])
+		lineageTag: 332209a9-6af7-47f6-86e9-1ad999b4d1a5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Year' = "FY" & RIGHT(IF (JiraTickets[MonthOfYear]=1,JiraTickets[Year],JiraTickets[Year]+1),2)
+		lineageTag: 14ff3077-e0cf-4a6e-83c6-7ee109eb8cd0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date (bins)' =
+			
+			DATE(
+			    YEAR(JiraTickets[Created]),
+			    MONTH(JiraTickets[Created]),
+			    1
+			)
+		formatString: Long Date
+		lineageTag: 9907b828-9dc0-413d-aaff-b284a3a85190
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resolved In A Week' =
+			
+			VAR DaysTaken = DATEDIFF(JiraTickets[Created], JiraTickets[Resolved], DAY)
+			RETURN IF(DaysTaken <= 7, "Yes", "No")
+		lineageTag: 67c1d02d-9221-4c34-ae83-1e0738b41d10
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column HyperLink
+		dataType: string
+		lineageTag: debf6414-cbe2-4211-b92f-6309500410ee
+		summarizeBy: none
+		sourceColumn: HyperLink
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resolved on1' = IF(ISBLANK(JiraTickets[ResolvedOn]),JiraTickets[Updated],JiraTickets[ResolvedOn])
+		formatString: Long Date
+		lineageTag: bdf52c07-b8d3-45a4-9b69-5d192ccfef28
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 310bc1f7-91d2-4f12-8bfe-927b89bb099d
+			defaultHierarchy: LocalDateTable_ddcccfcc-7b28-4778-a8be-1cf5ce711837.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Resolution Time1' = DATEDIFF(JiraTickets[Created], JiraTickets[Resolved on1], DAY)
+		formatString: 0
+		lineageTag: a02a1b6b-31b2-4a73-b53f-d2a0d47169c6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created_Old
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8848d3eb-799e-4b62-b064-272788472dd3
+		summarizeBy: none
+		sourceColumn: Created_Old
+
+		variation Variation
+			isDefault
+			relationship: 5cc7280a-6daf-4075-864c-ad736c294cf5
+			defaultHierarchy: LocalDateTable_2646edc1-87be-40f1-bffc-69cc2b08ecf9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Participants
+		dataType: string
+		lineageTag: 91207291-65a7-40a7-bdff-fb2b8292365a
+		summarizeBy: none
+		sourceColumn: Participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year-Month Code' = FORMAT(JiraTickets[Created],"YYYYMM")
+		lineageTag: 25ba6717-d938-48c1-babc-741146d34e37
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition JiraTickets-550c5728-df4e-42e2-8f1c-05873ccb7c69 = m
+		mode: import
+		source =
+				let
+				    Source = Table.NestedJoin(Issues, {"Key"}, #"Participant's", {"Key"}, "Participant's", JoinKind.LeftOuter),
+				    #"Expanded Participant's" = Table.ExpandTableColumn(Source, "Participant's", {"Participants"}, {"Participants"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Expanded Participant's", {"Key"}, #"Fix Versions", {"Key"}, "Fix Versions", JoinKind.LeftOuter),
+				    #"Expanded Fix Versions" = Table.ExpandTableColumn(#"Merged Queries", "Fix Versions", {"Fix Version Name"}, {"Fix Versions.Fix Version Name"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded Fix Versions", {"Key"}, Components, {"Key"}, "Components", JoinKind.LeftOuter),
+				    #"Expanded Components" = Table.ExpandTableColumn(#"Merged Queries1", "Components", {"Component Name (1)"}, {"Components.Component Name (1)"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Components",{{"Key", type text}, {"Issue Type", type text}, {"Current Status", type text}, {"Current Assignee:  Name", type text}, {"Created", type datetime}, {"Updated", type datetime}, {"Component", type text}, {"Summary", type text}, {"System", type text}, {"Closed By", type text}, {"Resolved", type datetime}, {"Resolved By:  Name", type text}, {"Closed Date", type text}, {"Closed Date Time", type text}, {"Task Type", type text}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type", "Resolved", "Resolved - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"Resolved - Copy", "ResolvedOn"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"ResolvedOn", type date}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type1", {"Key"}),
+				    #"Removed Blank Rows" = Table.SelectRows(#"Removed Duplicates", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Blank Rows", "Index", 1, 1, Int64.Type),
+				    #"Added Custom" = Table.AddColumn(#"Added Index", "HyperLink", each "https://jira.autodesk.com/browse/"&[Key]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom",{{"Updated", type date}})
+				in
+				    #"Changed Type2"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,368 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.59\",\"type\":2},\"customTheme\":{\"name\":\"AWN7465946678026834.json\",\"version\":\"5.59\",\"type\":1}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useStylableVisualContainerHeader\":true,\"exportDataMode\":1,\"defaultFilterActionIsDataFilter\":true,\"allowChangeFilterTypes\":true,\"useEnhancedTooltips\":true,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "items": [
+          {
+            "name": "AWN7465946678026834.json",
+            "path": "AWN7465946678026834.json",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "AI Summary",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 1220.00,
+      "name": "1453b60cd58e20d991c8",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"47a3c93c249bccb403bd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":564.9261083743842,\"z\":3000,\"width\":201.33004926108373,\"height\":43.57142857142857,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Belonging\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"16pt\",\"color\":\"#a21235\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 43.57,
+          "width": 201.33,
+          "x": 0.00,
+          "y": 564.93,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"4aaac7efda69104db628\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":33.582089552238806,\"z\":1000,\"width\":1679.8507462686566,\"height\":531.3432835820895,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"aiNarratives\",\"drillFilterOtherVisuals\":true,\"objects\":{\"narrativeSelection\":[{\"properties\":{\"dismissSelectionScreen\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"userPrompt\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'For each column/ topic, provide a summary of key findings. Then recommend an action for each of the topics'\"}}},\"selectedVisualsJson\":{\"expr\":{\"Literal\":{\"Value\":\"'{\\\"isEntireReportSelected\\\":false,\\\"sections\\\":{\\\"3bb493f7cb59acad1da6\\\":{\\\"isEntireSectionSelected\\\":false,\\\"visuals\\\":{\\\"b307e72a6264044c6a20\\\":true}}}}'\"}}},\"useAllVisuals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 531.34,
+          "width": 1679.85,
+          "x": 0.00,
+          "y": 33.58,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"52b21511009eb9c8d2eb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":768.6567164179104,\"y\":566.4179104477612,\"z\":4000,\"width\":201.49253731343282,\"height\":43.28358208955223,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"AWN Events\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"16pt\",\"color\":\"#a21235\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 43.28,
+          "width": 201.49,
+          "x": 768.66,
+          "y": 566.42,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"7343367e505ce2c200c0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":5000,\"width\":646.0591133004925,\"height\":43.57142857142857,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Doing well & how to improve\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"16pt\",\"color\":\"#a21235\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 43.57,
+          "width": 646.06,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"8ac4c6b7b8c457ce983a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":768.6567164179104,\"y\":631.3432835820895,\"z\":2000,\"width\":911.1940298507462,\"height\":588.8059701492537,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"aiNarratives\",\"drillFilterOtherVisuals\":true,\"objects\":{\"narrativeSelection\":[{\"properties\":{\"dismissSelectionScreen\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"userPrompt\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'For each column/ topic, provide a summary of key findings. Then recommend an action for each of the topics'\"}}},\"selectedVisualsJson\":{\"expr\":{\"Literal\":{\"Value\":\"'{\\\"isEntireReportSelected\\\":false,\\\"sections\\\":{\\\"3bb493f7cb59acad1da6\\\":{\\\"isEntireSectionSelected\\\":false,\\\"visuals\\\":{\\\"d384e3f03a558ebee8e2\\\":true}}}}'\"}}},\"useAllVisuals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 588.81,
+          "width": 911.19,
+          "x": 768.66,
+          "y": 631.34,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"b960db916435b21d40c2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":631,\"z\":0,\"width\":769,\"height\":589,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"aiNarratives\",\"drillFilterOtherVisuals\":true,\"objects\":{\"narrativeSelection\":[{\"properties\":{\"dismissSelectionScreen\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"userPrompt\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Analyze the feedback received in the table, and connect it with the numbers in the visual. Provide a bulleted list of key insights and give a recommended action.'\"}}},\"selectedVisualsJson\":{\"expr\":{\"Literal\":{\"Value\":\"'{\\\"isEntireReportSelected\\\":false,\\\"sections\\\":{\\\"3bb493f7cb59acad1da6\\\":{\\\"isEntireSectionSelected\\\":false,\\\"visuals\\\":{\\\"537c8e1c383002b9bc85\\\":true}},\\\"5f72d3e2c10150804c00\\\":{\\\"isEntireSectionSelected\\\":false,\\\"visuals\\\":{\\\"dfb273a84dc05e5ddc00\\\":true}}}}'\"}}},\"useAllVisuals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 589.00,
+          "width": 769.00,
+          "x": 0.00,
+          "y": 631.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1680.00
+    },
+    {
+      "config": "{\"visibility\":1}",
+      "displayName": "Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "3bb493f7cb59acad1da6",
+      "ordinal": 5,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"537c8e1c383002b9bc85\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":1280,\"height\":310.27355623100306,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Survey_Results.ID\"},{\"queryRef\":\"Survey_Results.How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"},\"Name\":\"Survey_Results.ID\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?\"},\"Name\":\"Survey_Results.How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?\",\"NativeReferenceName\":\"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"670.5805678197653D\"}}}},\"selector\":{\"metadata\":\"Survey_Results.How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?\"}}]}}}",
+          "filters": "[]",
+          "height": 310.27,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"b307e72a6264044c6a20\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":409.48328267477206,\"z\":1000,\"width\":1280,\"height\":310.27355623100306,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Survey_Results.ID\"},{\"queryRef\":\"Survey_Results.What do you feel AWN is doing well?\"},{\"queryRef\":\"Survey_Results.How might we improve to better meet your needs?\"},{\"queryRef\":\"Survey_Results.What would you like to see AWN focus on in FY26?\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"},\"Name\":\"Survey_Results.ID\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"What do you feel AWN is doing well?\"},\"Name\":\"Survey_Results.What do you feel AWN is doing well?\",\"NativeReferenceName\":\"What do you feel AWN is doing well?\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"What would you like to see AWN focus on in FY26?\"},\"Name\":\"Survey_Results.What would you like to see AWN focus on in FY26?\",\"NativeReferenceName\":\"What would you like to see AWN focus on in FY26?\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"How might we improve to better meet your needs?\"},\"Name\":\"Survey_Results.How might we improve to better meet your needs?\",\"NativeReferenceName\":\"How might we improve to better meet your needs?\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"593.7112712968424D\"}}}},\"selector\":{\"metadata\":\"Survey_Results.What do you feel AWN is doing well?\"}}]}}}",
+          "filters": "[]",
+          "height": 310.27,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 409.48,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"d384e3f03a558ebee8e2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":127.4164133738602,\"z\":2000,\"width\":1280,\"height\":310.27355623100306,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Survey_Results.ID\"},{\"queryRef\":\"Survey_Results.If you haven't participated in any activities to date please indicate why.\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"},\"Name\":\"Survey_Results.ID\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"If you haven't participated in any activities to date please indicate why.\"},\"Name\":\"Survey_Results.If you haven't participated in any activities to date please indicate why.\",\"NativeReferenceName\":\"If you haven't participated in any activities to date please indicate why.\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 310.27,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 127.42,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"407L\"}}}}}]}}",
+      "displayName": "Visuals",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "5f72d3e2c10150804c00",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"aa76dced734db22c0224\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":1000,\"width\":608.2758620689655,\"height\":334.2857142857143,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Know_AWN.How did you learn about AWN?\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Know_AWN.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Know_AWN\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"How did you learn about AWN?\"},\"Name\":\"Know_AWN.How did you learn about AWN?\",\"NativeReferenceName\":\"How did you learn about AWN?\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Know_AWN.ID)\",\"NativeReferenceName\":\"Count of ID\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'How did you learn about AWN?'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"00ee34b911621a2185a9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Motivation\"}},\"Property\":\"What motivated you to sign up with AWN?\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Motivation\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"What motivated you to sign up with AWN?\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"''\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Know_AWN\"}},\"Property\":\"ID\"}},\"Function\":5}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Know_AWN\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"ID\"}},\"Function\":5}},\"Right\":{\"Literal\":{\"Value\":\"1L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 334.29,
+          "width": 608.28,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"aaf6f86f329223378004\",\"layouts\":[{\"id\":0,\"position\":{\"x\":663.2512315270936,\"y\":0,\"z\":0,\"width\":554.1871921182266,\"height\":348.4729064039409,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Survey_Results_Breakdown.What motivated you to sign up with AWN?\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Motivation.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Motivation\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"What motivated you to sign up with AWN?\"},\"Name\":\"Survey_Results_Breakdown.What motivated you to sign up with AWN?\",\"NativeReferenceName\":\"What motivated you to sign up with AWN?\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Motivation.ID)\",\"NativeReferenceName\":\"Count of ID\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'What motivated you to sign up with AWN?'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"00ee34b911621a2185a9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Motivation\"}},\"Property\":\"What motivated you to sign up with AWN?\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Motivation\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"What motivated you to sign up with AWN?\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"''\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Motivation\"}},\"Property\":\"ID\"}},\"Function\":5}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Motivation\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}},\"Right\":{\"Literal\":{\"Value\":\"1L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 348.47,
+          "width": 554.19,
+          "x": 663.25,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"b7556570b597e07dd488\",\"layouts\":[{\"id\":0,\"position\":{\"x\":663.2512315270936,\"y\":381.2807881773399,\"z\":2000,\"width\":549.7536945812808,\"height\":324.5320197044335,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Add_Resources.What if any additional support or resources would you like to see offered by AWN? \",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Add_Resources.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Add_Resources\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"What if any additional support or resources would you like to see offered by AWN? \"},\"Name\":\"Add_Resources.What if any additional support or resources would you like to see offered by AWN? \",\"NativeReferenceName\":\"What if any additional support or resources would you like to see offered by AWN? \"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Add_Resources.ID)\",\"NativeReferenceName\":\"Count of ID\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'What if any additional support or resources would you like to see offered by AWN? '\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Add_Resources\"}},\"Property\":\"ID\"}},\"Function\":5}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Add_Resources\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"ID\"}},\"Function\":5}},\"Right\":{\"Literal\":{\"Value\":\"1L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 324.53,
+          "width": 549.75,
+          "x": 663.25,
+          "y": 381.28,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"dfb273a84dc05e5ddc00\",\"layouts\":[{\"id\":0,\"position\":{\"x\":7.9802955665024635,\"y\":381.2807881773399,\"z\":3000,\"width\":641.0837438423646,\"height\":324.5320197044335,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Survey_Results.How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"},\"Name\":\"Survey_Results.How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\",\"NativeReferenceName\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"2024\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Survey_Results.ID)\":{\"displayName\":\"2024\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"percentageLabelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'How has your involvement in AWN impacted your sense of belonging and inclusion within the company?'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"6762a7ca9a9d00c6c000\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Survey_Results\"}},\"Property\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 324.53,
+          "width": 641.08,
+          "x": 7.98,
+          "y": 381.28,
+          "z": 3000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"407L\"}}}}}]}}",
+      "displayName": "Year over Year",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "62dbfce88680089006db",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"5249de373e6166e03081\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.753694581280788,\"y\":14.187192118226601,\"z\":1000,\"width\":608.2758620689655,\"height\":334.2857142857143,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Know_AWN.How did you learn about AWN?\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Know_AWN.ID)\"},{\"queryRef\":\"CountNonNull(Know_AWN_2023.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Know_AWN\",\"Type\":0},{\"Name\":\"k1\",\"Entity\":\"Know_AWN_2023\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"How did you learn about AWN?\"},\"Name\":\"Know_AWN.How did you learn about AWN?\",\"NativeReferenceName\":\"How did you learn about AWN?\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Know_AWN.ID)\",\"NativeReferenceName\":\"2024\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k1\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Know_AWN_2023.ID)\",\"NativeReferenceName\":\"2023\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Know_AWN.ID)\":{\"displayName\":\"2024\"},\"CountNonNull(Know_AWN_2023.ID)\":{\"displayName\":\"2023\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}},{\"properties\":{\"labelPosition\":{\"expr\":{\"Literal\":{\"Value\":\"'Above'\"}}}},\"selector\":{\"metadata\":\"Count(Motivation_2023.ID)\"}},{\"properties\":{\"labelPosition\":{\"expr\":{\"Literal\":{\"Value\":\"'Under'\"}}}},\"selector\":{\"metadata\":\"CountNonNull(Motivation.ID)\"}},{\"properties\":{\"labelPosition\":{\"expr\":{\"Literal\":{\"Value\":\"'Under'\"}}}},\"selector\":{\"metadata\":\"CountNonNull(Know_AWN.ID)\"}},{\"properties\":{\"labelPosition\":{\"expr\":{\"Literal\":{\"Value\":\"'Above'\"}}}},\"selector\":{\"metadata\":\"CountNonNull(Know_AWN_2023.ID)\"}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'How did you learn about AWN?'\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"border\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Know_AWN\"}},\"Property\":\"ID\"}},\"Function\":5}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Know_AWN\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"ID\"}},\"Function\":5}},\"Right\":{\"Literal\":{\"Value\":\"1L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 334.29,
+          "width": 608.28,
+          "x": 9.75,
+          "y": 14.19,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"9cb6812c0d90e540746b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":663.2512315270936,\"y\":14.187192118226601,\"z\":0,\"width\":554.1871921182266,\"height\":348.4729064039409,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Survey_Results_Breakdown.What motivated you to sign up with AWN?\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Motivation.ID)\"},{\"queryRef\":\"Count(Motivation_2023.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Motivation\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Motivation_2023\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"What motivated you to sign up with AWN?\"},\"Name\":\"Survey_Results_Breakdown.What motivated you to sign up with AWN?\",\"NativeReferenceName\":\"What motivated you to sign up with AWN?\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Motivation.ID)\",\"NativeReferenceName\":\"2024\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"ID\"}},\"Function\":2},\"Name\":\"Count(Motivation_2023.ID)\",\"NativeReferenceName\":\"Count of ID\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Motivation.ID)\":{\"displayName\":\"2024\"},\"CountNonNull(Motivation_2023.ID)\":{\"displayName\":\"2023\"},\"Count(Motivation_2023.ID)\":{\"displayName\":\"2023\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}},{\"properties\":{\"labelPosition\":{\"expr\":{\"Literal\":{\"Value\":\"'Above'\"}}}},\"selector\":{\"metadata\":\"Count(Motivation_2023.ID)\"}},{\"properties\":{\"labelPosition\":{\"expr\":{\"Literal\":{\"Value\":\"'Under'\"}}}},\"selector\":{\"metadata\":\"CountNonNull(Motivation.ID)\"}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'What motivated you to sign up with AWN?'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"00ee34b911621a2185a9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Motivation\"}},\"Property\":\"What motivated you to sign up with AWN?\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Motivation\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"What motivated you to sign up with AWN?\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'learn from others'\"}}],[{\"Literal\":{\"Value\":\"'Our awn representative on the site told us to register'\"}}],[{\"Literal\":{\"Value\":\"''\"}}],[{\"Literal\":{\"Value\":\"'Becmne an agent of change for our culture'\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 348.47,
+          "width": 554.19,
+          "x": 663.25,
+          "y": 14.19,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"a8915cec07c14a820803\",\"layouts\":[{\"id\":0,\"position\":{\"x\":317.4384236453202,\"y\":375.9605911330049,\"z\":3000,\"width\":600.2955665024631,\"height\":324.5320197044335,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Survey_Results.How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"},{\"queryRef\":\"CountNonNull(2023.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"2\",\"Entity\":\"2023\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"},\"Name\":\"Survey_Results.How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\",\"NativeReferenceName\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"2024\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"2\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(2023.ID)\",\"NativeReferenceName\":\"2023\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Survey_Results.ID)\":{\"displayName\":\"2024\"},\"CountNonNull(2023.ID)\":{\"displayName\":\"2023\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'How has your involvement in AWN impacted your sense of belonging and inclusion within the company?'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"6762a7ca9a9d00c6c000\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Survey_Results\"}},\"Property\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"How has your involvement in AWN impacted your sense of belonging and inclusion within the company?\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 324.53,
+          "width": 600.30,
+          "x": 317.44,
+          "y": 375.96,
+          "z": 3000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"relationships\":[{\"source\":\"a65d2ac27381614eb5c3\",\"target\":\"8ff4b5800bdc626ec19a\",\"type\":1}]}",
+      "displayName": "Demographics",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"335260d8e3345a52cc54\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"AWN_Membership_Consolidated\"}},\"Property\":\"Current Extract\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"AWN_Membership_Consolidated\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Current Extract\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"true\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+      "height": 720.00,
+      "name": "a0d5a9d1d170188427d3",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"3a6d5f997436104c1b02\",\"layouts\":[{\"id\":0,\"position\":{\"x\":594.8885053503624,\"y\":431.05557473248183,\"z\":4000,\"width\":639.425612702796,\"height\":273.5850880220918,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"}],\"Category\":[{\"queryRef\":\"AWN_Membership_Consolidated 2.Chapter\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0},{\"Name\":\"a1\",\"Entity\":\"AWN_Membership_Consolidated 2\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Chapter\"},\"Name\":\"AWN_Membership_Consolidated 2.Chapter\",\"NativeReferenceName\":\"Chapter1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Responses  by Chapter'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 273.59,
+          "width": 639.43,
+          "x": 594.89,
+          "y": 431.06,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"60ddf0c7c98a7d4c9dc3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":196.84729064039408,\"y\":131.23152709359607,\"z\":6000,\"width\":135.66502463054186,\"height\":109.95073891625616,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"CountNonNull(2023.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"2\",\"Entity\":\"2023\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"2\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(2023.ID)\",\"NativeReferenceName\":\"Previous Year\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"2\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(2023.ID)\":{\"displayName\":\"Previous Year\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"30D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 109.95,
+          "width": 135.67,
+          "x": 196.85,
+          "y": 131.23,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"8ff4b5800bdc626ec19a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":594.2857142857143,\"y\":30.15197568389058,\"z\":5000,\"width\":640,\"height\":346.26139817629183,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Group\":[{\"queryRef\":\"AWN_Membership_Consolidated 2.Work Location Geo\",\"active\":true}],\"Values\":[{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"}],\"Details\":[{\"queryRef\":\"AWN_Membership_Consolidated 2.Chapter\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0},{\"Name\":\"a1\",\"Entity\":\"AWN_Membership_Consolidated 2\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Chapter\"},\"Name\":\"AWN_Membership_Consolidated 2.Chapter\",\"NativeReferenceName\":\"Chapter\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Work Location Geo\"},\"Name\":\"AWN_Membership_Consolidated 2.Work Location Geo\",\"NativeReferenceName\":\"Work Location Geo1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Responses by Geo & Chapter'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 346.26,
+          "width": 640.00,
+          "x": 594.29,
+          "y": 30.15,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"9ec215f99719a04e19bb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":21.2807881773399,\"y\":46.995073891625616,\"z\":2000,\"width\":280.1970443349754,\"height\":77.14285714285714,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"AWN_Membership_Consolidated 2.Work Location Geo\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a1\",\"Entity\":\"AWN_Membership_Consolidated 2\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Work Location Geo\"},\"Name\":\"AWN_Membership_Consolidated 2.Work Location Geo\",\"NativeReferenceName\":\"Work Location Geo1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 77.14,
+          "width": 280.20,
+          "x": 21.28,
+          "y": 47.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"a65d2ac27381614eb5c3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.17466344494304,\"y\":407.1964100793924,\"z\":1000,\"width\":469.2302381774249,\"height\":306.98791853641694,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"}],\"Category\":[{\"queryRef\":\"AWN_Membership_Consolidated 2.Work Location Geo\",\"active\":true},{\"queryRef\":\"AWN_Membership_Consolidated 2.Chapter\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0},{\"Name\":\"a1\",\"Entity\":\"AWN_Membership_Consolidated 2\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Work Location Geo\"},\"Name\":\"AWN_Membership_Consolidated 2.Work Location Geo\",\"NativeReferenceName\":\"Work Location Geo1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Chapter\"},\"Name\":\"AWN_Membership_Consolidated 2.Chapter\",\"NativeReferenceName\":\"Chapter1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Responses  by Geo'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 306.99,
+          "width": 469.23,
+          "x": 38.17,
+          "y": 407.20,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"cbd7db3c02eac44176e7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":31.921182266009854,\"y\":131.23152709359607,\"z\":0,\"width\":164.92610837438423,\"height\":109.95073891625616,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"Answers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Survey_Results.ID)\":{\"displayName\":\"Answers\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 109.95,
+          "width": 164.93,
+          "x": 31.92,
+          "y": 131.23,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"d59f9fbac070eba69d70\",\"layouts\":[{\"id\":0,\"position\":{\"x\":367.0935960591133,\"y\":46.995073891625616,\"z\":3000,\"width\":211.0344827586207,\"height\":329.85221674876846,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"AWN_Membership_Consolidated 2.Work Location Country\"},{\"queryRef\":\"CountNonNull(Survey_Results.ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Survey_Results\",\"Type\":0},{\"Name\":\"a1\",\"Entity\":\"AWN_Membership_Consolidated 2\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5},\"Name\":\"CountNonNull(Survey_Results.ID)\",\"NativeReferenceName\":\"Count of ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a1\"}},\"Property\":\"Work Location Country\"},\"Name\":\"AWN_Membership_Consolidated 2.Work Location Country\",\"NativeReferenceName\":\"Work Location Country1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 329.85,
+          "width": 211.03,
+          "x": 367.09,
+          "y": 47.00,
+          "z": 3000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Top 3 Summary",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 556.00,
+      "name": "ee989911d18fd977aa75",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"34804110cd44e781083d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":5000,\"width\":343.73399014778323,\"height\":41.083743842364534,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Top 3 Action Items Summary\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"12pt\",\"color\":\"#e12854\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 41.08,
+          "width": 343.73,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"92c748a64424424e9f9e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":343.73399014778323,\"y\":141.05418719211823,\"z\":2000,\"width\":472.4630541871921,\"height\":78.74384236453201,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\" \"},{\"value\":\"If you haven't participated in any activities to date please indicate why.\",\"textStyle\":{\"fontWeight\":\"bold\"}}]},{\"textRuns\":[{\"value\":\"Timings & Conflicting Work Priorities\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Lack of appeal/ missing out on invitations/ new employee (all with a few answers only)\"}],\"listType\":\"bullet\"}]}}]}}}",
+          "filters": "[]",
+          "height": 78.74,
+          "width": 472.46,
+          "x": 343.73,
+          "y": 141.05,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"9ff00e078900dfeb2ba3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":43.137931034482754,\"z\":0,\"width\":610.0935960591133,\"height\":88.33004926108374,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"How might AWN contribute to increase your sense of belonging and inclusion at Autodesk?\",\"textStyle\":{\"fontWeight\":\"bold\"}}]},{\"textRuns\":[{\"value\":\"Local & in-person events\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Continue mentorship programs\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Expand to coaching programs\"}],\"listType\":\"bullet\"}]}}]}}}",
+          "filters": "[]",
+          "height": 88.33,
+          "width": 610.09,
+          "x": 0.00,
+          "y": 43.14,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"a6729c7b0243202ec578\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":241.02463054187191,\"z\":3000,\"width\":343.73399014778323,\"height\":78.74384236453201,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\" \"},{\"value\":\"  What do you feel AWN is doing well?\",\"textStyle\":{\"fontWeight\":\"bold\"}}]},{\"textRuns\":[{\"value\":\"Career Improvement & Communication\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Events & Networking\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Education & Mentorship\"}],\"listType\":\"bullet\"}]}}]}}}",
+          "filters": "[]",
+          "height": 78.74,
+          "width": 343.73,
+          "x": 0.00,
+          "y": 241.02,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"d87e49ab085efef5834a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":343.73399014778323,\"y\":241.02463054187191,\"z\":4000,\"width\":472.4630541871921,\"height\":78.74384236453201,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\" \"},{\"value\":\"How might we improve to better meet your needs?\",\"textStyle\":{\"fontWeight\":\"bold\"}}]},{\"textRuns\":[{\"value\":\"More Activities & Workshops\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"In-person / regional events\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Specific Programs for Phases of Career\"}],\"listType\":\"bullet\"}]}}]}}}",
+          "filters": "[]",
+          "height": 78.74,
+          "width": 472.46,
+          "x": 343.73,
+          "y": 241.02,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"eee395340d50e160a4c4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":141.05418719211823,\"z\":1000,\"width\":356.0591133004926,\"height\":78.74384236453201,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\" \"},{\"value\":\"What would you like to see AWN focus on in FY26?\",\"textStyle\":{\"fontWeight\":\"bold\"}}]},{\"textRuns\":[{\"value\":\"Networking & Skill Building\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Leadership Development\"}],\"listType\":\"bullet\"},{\"textRuns\":[{\"value\":\"Community & Collaboration\"}],\"listType\":\"bullet\"}]}}]}}}",
+          "filters": "[]",
+          "height": 78.74,
+          "width": 356.06,
+          "x": 0.00,
+          "y": 141.05,
+          "z": 1000.00
+        }
+      ],
+      "width": 816.00
+    }
+  ],
+  "theme": "AWN7465946678026834.json"
+}

@@ -1,0 +1,862 @@
+table TrustApp-Master
+	lineageTag: f8999aa3-ee0c-4b62-8c18-26c02dc7918c
+
+	column 'Applications / Services'
+		dataType: string
+		lineageTag: 77459219-41d5-4f63-be8b-6347e225d0b5
+		summarizeBy: none
+		sourceColumn: Applications / Services
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Security & Privacy (issues)'
+		dataType: int64
+		formatString: 0
+		lineageTag: cfd0df7d-cce4-49c9-ab94-97129f032aa0
+		summarizeBy: sum
+		sourceColumn: Security & Privacy (issues)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MTTR (minutes)'
+		dataType: string
+		lineageTag: 8164a47a-adb1-4b08-8fca-0cb157bed9ae
+		summarizeBy: none
+		sourceColumn: MTTR (minutes)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Uptime (%)'
+		dataType: string
+		lineageTag: e97012a1-15d1-4ac8-85b1-525cc839d39e
+		summarizeBy: none
+		sourceColumn: Uptime (%)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tested RPO (HH:MM:SS)'
+		dataType: string
+		lineageTag: 1ca4c359-83f7-455e-8a2a-8dc0e19cc218
+		summarizeBy: none
+		sourceColumn: Tested RPO (HH:MM:SS)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tested RTO (HH:MM:SS)'
+		dataType: string
+		lineageTag: 2c4186e0-aa9b-4dd8-b679-edf2908e0c13
+		summarizeBy: none
+		sourceColumn: Tested RTO (HH:MM:SS)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 52efeb9a-aeb1-4d45-8354-8e3170eab5c2
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column ApplicationId
+		dataType: string
+		lineageTag: 38a76cff-1750-4025-ae36-49a61f22c6e6
+		summarizeBy: none
+		sourceColumn: ApplicationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 4699d76d-534a-42ea-8bf2-c8ba6b772db4
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: a38bf575-f9bc-4982-8ffb-c9d767e13843
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column L1
+		dataType: string
+		lineageTag: 09a7adf9-8bbd-4cf9-85ed-8b6759e7f98c
+		summarizeBy: none
+		sourceColumn: L1
+
+		annotation SummarizationSetBy = Automatic
+
+	column L2
+		dataType: string
+		lineageTag: 72a0e53b-9aac-4fad-9a04-b32b308c31a2
+		summarizeBy: none
+		sourceColumn: L2
+
+		annotation SummarizationSetBy = Automatic
+
+	column L3
+		dataType: string
+		lineageTag: 18d822d5-68bd-4ac1-b2b1-43e7858d35a0
+		summarizeBy: none
+		sourceColumn: L3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner
+		dataType: string
+		lineageTag: cd4545df-be8d-42d8-b40e-3fa7347fac64
+		summarizeBy: none
+		sourceColumn: Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 464e9ec2-824e-4875-add8-b89cc96bc133
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 6da97f36-092c-4bbd-8490-853a7aa6158f
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Compliance
+		dataType: string
+		lineageTag: cc02cd4e-13c8-4b2c-bbe2-71d73e7f9100
+		summarizeBy: none
+		sourceColumn: Compliance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tier
+		dataType: string
+		lineageTag: 740494c0-27ab-4f85-be1f-c34b24cc905f
+		summarizeBy: none
+		sourceColumn: Tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resiliency Risk'
+		dataType: string
+		lineageTag: 4c4223cb-8f01-403f-aa79-b2cadceb2e4b
+		summarizeBy: none
+		sourceColumn: Resiliency Risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resiliency Risk URL'
+		dataType: string
+		lineageTag: 055b4ff3-789e-40b5-b8ce-269633cf5c3f
+		summarizeBy: none
+		sourceColumn: Resiliency Risk URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monikers
+		dataType: string
+		lineageTag: bea2b73d-1277-40f7-b019-88ffb57a3c52
+		summarizeBy: none
+		sourceColumn: Monikers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EA - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 97e0f3b7-2d13-4e06-9d03-582024aeb12d
+		summarizeBy: sum
+		sourceColumn: S & P - EA - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EA - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: c1f7ee9d-544e-4271-91c6-2ba3ca5e3b5d
+		summarizeBy: sum
+		sourceColumn: S & P - EA - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EA - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a79bf2d-5a25-4c73-903f-81a8e5f488f6
+		summarizeBy: sum
+		sourceColumn: S & P - EA - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EA - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 01030915-69e1-4372-b0b9-54e5185f7be6
+		summarizeBy: sum
+		sourceColumn: S & P - EA - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EA - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2703d4d7-6494-4bec-bbe3-d7b64b20526e
+		summarizeBy: sum
+		sourceColumn: S & P - EA - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TM - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cdad0cb-76d8-4c67-b1b0-98ea7bd28528
+		summarizeBy: sum
+		sourceColumn: S & P - TM - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TM - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 00a5c99c-1c98-4a58-8b9a-1e4b93631609
+		summarizeBy: sum
+		sourceColumn: S & P - TM - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TM - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4327cbd7-a1be-4568-82b8-e857c913ef46
+		summarizeBy: sum
+		sourceColumn: S & P - TM - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TM - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: ada6a993-934f-406a-8c74-1fbd614ada2d
+		summarizeBy: sum
+		sourceColumn: S & P - TM - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TM - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 50170e9f-164b-4695-b7ba-2553fc32dc91
+		summarizeBy: sum
+		sourceColumn: S & P - TM - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - SC - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 12d004e8-d27c-41f2-a08f-8b149012283e
+		summarizeBy: sum
+		sourceColumn: S & P - SC - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - SC - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 16ca71c8-28ef-481c-bc2c-1e21725d53e8
+		summarizeBy: sum
+		sourceColumn: S & P - SC - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - SC - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a09f254-55d7-4ddb-8c90-03f210f418b4
+		summarizeBy: sum
+		sourceColumn: S & P - SC - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - SC - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2de04228-20cb-4081-94af-4e5827a92c55
+		summarizeBy: sum
+		sourceColumn: S & P - SC - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - SC - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 305d6b11-b8f3-462c-bd93-c0ef68585986
+		summarizeBy: sum
+		sourceColumn: S & P - SC - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - ST - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 67be4c7c-4fb5-4caf-9d33-39b992fca581
+		summarizeBy: sum
+		sourceColumn: S & P - ST - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - ST - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 69e46193-7dcf-4c1f-bd5c-dbd80f9c74e7
+		summarizeBy: sum
+		sourceColumn: S & P - ST - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - ST - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1116c080-6b81-42f1-aed9-46927fc0495c
+		summarizeBy: sum
+		sourceColumn: S & P - ST - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - ST - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a05345b-6ef5-4300-8a22-086630c15539
+		summarizeBy: sum
+		sourceColumn: S & P - ST - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - ST - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: e111dc7f-d5ab-48d2-95da-d9f8008e0bf3
+		summarizeBy: sum
+		sourceColumn: S & P - ST - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TCM - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 97b5877d-7760-4628-a135-f38a3b779b0e
+		summarizeBy: sum
+		sourceColumn: S & P - TCM - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TCM - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fbca03b-2fa3-40e2-9aec-6851ae02a893
+		summarizeBy: sum
+		sourceColumn: S & P - TCM - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TCM - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c714334-c1e2-41cc-ab25-e55b65705f1c
+		summarizeBy: sum
+		sourceColumn: S & P - TCM - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TCM - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: a1d6e23b-12a7-4663-9d92-4af45f76bf5e
+		summarizeBy: sum
+		sourceColumn: S & P - TCM - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TCM - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: e5a0c1d5-b081-463c-b5a9-302a8fb91231
+		summarizeBy: sum
+		sourceColumn: S & P - TCM - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - HD - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: af6278b0-204c-46cb-b387-303aada1479f
+		summarizeBy: sum
+		sourceColumn: S & P - HD - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - HD - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: d05334e0-16a0-4481-b8d7-66b5e3b0a9c0
+		summarizeBy: sum
+		sourceColumn: S & P - HD - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - HD - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a43946f-09dc-47a1-b872-9e40d0be90db
+		summarizeBy: sum
+		sourceColumn: S & P - HD - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - HD - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 31c70f54-4a9b-4d88-90f7-5a35d7082f48
+		summarizeBy: sum
+		sourceColumn: S & P - HD - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - HD - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: b1492ea1-15b6-4ac1-baf3-7554574f60bb
+		summarizeBy: sum
+		sourceColumn: S & P - HD - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - LG - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 90700384-1caa-499d-9e8d-c0f747f51caf
+		summarizeBy: sum
+		sourceColumn: S & P - LG - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - LG - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: e0db9d1f-9e8c-476c-8943-bb78fd2a3f74
+		summarizeBy: sum
+		sourceColumn: S & P - LG - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - LG - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: fd376419-202a-4262-8a54-b594e0c52f70
+		summarizeBy: sum
+		sourceColumn: S & P - LG - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - LG - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b3f65ec-5533-4c53-a77f-ffe918d272b8
+		summarizeBy: sum
+		sourceColumn: S & P - LG - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - LG - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: bfc4eca9-508e-4415-ae51-ccef2bd59521
+		summarizeBy: sum
+		sourceColumn: S & P - LG - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - IAM - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: ec5ff5d6-d51a-4b7d-9652-eaf1a82b29f7
+		summarizeBy: sum
+		sourceColumn: S & P - IAM - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - IAM - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2353affd-6f0a-454c-9d34-95e4eca963a9
+		summarizeBy: sum
+		sourceColumn: S & P - IAM - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - IAM - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 995e6f23-e461-4a56-8200-3b41beff4d62
+		summarizeBy: sum
+		sourceColumn: S & P - IAM - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - IAM - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 46092653-58e8-462f-8e41-067baf406791
+		summarizeBy: sum
+		sourceColumn: S & P - IAM - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - IAM - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c45da26-a075-4abf-8814-24cafef9e634
+		summarizeBy: sum
+		sourceColumn: S & P - IAM - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VM - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 715de99a-83c3-44af-b9fd-d1d035a165c9
+		summarizeBy: sum
+		sourceColumn: S & P - VM - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VM - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 169ca060-6e25-45cc-ba6e-8a194ddceff1
+		summarizeBy: sum
+		sourceColumn: S & P - VM - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VM - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: e130b709-0aa3-4673-8cd5-ab92b45a84be
+		summarizeBy: sum
+		sourceColumn: S & P - VM - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VM - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 65776a24-3884-4d6f-a854-ce56c73a9daa
+		summarizeBy: sum
+		sourceColumn: S & P - VM - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VM - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: aace63b7-943a-49e8-9aa8-ce00a2d3370c
+		summarizeBy: sum
+		sourceColumn: S & P - VM - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EP - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: e857085e-f919-48e2-a78d-54b7c14c81cb
+		summarizeBy: sum
+		sourceColumn: S & P - EP - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EP - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 511ebe10-200e-4cb5-b4a6-dfd09fcdb0c0
+		summarizeBy: sum
+		sourceColumn: S & P - EP - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EP - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 58ebcfd7-9114-4fcc-b528-327515031817
+		summarizeBy: sum
+		sourceColumn: S & P - EP - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EP - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d578c76-a536-4224-b5c7-030e95f17461
+		summarizeBy: sum
+		sourceColumn: S & P - EP - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - EP - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 83838420-ffc1-44f9-999e-b9662d023729
+		summarizeBy: sum
+		sourceColumn: S & P - EP - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - PPE - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bcdc990-1997-4b27-bc10-3f2dd9908873
+		summarizeBy: sum
+		sourceColumn: S & P - PPE - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - PPE - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a29d788-5f3a-44bc-b2b4-5b7ea78ab204
+		summarizeBy: sum
+		sourceColumn: S & P - PPE - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - PPE - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ba86edf-8a99-4b73-a49f-17ab4fe5e657
+		summarizeBy: sum
+		sourceColumn: S & P - PPE - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - PPE - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e138880-42d7-490c-ad0c-199889305ece
+		summarizeBy: sum
+		sourceColumn: S & P - PPE - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - PPE - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: cfd5667b-1273-4b3b-82d6-0a7af24c7c20
+		summarizeBy: sum
+		sourceColumn: S & P - PPE - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DPM - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 96b9c58d-fd2b-4c22-b097-0b9dc8e9723e
+		summarizeBy: sum
+		sourceColumn: S & P - DPM - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DPM - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: a99d212b-5c75-4240-b20b-881f224fccee
+		summarizeBy: sum
+		sourceColumn: S & P - DPM - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DPM - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 89d56d8c-0620-4b0b-ac8a-54fb7ab79d83
+		summarizeBy: sum
+		sourceColumn: S & P - DPM - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DPM - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 81528015-4309-4481-a501-4af45db28c98
+		summarizeBy: sum
+		sourceColumn: S & P - DPM - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DPM - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 843b4a7b-49e9-4488-a72a-f2c713d0f84c
+		summarizeBy: sum
+		sourceColumn: S & P - DPM - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DLM - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: a14a685a-c52e-4384-ab24-8f67a5dfe9eb
+		summarizeBy: sum
+		sourceColumn: S & P - DLM - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DLM - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 46b9fd11-163d-468b-8a90-8b8b56048d9a
+		summarizeBy: sum
+		sourceColumn: S & P - DLM - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DLM - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 12eb91ba-5f45-46e1-b514-f5dccf72e680
+		summarizeBy: sum
+		sourceColumn: S & P - DLM - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DLM - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 67ac099c-fa50-432a-9637-c89afe0e5edd
+		summarizeBy: sum
+		sourceColumn: S & P - DLM - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - DLM - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: e50309dd-52fa-422e-8b8e-eed6f336912d
+		summarizeBy: sum
+		sourceColumn: S & P - DLM - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TC - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c295cca-6970-4072-b892-4d6df50ade9c
+		summarizeBy: sum
+		sourceColumn: S & P - TC - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TC - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0db1898f-e957-416b-a1b2-e4db3501f5fe
+		summarizeBy: sum
+		sourceColumn: S & P - TC - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TC - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: bae781af-e8b5-4a2d-83fe-193b3051621d
+		summarizeBy: sum
+		sourceColumn: S & P - TC - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TC - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: 121fb9df-8b7a-44e2-b9d5-bda252c6ca17
+		summarizeBy: sum
+		sourceColumn: S & P - TC - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - TC - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8848e5f8-db59-4fc5-ac85-1b2f07dd16cd
+		summarizeBy: sum
+		sourceColumn: S & P - TC - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VIU - Critical'
+		dataType: int64
+		formatString: 0
+		lineageTag: 453a3519-48ac-40c9-a42c-620f66d5574d
+		summarizeBy: sum
+		sourceColumn: S & P - VIU - Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VIU - High'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a5977ed-e8e8-406b-84f2-83e3822edaed
+		summarizeBy: sum
+		sourceColumn: S & P - VIU - High
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VIU - Medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b47af4d-e581-40d6-9d9c-0fba8f7900fc
+		summarizeBy: sum
+		sourceColumn: S & P - VIU - Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VIU - Low'
+		dataType: int64
+		formatString: 0
+		lineageTag: f654bb36-0df5-4ba3-a148-04d7089d4f22
+		summarizeBy: sum
+		sourceColumn: S & P - VIU - Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'S & P - VIU - Informational'
+		dataType: int64
+		formatString: 0
+		lineageTag: f9e3cff6-8d2d-4f73-8caa-3c3312c63cdd
+		summarizeBy: sum
+		sourceColumn: S & P - VIU - Informational
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TrustApp-Master = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/Pset-TrustRisk/", [ApiVersion = 15]),
+				    #"TrustApp-Master xlsx_https://share autodesk com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/" = Source{[Name="TrustApp-Master.xlsx",#"Folder Path"="https://share.autodesk.com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"TrustApp-Master xlsx_https://share autodesk com/sites/Pset-TrustRisk/Shared Documents/TrustDashboard Risk/"),
+				    #"Trust-Dashboard-2024-07-15-12-1_Sheet" = #"Imported Excel Workbook"{[Item="Trust-Dashboard-2024-07-15-12-1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Trust-Dashboard-2024-07-15-12-1_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Applications / Services", type text}, {"Security & Privacy (issues)", Int64.Type}, {"MTTR (minutes)", type any}, {"Uptime (%)", type any}, {"Tested RPO (HH:MM:SS)", type any}, {"Tested RTO (HH:MM:SS)", type any}, {"Code", type text}, {"ApplicationId", type text}, {"Type", type text}, {"Division", type text}, {"L1", type text}, {"L2", type text}, {"L3", type text}, {"Owner", type text}, {"Source", type text}, {"Status", type text}, {"Compliance", type text}, {"Tier", type text}, {"Resiliency Risk", type text}, {"Resiliency Risk URL", type text}, {"Monikers", type text}, {"S & P - EA - Critical", Int64.Type}, {"S & P - EA - High", Int64.Type}, {"S & P - EA - Medium", Int64.Type}, {"S & P - EA - Low", Int64.Type}, {"S & P - EA - Informational", Int64.Type}, {"S & P - TM - Critical", Int64.Type}, {"S & P - TM - High", Int64.Type}, {"S & P - TM - Medium", Int64.Type}, {"S & P - TM - Low", Int64.Type}, {"S & P - TM - Informational", Int64.Type}, {"S & P - SC - Critical", Int64.Type}, {"S & P - SC - High", Int64.Type}, {"S & P - SC - Medium", Int64.Type}, {"S & P - SC - Low", Int64.Type}, {"S & P - SC - Informational", Int64.Type}, {"S & P - ST - Critical", Int64.Type}, {"S & P - ST - High", Int64.Type}, {"S & P - ST - Medium", Int64.Type}, {"S & P - ST - Low", Int64.Type}, {"S & P - ST - Informational", Int64.Type}, {"S & P - TCM - Critical", Int64.Type}, {"S & P - TCM - High", Int64.Type}, {"S & P - TCM - Medium", Int64.Type}, {"S & P - TCM - Low", Int64.Type}, {"S & P - TCM - Informational", Int64.Type}, {"S & P - HD - Critical", Int64.Type}, {"S & P - HD - High", Int64.Type}, {"S & P - HD - Medium", Int64.Type}, {"S & P - HD - Low", Int64.Type}, {"S & P - HD - Informational", Int64.Type}, {"S & P - LG - Critical", Int64.Type}, {"S & P - LG - High", Int64.Type}, {"S & P - LG - Medium", Int64.Type}, {"S & P - LG - Low", Int64.Type}, {"S & P - LG - Informational", Int64.Type}, {"S & P - IAM - Critical", Int64.Type}, {"S & P - IAM - High", Int64.Type}, {"S & P - IAM - Medium", Int64.Type}, {"S & P - IAM - Low", Int64.Type}, {"S & P - IAM - Informational", Int64.Type}, {"S & P - VM - Critical", Int64.Type}, {"S & P - VM - High", Int64.Type}, {"S & P - VM - Medium", Int64.Type}, {"S & P - VM - Low", Int64.Type}, {"S & P - VM - Informational", Int64.Type}, {"S & P - EP - Critical", Int64.Type}, {"S & P - EP - High", Int64.Type}, {"S & P - EP - Medium", Int64.Type}, {"S & P - EP - Low", Int64.Type}, {"S & P - EP - Informational", Int64.Type}, {"S & P - PPE - Critical", Int64.Type}, {"S & P - PPE - High", Int64.Type}, {"S & P - PPE - Medium", Int64.Type}, {"S & P - PPE - Low", Int64.Type}, {"S & P - PPE - Informational", Int64.Type}, {"S & P - DPM - Critical", Int64.Type}, {"S & P - DPM - High", Int64.Type}, {"S & P - DPM - Medium", Int64.Type}, {"S & P - DPM - Low", Int64.Type}, {"S & P - DPM - Informational", Int64.Type}, {"S & P - DLM - Critical", Int64.Type}, {"S & P - DLM - High", Int64.Type}, {"S & P - DLM - Medium", Int64.Type}, {"S & P - DLM - Low", Int64.Type}, {"S & P - DLM - Informational", Int64.Type}, {"S & P - TC - Critical", Int64.Type}, {"S & P - TC - High", Int64.Type}, {"S & P - TC - Medium", Int64.Type}, {"S & P - TC - Low", Int64.Type}, {"S & P - TC - Informational", Int64.Type}, {"S & P - VIU - Critical", Int64.Type}, {"S & P - VIU - High", Int64.Type}, {"S & P - VIU - Medium", Int64.Type}, {"S & P - VIU - Low", Int64.Type}, {"S & P - VIU - Informational", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

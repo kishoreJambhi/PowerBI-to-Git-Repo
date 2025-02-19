@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Semantic model refresh1",
+        "type": "PBISemanticModelRefresh",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "method": "post",
+          "waitOnCompletion": true,
+          "commitMode": "Transactional",
+          "operationType": "SemanticModelRefresh",
+          "groupId": "b01ddda1-3406-47d6-aaf7-8cd73dcb9db0",
+          "datasetId": "9a0956da-278a-489d-bf34-e4c5effc97bf",
+          "objects": [
+            {
+              "table": "NEO Feedback Survey"
+            },
+            {
+              "table": "NEO Feedback Survey (2)"
+            }
+          ]
+        },
+        "externalReferences": {
+          "connection": "99ce83b4-74a0-40e4-adf3-a886b7cc879a"
+        }
+      }
+    ]
+  }
+}

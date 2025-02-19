@@ -1,0 +1,93 @@
+table Sharepoint
+	lineageTag: 9ae43be9-0858-4ace-ba89-1368d7e67a14
+
+	column Name
+		dataType: string
+		lineageTag: 46f44dfb-07bc-4958-bf8b-8171cb8c25a0
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 2429a5a1-de39-4ba7-ba43-e4f554cd0bca
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tenant
+		dataType: string
+		lineageTag: 73d1659c-771e-424a-ac86-bc425138546e
+		summarizeBy: none
+		sourceColumn: Tenant
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role
+		dataType: string
+		lineageTag: 21382bc1-ef10-490b-af66-002d13a94b58
+		summarizeBy: none
+		sourceColumn: Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manufacturer
+		dataType: string
+		lineageTag: 9875862f-7728-4ebe-b1f3-c57e119cd8d7
+		summarizeBy: none
+		sourceColumn: Manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: e2090879-f8f9-4ac8-8c8b-16ed18fa2002
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Site
+		dataType: string
+		lineageTag: 95759ac5-2fa4-4dcf-9c2c-d6752c8efcf5
+		summarizeBy: none
+		sourceColumn: Site
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type of facility'
+		dataType: string
+		lineageTag: 495f393b-abca-484a-a9f8-0049d7bd39aa
+		summarizeBy: none
+		sourceColumn: Type of facility
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column9
+		dataType: string
+		lineageTag: 91f47687-07fc-4794-bbf9-2e39a8fb7551
+		summarizeBy: none
+		sourceColumn: Column9
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sharepoint = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://share.autodesk.com/sites/ESEBIOPS/", [ApiVersion = 15]),
+				    #"Power BI Call Data xlsx_https://share autodesk com/sites/ESEBIOPS/Shared Documents/Network Opeartor Dashboard/" = Source{[Name="Power BI Call Data.xlsx",#"Folder Path"="https://share.autodesk.com/sites/ESEBIOPS/Shared Documents/Network Opeartor Dashboard/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"Power BI Call Data xlsx_https://share autodesk com/sites/ESEBIOPS/Shared Documents/Network Opeartor Dashboard/"),
+				    #"Devices Data_Sheet" = #"Imported Excel Workbook"{[Item="Devices Data",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Devices Data_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Name", type text}, {"Status", type text}, {"Tenant", type text}, {"Role", type text}, {"Manufacturer", type text}, {"Type", type text}, {"Site", type text}, {"Type of facility", type text}, {"Column9", type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"Name"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
